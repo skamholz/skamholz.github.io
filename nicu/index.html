@@ -1,1 +1,157 @@
-<h1>NICU</h1>
+<!DOCTYPE html>
+<html>
+<!-- sidebar: https://stackoverflow.com/questions/23468831/set-up-a-html-page-with-left-and-right-panel -->
+<!-- get iframe to 100% height: https://stackoverflow.com/questions/325273/make-iframe-to-fit-100-of-containers-remaining-height -->
+
+<head>
+<link rel="icon" 
+      type="image/png" 
+      href="nicu/favicon.png">
+	  
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script>
+$(function () {
+    $("#maincontent > div:gt(0)").hide();
+    $("#menu a").on("click", function (e) {
+        var href = $(this).attr("href");
+        $("#maincontent > " + href).show();
+		$("#maincontent > :not(" + href + ")").hide();
+    });
+});
+
+$(function(){
+      $("#biblio").load("nicu/pubs.html"); 
+	  $("#contact").load("nicu/contact.html"); 
+	  $("#faq").load("nicu/faq.html"); 
+	  $("#faculty").load("nicu/faculty.html");
+	  $("#fellows").load("nicu/fellows.html");
+	  $("#top20").load("nicu/top20.html");
+    });
+	
+</script>
+
+
+
+<style>
+
+body, html {width: 100%; height: 100%; margin: 0; padding: 0; font-family:Calibri,"Trebuchet MS",Arial;
+	color:#002664; text-rendering: optimizeLegibility; 
+-webkit-font-feature-settings: "kern";
+-moz-font-feature-settings: "kern";
+font-feature-settings: "kern";}
+	
+#page {
+    margin-left: 300px;
+}
+#maincontent {
+    float: right;
+    width: 100%;
+	
+	
+    
+}
+
+#headingcontent {
+    display:inline;
+	width: 130%;
+	height: 50px;
+	line-height:50px;
+	font-size:38px; letter-spacing:-2px;
+
+	margin-left: -300px;
+	Font-weight:bold;
+	color:#0070c0;
+    background-color: #ffffff;
+}
+#menuleftcontent{
+    float: left;
+	
+    width: 300px;
+    margin-left: -300px;
+    background-color: #002664;
+}
+#clearingdiv {
+    clear: both;
+}
+
+a {
+    padding: 6px 8px 6px 10px;
+    text-decoration: none;
+    font-size: 32px;
+    color: white;
+    display: block;
+	text-align: center;
+}
+
+a.email { padding: revert; font-size:revert; color:revert; display:revert}
+
+a:hover {font-weight:bold;letter-spacing:-0.4px;}
+a:active {font-weight:bold; color:#fcd900;}
+
+hr.msenu {
+width:50%;height:2px;border-width:0;color:white;background-color:white;
+}
+
+hr.slide {}
+
+.plain-text {height:98.5%;width:95%;padding-left:10px;}
+.gradient {background-image:linear-gradient(white,#abc0e4 90%,#C7D5ED);}
+.tiny { font: 60% "Arial Narrow"; font-stretch: condensed}
+
+img.slide {
+  border: 2px solid #111111;
+  margin-left:5px;
+    max-width: 100%;
+  height: auto;
+}
+
+
+</style>
+
+</head>
+<body>
+<div id="page" style="height:2000px">
+	<div id="headingcontent" ><img src="nicu/mguh.png" style="height:50px;"> Georgetown University Neonatal-Perinatal Medicine Fellowship Program</h1></div>
+	<div id="pagecontent" style="height:100%">
+    <div id="maincontent" style="height:100%">
+		<div id="landing" class="plain-text gradient" style="text-align:center;"> <h1>Welcome!</h1> <h1> Click the links to the left to find information about our fellowship program.</h1></div>
+        <div id="fellows"></div>
+		<div id="grads"   style="height:95%"> <iframe src="nicu/grads.pdf"   style="width:98%; height:100%;"></iframe></div>
+		<div id="faculty"></div>
+		<div id="top20"></div>
+		<div id="faq" class="plain-text"></div>
+        <div id="nicutour" style="height:95%"><video width="90%" controls><source src="nicu/NICU-tour.mp4" type="video/mp4">Your browser does not support the video tag.</video></div>
+		<div id="supporttour" style="height:95%"><video width="90%" controls><source src="nicu/NICU-support-area-tour.mp4" type="video/mp4">Your browser does not support the video tag.</video></div>
+		<div id="biblio" style="width:90%;padding-left:10px;font-size:1.2em;"></div>
+		<div id="graduation"><video width="85%" controls><source src="nicu/Graduation2020.m4v" type="video/mp4">Your browser does not support the video tag.</video></div>
+		<div id="contact" class="plain-text gradient"></div>
+    </div>
+    <div id="menuleftcontent" style="height:100%;;background-color:#002664;">
+        <div id="menu"><br>
+			<a href="#fellows" title="Meet our current fellows" onclick="return false;">Current Fellows</a>
+			<hr class="menu">
+<!--            <a href="#grads" title="Meet our fellow graduates">Graduates</a> -->
+<!--			<hr> -->
+			<a href="#faculty" title="Meet our faculty" onclick="return false;">Faculty</a>
+			<hr class="menu">
+			<a href="#top20" title="Georgetown Neonatology Fellowship Top 20 List" onclick="return false;">Top 20</a>
+			<hr class="menu">
+			<a href="#faq" title="Georgetown Neonatology Fellowship Answers to Frequently Asked Questions" onclick="return false;">FAQ</a>
+			<hr class="menu">
+			<a href="#nicutour" title="Video Tour of Georgetown NICU" onclick="return false;">NICU Video Tour</a>
+			<hr class="menu">
+			<a href="#supporttour" title="Video Tour of new NICU Family Support Center, Conference Space, and Fellow Office and Call Room areas" onclick="return false;">Video Tour NICU Family Support Center/Offices</a>
+			<hr class="menu">
+			<a href="#biblio" title="Papers published by faculty and fellows" onclick="return false;">Division Publications</a>
+			<hr class="menu">
+			<a href="#graduation" title="Graduation 2020 Video" onclick="return false;">Graduation 2020 Video</a>
+			<hr class="menu">
+			<a href="#contact" onclick="return false;">Contact</a>
+			<hr class="menu">
+        </ul>
+    </div>
+    <div id="clearingdiv"></div>
+</div>
+</div>
+</body>
+</html>
