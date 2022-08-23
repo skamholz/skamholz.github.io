@@ -144,6 +144,10 @@
             nodeA.setAttribute("href","https://developer.uspto.gov/ptab-api/documents/"+lineEntry['documentIdentifier']+"/download");
             nodeA.setAttribute("target", "_blank");
             var titleText = /*"("+lineEntry['documentTypeName']+") " + */ lineEntry['documentTitleText'].replace(/¿¿¿/g,"'").replace("���","'").replace(/¿¿/,"§").replace("��","[]").replace(/patent owner/gi,"PO").replace(/petitioner/gi,"Pet").replace(/pro hac vice/gi,"PHV").replace(/patent no/gi,"Pat. No").replace(/Exhibit /g,"Ex. ").replace(" - "," ").replace(/power of attorney/gi,"POA");
+						if (titleText.length < 9) {
+							titleText = lineEntry['documentName'].replace(/patent owner/gi,"PO").replace(/petitioner/gi,"Pet").replace(/pro hac vice/gi,"PHV").replace(/patent no/gi,"Pat. No").replace(/Exhibit /g,"Ex. ").replace(" - "," ").replace(/power of attorney/gi,"POA").replace(/\.pdf/gi,"");
+						}
+
 			//if (titleText.length > 56) { nodeA.setAttribute("title",titleText); titleText = titleText.substr(0,53)+"\u2026";}  // &hellip; // ellipsis
 			//nodeA.setAttribute("title",titleText);
             var textnode = document.createTextNode(titleText);  // &mapstodown;
@@ -196,7 +200,7 @@
 			phv = new RegExp("phv|pro hac|prohac","i"); // tested against type
 			decl = new RegExp("declaration|decl\\.","i"); // tested against document title
 			exhibit = new RegExp("exhibit","i"); // tested against document type
-			if ((exhibit.test(lineEntry['documentTypeName']))&& decl.test(lineEntry['documentTitleText']) && !phv.test(lineEntry['documentTitleText'])) { nodeTR.className+=" declaration";}
+			if ((exhibit.test(lineEntry['documentTypeName']))&& (decl.test(lineEntry['documentTitleText'])||decl.test(lineEntry['documentName'])) && !(phv.test(lineEntry['documentTitleText'])||phv.test(lineEntry['documentName']))) { nodeTR.className+=" declaration";}
             if (petitionerDoc.test(lineEntry['filingPartyCategory'])) { nodeTR.className+=" petitioner";}
 				else if (poDoc.test(lineEntry['filingPartyCategory'])) { nodeTR.className+=" po";}
 					else if (boarddoc.test(lineEntry['filingPartyCategory'])) {
