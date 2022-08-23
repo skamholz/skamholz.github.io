@@ -1,0 +1,71 @@
+<html>
+<head>
+<title>Missing File!</title>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+<script>
+$(document).ready(function() {
+    $( ".toggle" ).hover( function() {
+        $("#image").toggleClass('flip');
+		$("#mis").show();
+    });
+});
+</script>
+<style>
+.content { 
+   background-color:#fefefe;
+   border-radius: 8px;
+   border-style:solid;
+   border-color:#bbbbfa;
+   border-width:5px;
+   box-shadow:0 10px 16px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19), 0 0 0 2px #bbbbfa;
+   font-family: "Trebuchet MS", Helvetica, sans-serif;
+   font-weight:normal;
+   padding:0 ;
+   display:float;
+   margin: 5px 5px 0 0;
+   color:black;
+   text-align:center;
+  
+   }
+
+a:link,a:hover,a:visited { color:white; }
+
+
+
+body {
+  background-color:rgb(15, 72, 89);//#1173aa;
+}
+
+.error { display:table-cell;vertical-align:middle;color:white;font-family: 'Segoe UI','Trebuchet MS';font-size:400%;}
+
+#image {
+  border-radius: 8px;
+  -moz-transition: transform 1s;
+  -webkit-transition: transform 1s;
+  transition: transform 0.4055s;
+}
+
+.flip {
+  transform: rotate(3420deg);
+}
+</style>
+</head>
+<body>
+<div class="content" style="width:600px">
+<!--	<div class=error>Error <a href="https://en.wikipedia.org/wiki/HTTP_404">404</a>:<br>File Not Found</div>  -->
+
+<br>
+<div style="font-size:200%;">
+Missing file! Is Scott happy?<br>
+Hover to find out:<br>
+</div>
+
+<img id=image class=toggle width=400 src="/thatcher-effect-scott-upside-down.jpg">
+<br><br>
+<div style="text-align:right;font-family: 'Segoe UI','Trebuchet MS',Arial,sans-serif;"><em style="font-family: Georgia; font-size: 70%;"><span id=mis style="display:none;">mis-</span>powered by</em> <b><a style="text-decoration:none" href="http://www.toolpat.com"><span style="color:#147ba8">Tool</span><span style="color:#d83b34">Pat</span></a></b>&nbsp;</div>
+</div>
+<div class=error class="display:float;width:50%"><span style="font-size:200%;">:(&nbsp;</span>Error <a href="https://en.wikipedia.org/wiki/HTTP_404">404</a>: file not found</div>
+
+
+</body>
+</html>
