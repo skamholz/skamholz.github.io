@@ -367,13 +367,19 @@
 			yuk.document.write("<div class='content'><div class='chunk'><span class='heading'>Papers </span> <span class='subheading'><span class='party petitioner'>\u25A0</span>Petitioner &nbsp; <span class='party po'>\u25A0</span>Patent Owner &nbsp; <span class='party board'>\u25A0</span>Board</span><table id='papers' class='docs'><thead><tr class='header'><th>#</th><th>Party</th><th>Date</th><th>Title</th></tr></thead><tbody id='papersBody'></tbody></table></div><div class='chunk'><span class=heading>Petitioner Exhibits</span><table id='petExhibits' class='docs'><thead><tr class='header'><th>#</th><th>Party</th><th>Date</th><th>Title</th></tr></thead><tbody id='petExhibitsBody'></tbody></table></div><div class='chunk'><span class=heading>Patent Owner Exhibits</span><table id='poExhibits' class='docs'><thead><tr class='header'><th>#</th><th>Party</th><th>Date</th><th>Title</th></tr></thead><tbody id='poExhibitsBody'></tbody></table></div><div id='boardchunk' class='chunk' style='visibility:hidden'><span class=heading>Board/Other Exhibits</span><table id='boardExhibits' class='docs'><thead><tr class='header'><th>#</th><th>Party</th><th>Date</th><th>Title</th></tr></thead><tbody id='boardExhibitsBody'></tbody></table></div>");
 			yuk.document.write("<div style='text-align:right'><em style='font-family: Georgia; font-size: 70%;'>powered by</em> <b><a style='text-decoration:none' href='https://toolpat.com'><span style='color:#147ba8'>Tool</span><span style='color:#d83b34'>Pat</span></a></b>&nbsp;</div></div></body></html>");
       yuk.document.title=trialNo;
-			   docList.sort(function(a,b){return a['documentNumber'] - b['documentNumber']});
-               for (key in docList) {
-                   nodeTR = yuk.document.createElement("TR");
-                   if (docList[key]['documentNumber'] < 1000) { nodeTR.className="paperEntry"; targetTable="papersBody";} // < 1000 is a paper
-                       else if (docList[key]['documentNumber'] < 2000) { nodeTR.className="exhibitEntry"; targetTable="petExhibitsBody";} // 1000's are pet exhibits
-                           else if (docList[key]['documentNumber'] < 3000) { nodeTR.className="exhibitEntry"; targetTable="poExhibitsBody";} // 2000's are po exhibits
-                               else { nodeTR.className="exhibitEntry"; targetTable="boardExhibitsBody"; yuk.document.getElementById("boardchunk").style.visibility = "visible";}  // 3000+'s are board exhibits plus whatever else
+      docList.reverse(); // delivered by server in mostly reverse order, so this makes sort work better
+      for (key in docList) {
+	if (typeof docList[key]['documentNumber'] === 'undefined') {
+	  docList[key]['documentNumber'] = 9999; }
+	else {docList[key]['documentNumber']=parseInt(docList[key]['documentNumber']);}
+      }
+      docList.sort(function(a,b){return a['documentNumber'] - b['documentNumber']});
+      for (key in docList) {
+      	nodeTR = yuk.document.createElement("TR");
+        if (docList[key]['documentNumber'] < 1000) { nodeTR.className="paperEntry"; targetTable="papersBody";} // < 1000 is a paper
+        else if (docList[key]['documentNumber'] < 2000) { nodeTR.className="exhibitEntry"; targetTable="petExhibitsBody";} // 1000's are pet exhibits
+        else if (docList[key]['documentNumber'] < 3000) { nodeTR.className="exhibitEntry"; targetTable="poExhibitsBody";} // 2000's are po exhibits
+        else { nodeTR.className="exhibitEntry"; targetTable="boardExhibitsBody"; yuk.document.getElementById("boardchunk").style.visibility = "visible";}  // 3000+'s are board exhibits plus whatever else
                    addDocClasses(docList[key],nodeTR);
                    addDocNumber(docList[key], nodeTR);
                    addDocIcon(nodeTR);
