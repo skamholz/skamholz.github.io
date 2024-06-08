@@ -144,6 +144,11 @@
             var nodeA = document.createElement("A");
             nodeA.setAttribute("href","https://developer.uspto.gov/ptab-api/documents/"+lineEntry['documentIdentifier']+"/download");
             nodeA.setAttribute("target", "_blank");
+	if (lineEntry['documentTitleText'] === lineEntry['documentTitleText'].toUpperCase()&&nodeTR.className.indexOf("paperEntry")!=-1) {
+							var words=lineEntry['documentTitleText'].split(" ");
+							for (i = 0; i < words.length; i++) { words[i] = words[i][0].toUpperCase() + words[i].substr(1).toLowerCase();}
+							lineEntry['documentTitleText'] = words.join(" ");
+						}
             var titleText = /*"("+lineEntry['documentTypeName']+") " + */ lineEntry['documentTitleText'].replace(/¿¿¿/g,"'").replace("���","'").replace(/¿¿/,"§").replace("��","[]").replace(/patent owner/gi,"PO").replace(/petitioner/gi,"Pet").replace(/pro hac vice/gi,"PHV").replace(/patent no/gi,"Pat. No").replace(/Exhibit /gi,"Ex. ").replace(" - "," ").replace(/power of attorney/gi,"POA");
 						if (titleText.length < 9) { // if documentTitleText is nondescriptive, e.g. "Ex. 1001", try documentName
 							titleText = lineEntry['documentName'].replace(/patent owner/gi,"PO").replace(/petitioner/gi,"Pet").replace(/pro hac vice/gi,"PHV").replace(/patent no/gi,"Pat. No").replace(/Exhibit /g,"Ex. ").replace(" - "," ").replace(/power of attorney/gi,"POA").replace(/\.pdf/gi,"");
@@ -211,8 +216,8 @@
 			boarddoc = new RegExp("board","i"); // tested against filing party
             poDoc = new RegExp("po|potential|owner|patent_owner|potential_patent_owner|patent|PATENT OWN","i"); // tested against filing party
             petitionerDoc = new RegExp("petitioner","i"); // tested against filing party
-            principalDoc = new RegExp("petition|response|reply","i");  // tested against type: principal document, such as petition, PO response, or Pet reply
-            order = new RegExp("order|decision|institut","i"); // tested against type
+            principalDoc = new RegExp("petition|response|reply|motion to amend|opposition","i");  // tested against type: principal document, such as petition, PO response, or Pet reply
+            order = new RegExp("order|decision|institut|guidance","i"); // tested against type
 			phv = new RegExp("phv|pro hac|prohac","i"); // tested against type
 			decl = new RegExp("declaration|decl\\.","i"); // tested against document title
 			exhibit = new RegExp("exhibit","i"); // tested against document type
