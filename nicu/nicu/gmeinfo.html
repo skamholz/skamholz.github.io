@@ -5,17 +5,25 @@ document.getElementById("pdf").contentWindow.location.reload();
 }
 </script>
 <style>
-a.local {all:revert; cursor:auto; font-size:16pt; display:inline} 
+a.local {all:revert; cursor:auto; font-size:12pt} 
 a.local:hover {background:hotpink} 
+#pdfcontent { float: right; width: 100%;}
+#submenucontent{float: left;width: 150px;margin-left: -150px;background-color:lightblue;font-size:12pt}
 </style>
-<a class=local onclick="javascript:changepage(2);">Sample Housestaff Agreement</a> &middot;
-<a class=local onclick="javascript:changepage(8);">Sample Compact</a> &middot;
-<a class=local onclick="javascript:changepage(10);">Stipends</a> &middot;
-<a class=local onclick="javascript:changepage(11);">Work Authorization</a> &middot;
-<a class=local onclick="javascript:changepage(12);">Benefits</a> &middot;
-<a class=local onclick="javascript:changepage(19);">Leave of Absence Policy</a> &middot;
-<a class=local onclick="javascript:changepage(21);">Paid Time Off Policy</a> &middot;
-<a class=local onclick="javascript:changepage(22);">Professional Liability Insurace</a> &middot;
-<a class=local onclick="javascript:changepage(23);">Requirements for Employment</a> &middot;
+<div style="height:100%">
+  <div class=submenucontent>
+  <a class=local onclick="javascript:changepage(2);">Sample Housestaff Agreement</a> 
+<a class=local onclick="javascript:changepage(8);">Sample Compact</a> 
+<a class=local onclick="javascript:changepage(10);">Stipends</a> 
+<a class=local onclick="javascript:changepage(11);">Work Authorization</a> 
+<a class=local onclick="javascript:changepage(12);">Benefits</a> 
+<a class=local onclick="javascript:changepage(19);">Leave of Absence Policy</a> 
+<a class=local onclick="javascript:changepage(21);">Paid Time Off Policy</a> 
+<a class=local onclick="javascript:changepage(22);">Professional Liability Insurace</a> 
+<a class=local onclick="javascript:changepage(23);">Requirements for Employment</a> 
 <a class=local onclick="javascript:changepage(24);">Policy on Drugs and Alcohol in the Workplace</a>
-<iframe id="pdf" src="nicu/FY25-GME_Recruitment_Material_DC.pdf#view=FitH&toolbar=0&navpanes=0" width="100%" height="100%">
+  </div>
+  <div id=pdfcontent>
+<iframe id="pdf" src="nicu/FY25-GME_Recruitment_Material_DC.pdf#view=FitH&toolbar=0&navpanes=0" width="100%" height="100%"/>
+</div>
+</div>
