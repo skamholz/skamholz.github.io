@@ -1,1 +1,894 @@
-<!DOCTYPE html><html lang="en"><head><title>ToolPat.com: Patent Prosecution Tools</title><meta http-equiv="Content-Type" content="text/html;charset=utf-8"><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="keywords" content="scott kamholz, scott e. kamholz, kamholz, patent, patent prosecution, mpep, search, attorney, agent, tool, tools, uspto"><meta name="description" content="Patent Prosecution tools for Patent Attorneys and Agents"><link class="shortcut icon" href="http://www.toolpat.com/favicon.ico"><style type="text/css">body{margin:0;padding:0;background:#dddddd;text-align:center;font:100% "Segoe UI","Trebuchet MS",Arial,sans-serif;font-weight:300}h2{font-size:100%;margin-top:0.0;margin-bottom:0;font-weight:bold;display:inline}form{display:inline}.bluish{color:#147ba8}.reddish{color:#d83b34}.toolpatbluebg{--btn-bg:#147ba8;background-color:var(--btn-bg)}.toolpatredbg{--btn-bg:#d83b34}ul{list-style-type:disc;margin-top:0.5em}div.compact{}.compact ul{margin:1em;padding:0;border:none}.compact li{border:none;margin:0}div.container{margin-left:auto;margin-right:auto;width:1024px;padding:0.0;text-align:left;background:#FFFFFF}input[type="text"]{background:#efeffa;color:#00006a;font-family:inherit;font-weight:600}div.float{display:inline-block}div.header{padding:0.0;background:#ffffff;border-bottom:10px solid #0f4859}div.footer{padding:0.0;background:#dddddd;padding-left:10px;border-top:10px solid #0f4859}div.title{vertical-align:middle;width:59%;display:inline-block;color:#0f4859;font-size:calc(32px + 3vw);font-weight:400;font-family:"Segoe UI Semibold"}div.title-caption{vertical-align:middle;text-align:right;margin:auto;width:40%;height:100%;display:inline-block;padding:00px;color:#000000;font-style:italic;font-size:calc(12px + 0.2vw);font-weight:normal;line-height:21px}div.content-block{vertical-align:top;width:490px;display:inline-block;padding:0.2em;background:#ffffff}.thinbordered{border-top:2px solid #0f4859}div.content-feature{padding-bottom:2%;margin-left:1%;text-indent:-1%}div.content .subheading{margin-left:1%;text-indent:initial}div#searchpane{float:left;width:100%;margin:0;padding:0}div#helppane{float:right;width:30%;background-color:#ffffcc;display:none;padding:0.2em}.center{text-align:center}.e1{color:#425060}.e2{color:red}.plain-white{text-decoration:none}.plain-black{text-decoration:none;color:black}.fineprint{font-size:90%;font-style:normal}.smallcaps{font-variant:small-caps}.bordered{border-bottom:15px solid #0f4859}.shadow{box-shadow:4px 4px 3px #aaaaaa}.backoffice{display:none}.em{font-style:italic}.ul{text-decoration:underline}.siminput{border:1px black solid;background:#ffffff;padding-left:2px;padding-right:2px;margin:0;font-size:90%}a img{border:0}.announcement-banner{background-color:#d83b34;color:#ffffff;display:flex;justify-content:space-between;align-items:center;padding:10px 20px;font-weight:600;font-size:15px;position:relative;z-index:9999}.announcement-text{flex-grow:1;text-align:center}.announcement-banner a:link,.announcement-banner a:visited{color:#ffffff;text-decoration:underline;background:transparent;font-weight:700;padding:2px 5px}.announcement-banner a:hover{background:#fff;color:#d83b34}.close-banner-btn{background:none;border:none;color:#ffffff;font-size:22px;font-weight:bold;cursor:pointer;padding:0 5px;line-height:1}.close-banner-btn:hover{color:#000000}@media screen and (max-width:1023px){div.content-feature{font-size:10vw}div.subheading{font-size:2vw}input{font-size:7vw}div.container{margin-left:auto;margin-right:auto;width:95%;padding:0.0;text-align:left;background:#ffffff}div.content-block{width:100%}}a:link{color:#00009C;padding:.3em;margin:-.3em;border-radius:3px}a:hover{background:#9C0000;color:#ffffff}</style><script type="text/javascript">var docCount=0;var totalDocCount=0;var docList=[];var trialNo="";var po="";var pet="";var patNum="";var pdfLink="";var filingDate="";var lastModified="";var caseStatus="";var instDecisionDate="";var trialInfoObj={};var trialFromUrl=false;var lastUpdate="pending";var updateStyle="";var trialNumber;var patLinkCount=0;function popup(url){newwindow=window.open(url,'name');if(window.focus){newwindow.focus()}}function externalLinks(){if(!document.getElementsByTagName)return;var forms=document.getElementsByTagName("form");for(var i=0;i<forms.length;i++){if(forms[i].className.indexOf("external")!=-1){forms[i].target="_blank"}}}function patnumSearch(){var docnum=new Array();var patentquery='';var pgpubquery='';docnum=document.combinednum.patnumquery.value.split(' ');for(var i=0;i<docnum.length;i++){docnum[i]=rectifyPatNo(docnum[i]);if(docnum[i].length>10){pgpubquery+=' '+docnum[i]}else if(docnum[i].length>0){patentquery+=' '+docnum[i]}}if((patentquery=='')&&(pgpubquery=='')){alert('Enter a list of patent numbers and/or PgPub numbers separated by spaces.');return}if(patentquery!=''){document.simplepatnumsearch.TERM1.value=patentquery;document.simplepatnumsearch.submit()}if(pgpubquery!=''){document.simplepgpubnumsearch.TERM1.value=pgpubquery;document.simplepgpubnumsearch.submit()}}function patnumLink(){var docnum=new Array();docnum=document.linktonum.patnumquery.value.split(' ');for(var i=0;i<docnum.length;i++){var docLink;docnum[i]=rectifyPatNo(docnum[i]);if(docnum[i].length>10){docLink="https://appft1.uspto.gov/netacgi/nph-Parser?Sect1=PTO1&Sect2=HITOFF&d=PG01&p=1&u=%2Fnetahtml%2FPTO%2Fsrchnum.html&r=1&f=G&l=50&s1=%22"+docnum[i]+"%22.PGNR.&OS=DN/"+docnum[i]+"&RS=DN/"+docnum[i]}else{docLink="http://patft1.uspto.gov/netacgi/nph-Parser?patentnumber="+docnum[i]}window.open(docLink)}}function patpdf(){var docnum=new Array();docnum=document.linktonum.patnumquery.value.split(' ');for(var i=0;i<docnum.length;i++){var docLink;docnum[i]=rectifyPatNo(docnum[i]);docLink="https://www.freepatentsonline.com/"+docnum[i]+".pdf";var fpoFetch=new XMLHttpRequest();fpoFetch.onerror=function(){window.open(docLink)};fpoFetch.open("GET",docLink,true);fpoFetch.onreadystatechange=function(){if(fpoFetch.readyState==4&&fpoFetch.status==200){var fpoPage=fpoFetch.responseText;var frameStart=fpoPage.indexOf("<iframe")+13;var frameEnd=fpoPage.indexOf("</iframe")-52;var patentLink=fpoPage.substring(frameStart,frameEnd)+"#zoom=150";window.open(patentLink)}}fpoFetch.send()}}function patpdfLink(patnum){var fpoLink="https://www.freepatentsonline.com/"+patnum+".pdf";var fpoFetch=new XMLHttpRequest();var patentLink=fpoLink;fpoFetch.open("GET",fpoLink,false);fpoFetch.onreadystatechange=function(){if(fpoFetch.readyState==4&&fpoFetch.status==200){var fpoPage=fpoFetch.responseText;var frameStart=fpoPage.indexOf("<iframe")+13;var frameEnd=fpoPage.indexOf("</iframe")-52;patentLink=fpoPage.substring(frameStart,frameEnd)+"#zoom=150"}}fpoFetch.send();return patentLink}function oldpatnumLink(){var docnum=rectifyPatNo(document.linktonum.patnumquery.value);var docLink="";if(docnum.length>10){docLink="http://appft1.uspto.gov/netacgi/nph-Parser?Sect1=PTO2&Sect2=HITOFF&p=1&u=%2Fnetahtml%2FPTO%2Fsearch-adv.html&r=1&f=G&l=50&d=PG01&S1="+docnum}else{docLink="http://patft1.uspto.gov/netacgi/nph-Parser?patentnumber="+docnum}alert(docLink);window.open(docLink)}function configAssign(){var assignaction="https://assignment.uspto.gov/patent/index.html#/patent/search/resultAbstract?type=";document.assign.submission.value=rectifyPatNo(document.assign.submission.value);if(document.assign.submission.value.length>10){assignaction+="&pub="+document.assign.submission.value}else{assignaction+="patNum&id="+document.assign.submission.value}newwindow=window.open(assignaction,'_blank');if(window.focus){newwindow.focus()}return false}function rectifyPatNo(patno){patno=patno.toUpperCase();patno=patno.replace(/\/|-|,||US|[A-B][0-9]/ig,"");if(patno.match(/^H/)){while(patno.length<7){patno='H0'+patno.substr(1)}}return patno}function getUrlParameter(name){name=name.replace(/[\[]/,'\\[').replace(/[\]]/,'\\]');var regex=new RegExp('[\\?&]'+name+'=([^&#]*)');var results=regex.exec(location.search);return results===null?'':decodeURIComponent(results[1].replace(/\+/g,' '))};function init(){if(arguments.callee.done)return;arguments.callee.done=true;externalLinks();if(document.addEventListener){document.addEventListener("DOMContentLoaded",init,false)}if(/WebKit/i.test(navigator.userAgent)){var _timer=setInterval(function(){if(/loaded|complete/.test(document.readyState)){clearInterval(_timer);init()}},10)}var inputElements=document.getElementsByTagName('input');for(i=0;inputElements[i];i++){inputElements[i].setAttribute('autocomplete','on')}document.getElementById('trialNo').addEventListener('keyup',function(event){event.preventDefault();if(event.keyCode===13){document.getElementById('getDocket').click()}})};window.onload=init;</script></head><body><div class="announcement-banner" id="topAnnouncement"><div class="announcement-text"> Check out the all-new ToolPat✚ for seamless file wrappers, PTAB documents, litigation dockets, and email tracking updates! <a href="https://plus.toolpat.com">Go to ToolPat✚</a></div><button class="close-banner-btn" onclick="document.getElementById('topAnnouncement').style.display='none';">&times;</button></div><div class="container"><div class="content"><div class="header"><div class="title"><div style="display:inline-block"><span class="bluish">Tool</span><span class="reddish">Pat</span></div></div><div class="title-caption">U.S. <a target="_parent" href="http://www.toolpat.com/" class="plain-white">patent prosecution</a> tools for patent attorneys and agents hosted since 2005 by <a target="_parent" href="https://www.linkedin.com/in/ptablawyer/">Scott E. Kamholz</a>, Registered Patent Attorney and Chief IP Officer of <a target="_parent" href="https://www.linkedin.com/company/toolpat/">ToolPat PLLC</a>. </div></div><div class="content-block"><div class="content-feature" title="Search the official MPEP using a Google search"><form target="_parent" name="mpepsearch" method="get" action="https://www.google.com/search"><label><h2><a href="https://www.uspto.gov/web/offices/pac/mpep" name="mpep" title="Go to MPEP at USPTO">MPEP</a> Search:</h2><input name="q" size="20" maxlength="255" value="" type="text"></label><input name="btnG" value="Search" type="submit"><input name="domains" value="https://www.uspto.gov/web/offices/pac/mpep" type="hidden"><input name="sitesearch" value="https://www.uspto.gov/web/offices/pac/mpep" type="hidden"><input name="ie" value="UTF-8" type="hidden"><input name="oe" value="UTF-8" type="hidden"></form><div class="subheading">or try the USPTO's <a target="_parent" href="https://mpep.uspto.gov/RDMS/MPEP/current">Searchable MPEP</a> interface. </div></div><div class="content-feature" title="Retrieve patent full text from the USPTO or a PDF from freepatentsonline.com"><form target="_parent" name="linktonum" action="" method="get" onsubmit="patnumLink(); return false;"><label><h2>Patent text or PDF: </h2><input type="text" size="20" name="patnumquery" maxlength="1024" placeholder="patent/PGPub no."><input value="Text" type="submit"></label><input value="PDF" type="button" onclick="patpdf(); return false;"></form><div class="subheading">Get full-text or PDF for a US Patent or Pre-grant publication.</div></div><div class="content-feature"><form name="patsearch" target="_blank" method="get" onsubmit="javascript:return(false);"><label><h2><a href="http://patft.uspto.gov/netahtml/PTO/search-adv.htm" title="Go to the USPTO Advanced Patent search page" class="plain-black">Search</a> Patents: </h2><input type="text" size="20" name="Query" maxlength="1024"></label><input value="Patent" type="button" onclick="javascript:document.patsearch.action='http://patft.uspto.gov/netacgi/nph-Parser';document.patsearch.d.value='pall';document.patsearch.submit();"><input value="PGPub" type="button" onclick="javascript:document.patsearch.action='http://appft1.uspto.gov/netacgi/nph-Parser';document.patsearch.d.value='PG01';document.patsearch.submit();"><input name="Sect1" value="PTO2" type="hidden"><input name="Sect2" value="HITOFF" type="hidden"><input name="u" value="/netahtml/search-adv.htm" type="hidden"><input name="r" value="0" type="hidden"><input name="p" value="1" type="hidden"><input name="f" value="S" type="hidden"><input name="l" value="50" type="hidden"><input name="d" value="pall" type="hidden"></form><div class="subheading">Search the USPTO databases. Use the advanced syntax.</div></div><div class="content-feature"><form target="_parent" class="external" name="assign" id="assign" onsubmit="return configAssign()" action="" method="get"><label><h2>Assignments: </h2><input type="text" class="jsonly" size="20" name="submission"></label><input value="Search" class="jsonly" type="submit"><input value="pat" name="db" type="hidden"><input name="pat" type="hidden"><input name="pub" type="hidden"><input name="asns" type="hidden"><input name="reel" type="hidden"><input name="frame" type="hidden"></form><div class="subheading"> Enter US Patent or PGPub number to search USPTO Assignments database &middot; <a target="_parent" href="https://assignment.uspto.gov/patent" title="USPTO patent assignment search page">USPTO search page</a></div></div></div><div class="content-block"><div class="content-feature"><h2>File Wrappers and PTAB dockets:</h2><div class="toolpat-container toolpatbluebg" onclick="location.href='https://plus.toolpat.com';" style="display: inline-block; vertical-align: top;padding: 10px 20px; border-radius: 5px; font-weight: bold; color: white; cursor: pointer; user-select: none; box-shadow: 2px 2px 0px rgba(0,0,0,0.2); text-shadow: 1px 1px 1px rgba(0,0,0,0.3); overflow: hidden !important; background-clip: padding-box !important; border: 1px solid transparent !important; transition: filter 0.1s ease, background-color 0.1s ease, transform 0.1s ease, box-shadow 0.1s ease;" onmouseenter="this.style.filter='brightness(85%)';" onmouseleave="this.style.filter='none'; this.style.backgroundColor='';" onmousedown="this.style.filter='none'; this.classList.add('toolpatredbg'); this.style.backgroundColor='var(--btn-bg)'; this.style.transform='translate(2px, 2px)'; this.style.boxShadow='0px 0px 0px rgba(0,0,0,0)';" onmouseup="this.classList.remove('toolpatredbg'); this.style.backgroundColor=''; this.style.filter='brightness(85%)'; this.style.transform='none'; this.style.boxShadow='2px 2px 0px rgba(0,0,0,0.2)';"><span style="display: block !important; margin: 0 !important; padding: 0 !important; border: none !important; line-height: 1.2 !important;">Go to ToolPat&#x271A;</span></div></div><div class="content-feature"><h2>PTAB Decisions:</h2><a target="_parent" href="https://developer.uspto.gov/ptab-web/#/search/decisions">Final</a>, <a href="https://www.uspto.gov/patents-application-process/appealing-patent-decisions/decisions-and-opinions/representative-orders" target="_parent">Representative</a>, and <a href="https://www.uspto.gov/patents-application-process/patent-trial-and-appeal-board/precedential-informative-decisions" target="_parent">Precedential/Informative</a> &middot; <a target="_parent" href="https://www.uspto.gov/patents/ptab/decisions/precedential-opinion-panel">Precedential Opinion Panel</a> &middot; <a target="_parent" href="https://acts.uspto.gov/ifiling/PublicView.jsp ">Interferences</a> &middot; <a href="https://www.uspto.gov/patents-application-process/patent-trial-and-appeal-board/hearings" target="_parent">Hearing Schedule</a></div><div class="content-feature" title="Search the WIPO Patentscope database"><label><h2>PCT number search: </h2><input id="pctsearch" name="pctdsearch" placeholder="WO or PCT number" type="text" size="25" maxlength="1024" onkeyup="javascript:if (event.keyCode == 13) {document.getElementById('pctbutton').click();};"></label><input value="Search" id="pctbutton" type="button" onclick="javascript:window.open('https://patentscope.wipo.int/search/en/detail.jsf?docId='+document.getElementById('pctsearch').value.replace(/\//g,'').toUpperCase());"><div class="subheading"><a target="_parent" href="https://patentscope.wipo.int/search/en/search.jsf" title="WIPO patent search page">Patentscope</a> &middot; <a target="_parent" href="http://www.wipo.int/pct/en/appguide/index.jsp" title="Go to the official guide for receving office and search authority filing requirements">Guide</a> &middot; <a target="_parent" href="http://www.wipo.int/pct/guide/en/gdvol1/annexes/annexa/ax_a.pdf" title="Go to the official list of member states and their two-letter alpha codes">Contracting states</a> &middot; <a target="_parent" href="http://www.wipo.int/pct/en/texts/time_limits.html">National-stage deadlines</a></div></div><div class="content-feature"><form target="_parent" name="espacenet" class="external" action="https://worldwide.espacenet.com/singleLineSearch" method="GET"><label><h2><a target="_parent" href="http://worldwide.espacenet.com/" title="Go to the espacenet home page."><span class="reddish">Espace</span><span class="bluish">net</span></a> number search: </h2><input type="text" name="NUM" id="fieldToFocus" size="25" value=""></label><input type="submit" name="Submit" value="Search" class="btn1"><input type="hidden" name="submitted" value="true"><input type="hidden" name="locale" value="en_EP"><input type="hidden" name="DB" value="EPODOC"><input type="hidden" name="ST" size="25" value="number"></form></div><div class="content-feature"><h2>Other patent office search pages:</h2><a target="_parent" href="http://pericles.ipaustralia.gov.au/ols/auspat/">Australia</a> &middot; <a target="_parent" href="http://www.ic.gc.ca/opic-cipo/cpd/eng/introduction.html">Canada</a> &middot; <a target="_parent" href="http://english.sipo.gov.cn/">China</a> &middot; <a target="_parent" href="http://bases-brevets.inpi.fr/en/home.html">France</a> &middot; <a target="_parent" href="https://www.dpma.de/english/search/index.html">Germany</a> &middot; <a href="https://www.j-platpat.inpit.go.jp/web/all/top/BTmTopEnglishPage">Japan</a> &middot; <a target="_parent" href="http://www.patent.gov.uk/patent/p-find/p-find-number.htm ">UK</a> &middot; <a target="_parent" href="https://globaldossier.uspto.gov/#/">Global Dossier</a></div></div></div><div class="content thinbordered"><div class="content-block"><div class="content-feature"><h2>Current Patent Laws and Rules</h2> Consolidated by the USPTO. Each file is a large PDF, so consider saving instead of opening. <ul><li><a target="_parent" href="http://www.uspto.gov/web/offices/pac/mpep/consolidated_laws.pdf">Consolidated Patent Laws - 35 U.S.C.</a></li><li><a target="_parent" href="http://www.uspto.gov/web/offices/pac/mpep/consolidated_rules.pdf">Consolidated Patent Rules - 37 C.F.R.</a></li></ul></div><div class="content-feature"><h2>USPTO News and Notices</h2> See announcements from the USPTO. <ul><li><a target="_parent" href="https://www.uspto.gov/patents/law/notices/patent-related-notices"><i>Official Gazette</i> notices</a></li><li><a target="_parent" href="https://www.uspto.gov/learning-and-resources/federal-register">USPTO Federal Register notices</a></li><li><a target="_parent" href="https://www.uspto.gov/about-us/events">USPTO events</a></li><li><a target="_parent" href="http://www.uspto.gov/blog/">Director's Forum</a></li></ul></div><div class="content-feature"><form target="_parent" name="formsearch" method="get" action="https://www.google.com/search"><label><h2>USPTO <a target="_parent" href="https://www.uspto.gov/patents/apply/forms">Forms</a></h2>: <input name="q" size="20" maxlength="255" value="" type="text"></label><input name="btnG" value="Search" type="submit"><input name="domains" value="https://www.uspto.gov/patents/apply/forms" type="hidden"><input name="sitesearch" value="https://www.uspto.gov/patents/apply/forms" type="hidden"><input name="ie" value="UTF-8" type="hidden"><input name="oe" value="UTF-8" type="hidden"></form><div class="subheading">or browse forms for applications filed <a target="_parent" href="https://www.uspto.gov/patents/apply/forms/pre-2012-forms">before</a> or <a target="_parent" href="https://www.uspto.gov/patents/apply/forms">on or after</a> September 16, 2012. </div></div></div><div class="content-block"><div class="content-feature"><h2>Other USPTO Resources</h2> Miscellaneous interest. <ul><li><a target="_parent" href="https://www.uspto.gov/learning-and-resources/fees-and-payment/uspto-fee-schedule">USPTO fee schedule</a> &middot; <a target="_parent" href="http://www.uspto.gov/patents/init_events/pct/sample/fees.jsp">PCT fees for RO/US</a></li><li><a target="_parent" href="http://www.uspto.gov/patents/init_events/pph/index.jsp">Patent Prosecution Highway (PPH)</a></li><li><a target="_parent" href="http://www.uspto.gov/web/patents/classification/index.htm">Patent Classification system</a></li><li><a target="_parent" href="http://www.uspto.gov/ebc">Patent electronic filing system</a></li><li><a target="_parent" href="https://www.uspto.gov/patent/laws-and-regulations/patent-term-calculator">Patent term calculator</a></li><li><a target="_parent" href="https://fees.uspto.gov/MaintenanceFees">Maintenance fee information</a></li><li><a target="_parent" href="https://www.uspto.gov/about-us/contact-us">USPTO contact information</a> &middot; <a target="_parent" href="http://portal.uspto.gov/external/portal/emlocator">USPTO Employee Locator</a></li><li><a target="_parent" href="http://portal.uspto.gov/external/portal/pair" title="Go to the Public PAIR home page. ">Public PAIR</a> &middot; <a href="https://patentcenter.uspto.gov/">Patent Center</a> &middot; <a target="_parent" href="https://my.uspto.gov/">MyUSPTO</a> &middot; <a href="https://globaldossier.uspto.gov/">Global Dossier</a></li><li><a target="_parent" href="https://ped.uspto.gov/peds/" title="USPTO Patent Examination Data System">USPTO Patent Examination Data System</a></li></ul></div><div class="content-feature"><h2>Other Sites of Interest</h2><ul><li><a target="_parent" href="http://www.freepatentsonline.com/search.html">FreePatentsOnline</a> has the best free patent search tool I've ever found.</li><li><a target="_parent" href="http://timeanddate.com">Time and date.com</a> provides excellent date calculators that are handy for those pesky <a target="_parent" href="http://www.patentlyo.com/patent/2006/10/patent_term_adj.html">patent term adjustment</a> calculations: one calculator determines the <a target="_parent" href="http://www.timeanddate.com/date/duration.html">duration</a> between two dates; the other allows you to <a target="_parent" href="http://www.timeanddate.com/date/dateadd.html">add and subtract</a> days from a date.</li><li>The <a target="_parent" href="http://www.patentlyo.com/">Patently-O blog</a>.</li><li>The <a target="_parent" href="http://thettablog.blogspot.com/">TTABlog</a>.</li></ul></div></div></div><div class="wrapper"><div class="footer "><p class="fineprint"><a href="#top " name="disclaimer " class="plain-white">*</a><strong>DISCLAIMER</strong>: Use at your own risk. I do not warrant or guarantee that search results or forms are comprehensive, accurate, or current. This service does not constitute legal advice and is intended primarily for patent agents and attorneys. This site was created by and is maintained by its Owner, who is solely responsible for its content. Nothing on this site should be attributed to any other entity.&nbsp; </p><p class="fineprint"><a href="#top " name="privacy " class="plain-white">*</a><strong>PRIVACY:</strong> I, the Owner, do not monitor or store any information about any queries run on this page. In short, I have no idea of the uses to which you put these tools. While my visitor counter records the IP address of the last 100 visitors, it continuously discards older information, and I do not store any of it. I will not sell any information concerning access of this site nor voluntarily share it with anyone. </p><span class="plain-white " style="display:none ">My name is Scott E. Kamholz. My name is sometimes misspelled as <a target="_parent" href="https://plus.toolpat.com/ " class="plain-white">Kamholtz</a> or <a target="_parent" href="https//plus.toolpat.com/" class="plain-white">Scott Kamholtz</a> or <a target="_parent" href="https://plus.toolpat.com/ " class="plain-white">Scott E. Kamholtz</a></span><p class="fineprint" style="text-align:center ">Copyright &#169; 2005&ndash;2026 by Scott E. Kamholz, M.D., Ph.D. and ToolPat PLLC. All Rights Reserved. </p></div></div></div></body></html>
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<title>ToolPat.com: Patent Prosecution Tools</title>
+	<meta http-equiv="Content-Type" content="text/html;charset=utf-8">
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="keywords"
+		content="scott kamholz, scott e. kamholz, kamholz, patent, patent prosecution, mpep, search, attorney, agent, tool, tools, uspto">
+	<meta name="description" content="Patent Prosecution tools for Patent Attorneys and Agents">
+	<link class="shortcut icon" href="http://www.toolpat.com/favicon.ico">
+	<!--        <link rel="alternate" type="application/rss+xml" title="ROR" href="http://www.toolpat.com/ror.xml"> -->
+	<style type="text/css">
+		body {
+			margin: 0;
+			padding: 0;
+			background: #dddddd;
+			text-align: center;
+			font: 100% "Segoe UI", "Trebuchet MS", Arial, sans-serif;
+			font-weight: 300
+		}
+
+		h2 {
+			font-size: 100%;
+			margin-top: 0.0em;
+			margin-bottom: 0em;
+			font-weight: bold;
+			display: inline;
+			/*font-family:"Segoe UI",sans-serif; */
+		}
+
+		form {
+			display: inline
+		}
+
+		.bluish {
+			color: #147ba8
+		}
+
+		.reddish {
+			color: #d83b34
+		}
+
+		.toolpatbluebg {
+			--btn-bg: #147ba8;
+			background-color: var(--btn-bg);
+		}
+
+		.toolpatredbg {
+			--btn-bg: #d83b34;
+		}
+
+		ul {
+			list-style-type: disc;
+			margin-top: 0.5em
+		}
+
+		div.compact {}
+
+		.compact ul {
+			margin: 1em;
+			padding: 0;
+			border: none;
+		}
+
+		.compact li {
+			border: none;
+			margin: 0;
+		}
+
+		div.container {
+			margin-left: auto;
+			margin-right: auto;
+			width: 1024px;
+			padding: 0.0em;
+			text-align: left;
+			background: #FFFFFF
+		}
+
+		input[type="text"] {
+			background: #efeffa;
+			color: #00006a;
+			font-family: inherit;
+			font-weight: 600
+		}
+
+		div.float {
+			display: inline-block;
+		}
+
+		div.header {
+			padding: 0.0em;
+			background: #ffffff;
+			border-bottom: 10px solid #0f4859
+		}
+
+		div.footer {
+			padding: 0.0em;
+			background: #dddddd;
+			padding-left: 10px;
+			border-top: 10px solid #0f4859
+		}
+
+		div.title {
+			vertical-align: middle;
+			width: 59%;
+			display: inline-block;
+			color: #0f4859;
+			font-size: calc(32px + 3vw);
+			font-weight: 400;
+			font-family: "Segoe UI Semibold"
+		}
+
+		div.title-caption {
+			vertical-align: middle;
+			text-align: right;
+			margin: auto;
+			width: 40%;
+			height: 100%;
+			display: inline-block;
+			padding: 00px;
+			color: #000000;
+			/*font: 100% "Georgia";*/
+			font-style: italic;
+			font-size: calc(12px + 0.2vw);
+			font-weight: normal;
+			line-height: 21px
+		}
+
+		div.content-block {
+			vertical-align: top;
+			width: 490px;
+			display: inline-block;
+			padding: 0.2em;
+			background: #ffffff
+		}
+
+		.thinbordered {
+			border-top: 2px solid #0f4859
+		}
+
+		div.content-feature {
+			padding-bottom: 2%;
+			margin-left: 1%;
+			text-indent: -1%
+		}
+
+		div.content .subheading {
+			margin-left: 1%;
+			text-indent: initial
+		}
+
+		div#searchpane {
+			float: left;
+			width: 100%;
+			margin: 0px;
+			padding: 0px
+		}
+
+		div#helppane {
+			float: right;
+			width: 30%;
+			background-color: #ffffcc;
+			display: none;
+			padding: 0.2em
+		}
+
+		.center {
+			text-align: center
+		}
+
+		.e1 {
+			/*font-family:arial,sans-serif;font-style:italic;font-weight:bold;*/
+			color: #425060
+		}
+
+		.e2 {
+			/*font-family:arial,sans-serif;font-style:italic;font-weight:bold;*/
+			color: red
+		}
+
+		.plain-white {
+			text-decoration: none;
+		}
+
+		.plain-black {
+			text-decoration: none;
+			color: black
+		}
+
+		.fineprint {
+			font-size: 90%;
+			font-style: normal
+		}
+
+		.smallcaps {
+			font-variant: small-caps
+		}
+
+		.bordered {
+			border-bottom: 15px solid #0f4859
+		}
+
+		.shadow {
+			box-shadow: 4px 4px 3px #aaaaaa;
+		}
+
+		.backoffice {
+			display: none
+		}
+
+		.em {
+			font-style: italic
+		}
+
+		.ul {
+			text-decoration: underline
+		}
+
+		.siminput {
+			border: 1px black solid;
+			background: #ffffff;
+			padding-left: 2px;
+			padding-right: 2px;
+			margin: 0px;
+			font-size: 90%
+		}
+
+		a img {
+			border: 0em
+		}
+		/* Dismissible Announcement Banner */
+		.announcement-banner {
+			background-color: #d83b34; /* Matches ToolPat red */
+			color: #ffffff;
+			display: flex;
+			justify-content: space-between;
+			align-items: center;
+			padding: 10px 20px;
+			font-weight: 600;
+			font-size: 15px;
+			position: relative;
+			z-index: 9999;
+		}
+		.announcement-text {
+			flex-grow: 1;
+			text-align: center;
+		}
+		.announcement-banner a:link, .announcement-banner a:visited {
+			color: #ffffff;
+			text-decoration: underline;
+			background: transparent;
+			font-weight: 700;
+			padding: 2px 5px;
+		}
+		.announcement-banner a:hover {
+			background: #fff;
+			color: #d83b34;
+		}
+		/* Close Button Button styling */
+		.close-banner-btn {
+			background: none;
+			border: none;
+			color: #ffffff;
+			font-size: 22px;
+			font-weight: bold;
+			cursor: pointer;
+			padding: 0 5px;
+			line-height: 1;
+		}
+		.close-banner-btn:hover {
+			color: #000000;
+		}
+
+
+		@media screen and (max-width: 1023px) {
+
+			/* define mobile specific styles come here */
+			div.content-feature {
+				font-size: 10vw
+			}
+
+			div.subheading {
+				font-size: 2vw
+			}
+
+			input {
+				font-size: 7vw
+			}
+
+			div.container {
+				margin-left: auto;
+				margin-right: auto;
+				width: 95%;
+				padding: 0.0em;
+				text-align: left;
+				background: #ffffff
+			}
+
+			div.content-block {
+				width: 100%
+			}
+
+		}
+
+		a:link {
+			color: #00009C;
+			padding: .3em;
+			margin: -.3em;
+			border-radius: 3px
+		}
+
+		a:hover {
+			background: #9C0000;
+			color: #ffffff
+		}
+	</style>
+
+	<script type="text/javascript">
+		var docCount = 0;
+		var totalDocCount = 0;
+		var docList = [];
+		var trialNo = "";
+		var po = "";
+		var pet = "";
+		var patNum = "";
+		var pdfLink = "";
+		var filingDate = "";
+		var lastModified = "";
+		var caseStatus = "";
+		var instDecisionDate = "";
+		var trialInfoObj = {};
+		var trialFromUrl = false;
+		var lastUpdate = "pending";
+		var updateStyle = "";
+		var trialNumber;
+		var patLinkCount = 0;
+
+
+
+		function popup(url) {
+			newwindow = window.open(url, 'name');//,'scrollbars=yes,height=400,width=550,resizable=yes');
+			if (window.focus) { newwindow.focus() }
+		}
+
+
+		function externalLinks() {
+			if (!document.getElementsByTagName) return;
+			var forms = document.getElementsByTagName("form");
+			for (var i = 0; i < forms.length; i++) {
+				if (forms[i].className.indexOf("external") != -1) {
+					forms[i].target = "_blank";
+				}
+			}
+		}
+
+
+		function patnumSearch() {
+			var docnum = new Array();
+			var patentquery = '';
+			var pgpubquery = '';
+			docnum = document.combinednum.patnumquery.value.split(' ');
+			for (var i = 0; i < docnum.length; i++) {
+				docnum[i] = rectifyPatNo(docnum[i]);
+				if (docnum[i].length > 10) { pgpubquery += ' ' + docnum[i] }
+				else if (docnum[i].length > 0) { patentquery += ' ' + docnum[i] };
+			}
+			if ((patentquery == '') && (pgpubquery == '')) {
+				alert('Enter a list of patent numbers and/or PgPub numbers separated by spaces.');
+				return;
+			}
+			if (patentquery != '') {
+				document.simplepatnumsearch.TERM1.value = patentquery;
+				document.simplepatnumsearch.submit();
+			}
+			if (pgpubquery != '') {
+				document.simplepgpubnumsearch.TERM1.value = pgpubquery;
+				document.simplepgpubnumsearch.submit();
+			}
+
+		}
+
+		function patnumLink() {
+			var docnum = new Array();
+			docnum = document.linktonum.patnumquery.value.split(' ');
+			for (var i = 0; i < docnum.length; i++) {
+				var docLink;
+				docnum[i] = rectifyPatNo(docnum[i]);
+				if (docnum[i].length > 10) {
+					//docLink="http://appft1.uspto.gov/netacgi/nph-Parser?Sect1=PTO2&Sect2=HITOFF&p=1&u=%2Fnetahtml%2FPTO%2Fsearch-adv.html&r=1&f=G&l=50&d=PG01&S1="+docnum[i];  // often linked to the wrong pgpub but one that usually bore some odd relation to the intended case: almost always similar subject matter and often similar inventors
+					docLink = "https://appft1.uspto.gov/netacgi/nph-Parser?Sect1=PTO1&Sect2=HITOFF&d=PG01&p=1&u=%2Fnetahtml%2FPTO%2Fsrchnum.html&r=1&f=G&l=50&s1=%22" + docnum[i] + "%22.PGNR.&OS=DN/" + docnum[i] + "&RS=DN/" + docnum[i]
+				}
+				else {
+					docLink = "http://patft1.uspto.gov/netacgi/nph-Parser?patentnumber=" + docnum[i];
+				}
+				window.open(docLink);
+			}
+		}
+
+		function patpdf() {
+			var docnum = new Array();
+			docnum = document.linktonum.patnumquery.value.split(' ');
+			for (var i = 0; i < docnum.length; i++) {
+				var docLink;
+				docnum[i] = rectifyPatNo(docnum[i]);
+				docLink = "https://www.freepatentsonline.com/" + docnum[i] + ".pdf";
+				//            		window.open(docLink);
+				var fpoFetch = new XMLHttpRequest();
+				fpoFetch.onerror = function () { window.open(docLink); };
+				fpoFetch.open("GET", docLink, true);
+				fpoFetch.onreadystatechange = function () {
+					if (fpoFetch.readyState == 4 && fpoFetch.status == 200) {
+						var fpoPage = fpoFetch.responseText;
+						var frameStart = fpoPage.indexOf("<iframe") + 13;
+						var frameEnd = fpoPage.indexOf("</iframe") - 52;
+						var patentLink = fpoPage.substring(frameStart, frameEnd) + "#zoom=150";
+						window.open(patentLink);
+					}
+				}
+				fpoFetch.send();
+			}
+		}
+
+		function patpdfLink(patnum) {
+			var fpoLink = "https://www.freepatentsonline.com/" + patnum + ".pdf";
+			var fpoFetch = new XMLHttpRequest();
+			var patentLink = fpoLink;
+			fpoFetch.open("GET", fpoLink, false);
+			fpoFetch.onreadystatechange = function () {
+				if (fpoFetch.readyState == 4 && fpoFetch.status == 200) {
+					var fpoPage = fpoFetch.responseText;
+					var frameStart = fpoPage.indexOf("<iframe") + 13;
+					var frameEnd = fpoPage.indexOf("</iframe") - 52;
+					patentLink = fpoPage.substring(frameStart, frameEnd) + "#zoom=150";
+				}
+			}
+			fpoFetch.send();
+			return patentLink;
+		}
+
+		function oldpatnumLink() {
+			var docnum = rectifyPatNo(document.linktonum.patnumquery.value);
+			var docLink = "";
+			if (docnum.length > 10) {
+				docLink = "http://appft1.uspto.gov/netacgi/nph-Parser?Sect1=PTO2&Sect2=HITOFF&p=1&u=%2Fnetahtml%2FPTO%2Fsearch-adv.html&r=1&f=G&l=50&d=PG01&S1=" + docnum;
+			}
+			else {
+				docLink = "http://patft1.uspto.gov/netacgi/nph-Parser?patentnumber=" + docnum;
+			}
+			alert(docLink);
+			window.open(docLink);
+		}
+
+		function configAssign() {
+			var assignaction = "https://assignment.uspto.gov/patent/index.html#/patent/search/resultAbstract?type=";
+			document.assign.submission.value = rectifyPatNo(document.assign.submission.value);
+			if (document.assign.submission.value.length > 10) { assignaction += "&pub=" + document.assign.submission.value; }
+			else { assignaction += "patNum&id=" + document.assign.submission.value; }
+			newwindow = window.open(assignaction, '_blank');
+			if (window.focus) { newwindow.focus() }
+			return false;
+		}
+
+		function rectifyPatNo(patno) {
+			patno = patno.toUpperCase();
+			patno = patno.replace(/\/|-|,| |US|[A-B][0-9]/ig, "");          // eliminate forward slash, hyphen, comma, space, 'US' and kind code
+			if (patno.match(/^H/)) {
+				while (patno.length < 7) { patno = 'H0' + patno.substr(1); }  // add leading zeros to SIR numbers
+			}
+			return patno;
+		}
+
+		function getUrlParameter(name) {  // taken from https://davidwalsh.name/query-string-javascript
+			name = name.replace(/[\[]/, '\\[').replace(/[\]]/, '\\]');
+			var regex = new RegExp('[\\?&]' + name + '=([^&#]*)');
+			var results = regex.exec(location.search);
+			return results === null ? '' : decodeURIComponent(results[1].replace(/\+/g, ' '));
+		};
+
+		function init() {
+			//alert(window.screen.width+":"+window.screen.height);
+			// quit if this function has already been called
+			if (arguments.callee.done) return;
+
+			// flag this function so we don't do the same thing twice
+			arguments.callee.done = true;
+
+			// do the init's
+			externalLinks();
+
+			/* for Mozilla */
+			if (document.addEventListener) {
+				document.addEventListener("DOMContentLoaded", init, false);
+			}
+
+			// for Internet Explorer (using conditional comments)
+			/*@cc_on @*/
+			/*@if (@_win32)
+			document.write("<script id=__ie_onload defer src=javascript:void(0)><\/script>");
+			var script = document.getElementById("__ie_onload");
+			script.onreadystatechange = function() {
+				if (this.readyState == "complete") {
+					init(); // call the onload handler
+				}
+			};
+			/*@end @*/
+
+			if (/WebKit/i.test(navigator.userAgent)) { // sniff
+				var _timer = setInterval(function () {
+					if (/loaded|complete/.test(document.readyState)) {
+						clearInterval(_timer);
+						init(); // call the onload handler
+					}
+				}, 10);
+			}
+
+
+
+			var inputElements = document.getElementsByTagName('input');
+			for (i = 0; inputElements[i]; i++) { inputElements[i].setAttribute('autocomplete', 'on'); }
+
+			document.getElementById('trialNo').addEventListener('keyup', function (event) {
+				event.preventDefault();
+				if (event.keyCode === 13) { document.getElementById('getDocket').click(); }
+			});
+		};
+
+		/* for other browsers */
+		window.onload = init;
+
+		//-->
+	</script>
+</head>
+
+<body>
+<div class="announcement-banner" id="topAnnouncement">
+  <div class="announcement-text">
+  Check out the all-new ToolPat✚ for seamless file wrappers, PTAB documents, litigation dockets, and email tracking updates! 
+  <a href="https://plus.toolpat.com">Go to ToolPat✚</a>
+</div>
+  <button class="close-banner-btn" onclick="document.getElementById('topAnnouncement').style.display='none';">&times;</button>
+</div>
+	<div class="container">
+		<!-- ....................................... HEADER ............................. -->
+		<div class="content">
+			<div class="header">
+				<div class="title">
+					<div style="display:inline-block"><span class="bluish">Tool</span><span class="reddish">Pat</span>
+					</div>
+					<!--<div style="display:inline-block;background:white;text-align:center;margin-left:100px;width:15%;color:red;font-size:12px;">Take me back to <a target="_parent" href="http://www.toolpat.com/classic">Classic ToolPat</a>!</div>-->
+					<!--<div style="display:inline-block;background:white;border:1px solid red;margin:auto:center;width:32%;color:red;font-size:24px;transform:rotate(-20deg)">BOLD NEW LOOK, same great taste</div>-->
+				</div>
+
+				<div class="title-caption">U.S.
+					<a target="_parent" href="http://www.toolpat.com/" class="plain-white">patent prosecution</a> tools
+					for patent attorneys and agents hosted since 2005 by
+					<a target="_parent" href="https://www.linkedin.com/in/ptablawyer/">Scott E. Kamholz</a>, Registered
+					Patent Attorney and Chief IP Officer of <a target="_parent"
+						href="https://www.linkedin.com/company/toolpat/">ToolPat PLLC</a>.
+				</div>
+			</div>
+			<div class="content-block">
+				<!-- ....................................... MPEP SEARCH............................. -->
+				<div class="content-feature" title="Search the official MPEP using a Google search">
+					<form target="_parent" name="mpepsearch" method="get" action="https://www.google.com/search">
+						<label>
+							<h2><a href="https://www.uspto.gov/web/offices/pac/mpep" name="mpep"
+									title="Go to MPEP at USPTO">MPEP</a> Search:</h2>
+
+							<input name="q" size="20" maxlength="255" value="" type="text">
+						</label>
+						<input name="btnG" value="Search" type="submit">
+						<input name="domains" value="https://www.uspto.gov/web/offices/pac/mpep" type="hidden">
+						<input name="sitesearch" value="https://www.uspto.gov/web/offices/pac/mpep" type="hidden">
+						<input name="ie" value="UTF-8" type="hidden">
+						<input name="oe" value="UTF-8" type="hidden">
+					</form>
+					<div class="subheading">or try the USPTO's
+						<a target="_parent" href="https://mpep.uspto.gov/RDMS/MPEP/current">Searchable MPEP</a>
+						interface.
+					</div>
+				</div>
+				<!-- ................................. PATENT TEXT/PDF .............................. -->
+				<div class="content-feature"
+					title="Retrieve patent full text from the USPTO or a PDF from freepatentsonline.com">
+
+					<form target="_parent" name="linktonum" action="" method="get" onsubmit="patnumLink(); return false;">
+						<label>
+							<h2>Patent text or PDF: </h2><input type="text" size="20" name="patnumquery" maxlength="1024"
+								placeholder="patent/PGPub no.">
+							<input value="Text" type="submit">
+						</label>
+						<input value="PDF" type="button" onclick="patpdf(); return false;">
+					</form>
+					<div class="subheading">Get full-text or PDF for a US Patent or Pre-grant publication.</div>
+				</div>
+				<!-- ................................... COMBINED PAT/PGPUB FULL-TEXT ..................... -->
+				<div class="content-feature">
+					<form name="patsearch" target="_blank" method="get" onsubmit="javascript:return(false);"> <label>
+							<h2><a href="http://patft.uspto.gov/netahtml/PTO/search-adv.htm"
+									title="Go to the USPTO Advanced Patent search page" class="plain-black">Search</a>
+								Patents: </h2>
+							<input type="text" size="20" name="Query" maxlength="1024">
+						</label>
+						<input value="Patent" type="button"
+							onclick="javascript:document.patsearch.action='http://patft.uspto.gov/netacgi/nph-Parser';document.patsearch.d.value='pall';document.patsearch.submit();">
+						<input value="PGPub" type="button"
+							onclick="javascript:document.patsearch.action='http://appft1.uspto.gov/netacgi/nph-Parser';document.patsearch.d.value='PG01';document.patsearch.submit();">
+						<input name="Sect1" value="PTO2" type="hidden">
+						<input name="Sect2" value="HITOFF" type="hidden">
+						<input name="u" value="/netahtml/search-adv.htm" type="hidden">
+						<input name="r" value="0" type="hidden">
+						<input name="p" value="1" type="hidden">
+						<input name="f" value="S" type="hidden">
+						<input name="l" value="50" type="hidden">
+						<input name="d" value="pall" type="hidden">
+					</form>
+					<div class="subheading">Search the USPTO databases. Use the advanced syntax.</div>
+				</div>
+
+				<!-- ....................................... ASSIGNMENTS ............................. -->
+				<div class="content-feature">
+					<form target="_parent" class="external" name="assign" id="assign" onsubmit="return configAssign()"
+						action="" method="get">
+						<label>
+							<h2>Assignments: </h2>
+							<input type="text" class="jsonly" size="20" name="submission">
+						</label>
+						<input value="Search" class="jsonly" type="submit">
+						<input value="pat" name="db" type="hidden">
+						<input name="pat" type="hidden">
+						<input name="pub" type="hidden">
+						<input name="asns" type="hidden">
+						<input name="reel" type="hidden">
+						<input name="frame" type="hidden">
+					</form>
+					<div class="subheading"> Enter US Patent or PGPub number to search USPTO Assignments database
+						&middot; <a target="_parent" href="https://assignment.uspto.gov/patent"
+							title="USPTO patent assignment search page">USPTO search page</a></div>
+				</div>
+			</div>
+			<div class="content-block">
+
+				<!-- ....................................... PTAB E2E ............................ -->
+
+				<div class="content-feature">
+					<h2>File Wrappers and PTAB dockets:</h2>
+					<div class="toolpat-container toolpatbluebg" onclick="location.href='https://plus.toolpat.com';"
+						style="display: inline-block; vertical-align: top;padding: 10px 20px; border-radius: 5px; font-weight: bold; color: white; cursor: pointer; user-select: none; box-shadow: 2px 2px 0px rgba(0,0,0,0.2); text-shadow: 1px 1px 1px rgba(0,0,0,0.3); overflow: hidden !important; background-clip: padding-box !important; border: 1px solid transparent !important; transition: filter 0.1s ease, background-color 0.1s ease, transform 0.1s ease, box-shadow 0.1s ease;"
+						onmouseenter="this.style.filter='brightness(85%)';"
+						onmouseleave="this.style.filter='none'; this.style.backgroundColor='';"
+						onmousedown="this.style.filter='none'; this.classList.add('toolpatredbg'); this.style.backgroundColor='var(--btn-bg)'; this.style.transform='translate(2px, 2px)'; this.style.boxShadow='0px 0px 0px rgba(0,0,0,0)';"
+						onmouseup="this.classList.remove('toolpatredbg'); this.style.backgroundColor=''; this.style.filter='brightness(85%)'; this.style.transform='none'; this.style.boxShadow='2px 2px 0px rgba(0,0,0,0.2)';">
+						<span
+							style="display: block !important; margin: 0 !important; padding: 0 !important; border: none !important; line-height: 1.2 !important;">Go
+							to ToolPat&#x271A;</span>
+					</div>
+				</div>
+				<div class="content-feature">
+					<h2>PTAB Decisions:</h2>
+					<a target="_parent" href="https://developer.uspto.gov/ptab-web/#/search/decisions">Final</a>, <a
+						href="https://www.uspto.gov/patents-application-process/appealing-patent-decisions/decisions-and-opinions/representative-orders"
+						target="_parent">Representative</a>, and <a
+						href="https://www.uspto.gov/patents-application-process/patent-trial-and-appeal-board/precedential-informative-decisions"
+						target="_parent">Precedential/Informative</a> &middot;
+					<a target="_parent"
+						href="https://www.uspto.gov/patents/ptab/decisions/precedential-opinion-panel">Precedential
+						Opinion Panel</a> &middot;
+					<a target="_parent" href="https://acts.uspto.gov/ifiling/PublicView.jsp ">Interferences</a> &middot;
+					<a href="https://www.uspto.gov/patents-application-process/patent-trial-and-appeal-board/hearings"
+						target="_parent">Hearing Schedule</a>
+				</div>
+
+
+				<!-- ....................................... WIPO SEARCH ............................. -->
+				<div class="content-feature" title="Search the WIPO Patentscope database">
+					<label>
+						<h2>PCT number search: </h2>
+						<input id="pctsearch" name="pctdsearch" placeholder="WO or PCT number" type="text" size="25"
+							maxlength="1024"
+							onkeyup="javascript:if (event.keyCode == 13) {document.getElementById('pctbutton').click();};">
+					</label>
+					<input value="Search" id="pctbutton" type="button"
+						onclick="javascript:window.open('https://patentscope.wipo.int/search/en/detail.jsf?docId='+document.getElementById('pctsearch').value.replace(/\//g,'').toUpperCase());">
+					<div class="subheading">
+						<a target="_parent" href="https://patentscope.wipo.int/search/en/search.jsf"
+							title="WIPO patent search page">Patentscope</a> &middot;
+						<a target="_parent" href="http://www.wipo.int/pct/en/appguide/index.jsp"
+							title="Go to the official guide for receving office and search authority filing requirements">Guide</a>
+						&middot;
+						<a target="_parent" href="http://www.wipo.int/pct/guide/en/gdvol1/annexes/annexa/ax_a.pdf"
+							title="Go to the official list of member states and their two-letter alpha codes">Contracting
+							states</a> &middot;
+						<a target="_parent" href="http://www.wipo.int/pct/en/texts/time_limits.html">National-stage
+							deadlines</a>
+					</div>
+				</div>
+
+				<!-- ....................................... ESPACENET ............................. -->
+				<div class="content-feature">
+					<form target="_parent" name="espacenet" class="external"
+						action="https://worldwide.espacenet.com/singleLineSearch" method="GET">
+						<label>
+							<h2><a target="_parent" href="http://worldwide.espacenet.com/"
+									title="Go to the espacenet home page."><span class="reddish">Espace</span><span
+										class="bluish">net</span></a> number search: </h2>
+							<input type="text" name="NUM" id="fieldToFocus" size="25" value="">
+						</label>
+						<input type="submit" name="Submit" value="Search" class="btn1">
+						<input type="hidden" name="submitted" value="true">
+						<input type="hidden" name="locale" value="en_EP">
+						<input type="hidden" name="DB" value="EPODOC">
+						<input type="hidden" name="ST" size="25" value="number">
+					</form>
+					<!--<div class="subheading"> &nbsp; </div class="subheading"> -->
+
+				</div>
+
+
+				<div class="content-feature">
+					<!-- ....................................... LINKS TO OTHER PATENT OFFICES.................. -->
+
+					<h2>Other patent office search pages:</h2>
+					<a target="_parent" href="http://pericles.ipaustralia.gov.au/ols/auspat/">Australia</a> &middot;
+					<a target="_parent" href="http://www.ic.gc.ca/opic-cipo/cpd/eng/introduction.html">Canada</a>
+					&middot;
+					<a target="_parent" href="http://english.sipo.gov.cn/">China</a> &middot;
+					<a target="_parent" href="http://bases-brevets.inpi.fr/en/home.html">France</a> &middot;
+					<a target="_parent" href="https://www.dpma.de/english/search/index.html">Germany</a> &middot;
+					<a href="https://www.j-platpat.inpit.go.jp/web/all/top/BTmTopEnglishPage">Japan</a> &middot;
+					<a target="_parent" href="http://www.patent.gov.uk/patent/p-find/p-find-number.htm ">UK</a> &middot;
+					<a target="_parent" href="https://globaldossier.uspto.gov/#/">Global Dossier</a>
+
+				</div>
+
+			</div>
+
+		</div>
+
+
+		<div class="content thinbordered">
+
+
+
+			<div class="content-block">
+
+				<!-- ....................................... USPTO AND OTHER SITE LINKS ............................. -->
+
+				<div class="content-feature">
+					<h2>Current Patent Laws and Rules</h2>
+					Consolidated by the USPTO. Each file is a large PDF, so consider saving instead of opening.
+					<ul>
+						<li><a target="_parent"
+								href="http://www.uspto.gov/web/offices/pac/mpep/consolidated_laws.pdf">Consolidated
+								Patent Laws - 35 U.S.C.</a></li>
+						<li><a target="_parent"
+								href="http://www.uspto.gov/web/offices/pac/mpep/consolidated_rules.pdf">Consolidated
+								Patent Rules - 37 C.F.R.</a></li>
+					</ul>
+				</div>
+
+				<div class="content-feature">
+					<h2>USPTO News and Notices</h2>
+					See announcements from the USPTO.
+					<ul>
+						<!--				<li><a target="_parent" href="https://www.uspto.gov/patent/laws-and-regulations/leahy-smith-america-invents-act-implementation">America Invents Act Implementation</a> -->
+						<li><a target="_parent"
+								href="https://www.uspto.gov/patents/law/notices/patent-related-notices"><i>Official
+									Gazette</i> notices</a></li>
+						<li><a target="_parent"
+								href="https://www.uspto.gov/learning-and-resources/federal-register">USPTO Federal
+								Register notices</a></li>
+						<li><a target="_parent" href="https://www.uspto.gov/about-us/events">USPTO events</a></li>
+						<li><a target="_parent" href="http://www.uspto.gov/blog/">Director's Forum</a></li>
+					</ul>
+				</div>
+
+				<div class="content-feature">
+					<form target="_parent" name="formsearch" method="get" action="https://www.google.com/search">
+						<label>
+							<h2>USPTO <a target="_parent" href="https://www.uspto.gov/patents/apply/forms">Forms</a>
+							</h2>:
+							<input name="q" size="20" maxlength="255" value="" type="text">
+						</label>
+						<input name="btnG" value="Search" type="submit">
+						<input name="domains" value="https://www.uspto.gov/patents/apply/forms" type="hidden"> <input
+							name="sitesearch" value="https://www.uspto.gov/patents/apply/forms" type="hidden"> <input
+							name="ie" value="UTF-8" type="hidden"> <input name="oe" value="UTF-8" type="hidden">
+					</form>
+					<div class="subheading">or browse forms for applications filed <a target="_parent"
+							href="https://www.uspto.gov/patents/apply/forms/pre-2012-forms">before</a> or
+						<a target="_parent" href="https://www.uspto.gov/patents/apply/forms">on or after</a> September
+						16, 2012.
+					</div>
+				</div>
+
+			</div>
+
+			<div class="content-block">
+
+				<div class="content-feature">
+					<h2>Other USPTO Resources</h2>
+					Miscellaneous interest.
+					<ul>
+						<li><a target="_parent"
+								href="https://www.uspto.gov/learning-and-resources/fees-and-payment/uspto-fee-schedule">USPTO
+								fee schedule</a> &middot; <a target="_parent"
+								href="http://www.uspto.gov/patents/init_events/pct/sample/fees.jsp">PCT fees for
+								RO/US</a></li>
+						<li><a target="_parent" href="http://www.uspto.gov/patents/init_events/pph/index.jsp">Patent
+								Prosecution Highway (PPH)</a></li>
+							<!-- <li><a target="_parent" href="http://www.uspto.gov/patents/init_events/faipp_full.jsp">First Action Interview program</a>  -->
+						<li><a target="_parent" href="http://www.uspto.gov/web/patents/classification/index.htm">Patent
+								Classification system</a></li>
+							<!-- <li><a target="_parent" href="http://www.uspto.gov/web/offices/pac/doc/general/drawing.htm">Patent drawings</a> -->
+						<li><a target="_parent" href="http://www.uspto.gov/ebc">Patent electronic filing system</a></li>
+						<li><a target="_parent"
+								href="https://www.uspto.gov/patent/laws-and-regulations/patent-term-calculator">Patent
+								term calculator</a></li>
+						<li><a target="_parent" href="https://fees.uspto.gov/MaintenanceFees">Maintenance fee
+								information</a></li>
+						<li><a target="_parent" href="https://www.uspto.gov/about-us/contact-us">USPTO contact
+								information</a> &middot; <a target="_parent"
+								href="http://portal.uspto.gov/external/portal/emlocator">USPTO Employee Locator</a></li>
+						<li><a target="_parent" href="http://portal.uspto.gov/external/portal/pair"
+								title="Go to the Public PAIR home page. ">Public PAIR</a> &middot; <a
+								href="https://patentcenter.uspto.gov/">Patent Center</a> &middot; <a target="_parent"
+								href="https://my.uspto.gov/">MyUSPTO</a> &middot; <a
+								href="https://globaldossier.uspto.gov/">Global Dossier</a></li>
+						<li><a target="_parent" href="https://ped.uspto.gov/peds/"
+								title="USPTO Patent Examination Data System">USPTO Patent Examination Data System</a></li>
+					</ul>
+				</div>
+
+				<div class="content-feature">
+					<h2>Other Sites of Interest</h2>
+					<ul>
+						<li><a target="_parent"
+								href="http://www.freepatentsonline.com/search.html">FreePatentsOnline</a> has the best
+							free patent search tool I've ever found.</li>
+						<li><a target="_parent" href="http://timeanddate.com">Time and date.com</a> provides excellent
+							date calculators that are handy for those pesky <a target="_parent"
+								href="http://www.patentlyo.com/patent/2006/10/patent_term_adj.html">patent term
+								adjustment</a> calculations: one calculator determines the <a target="_parent"
+								href="http://www.timeanddate.com/date/duration.html">duration</a> between two dates; the
+							other allows you to <a target="_parent"
+								href="http://www.timeanddate.com/date/dateadd.html">add and subtract</a> days from a
+							date.</li>
+						<li>The <a target="_parent" href="http://www.patentlyo.com/">Patently-O blog</a>.</li>
+						<li>The <a target="_parent" href="http://thettablog.blogspot.com/">TTABlog</a>.</li>
+					</ul>
+				</div>
+
+			</div>
+
+		</div>
+
+
+		<!-- ....................................... FOOTER ............................. -->
+		<div class="wrapper">
+			<div class="footer ">
+				<p class="fineprint"><a href="#top " name="disclaimer " class="plain-white">*</a>
+					<strong>DISCLAIMER</strong>: Use at your own risk.
+					I do not warrant or guarantee that search results or forms are comprehensive, accurate, or current.
+					This service does not constitute legal advice and is intended primarily for patent agents and
+					attorneys.
+					This site was created by and is maintained by its
+					Owner<!--<a target="_parent" href="http://www.kamholz.com/ " class=plain-white>Scott Kamholz</a>-->,
+					who is solely responsible for its content.
+					Nothing on this site should be attributed to any other entity.&nbsp;
+				</p>
+				<p class="fineprint"><a href="#top " name="privacy " class="plain-white">*</a>
+					<strong>PRIVACY:</strong> I, the Owner, do not monitor or store any information
+					about any queries run on this page. In short, I have no idea of the
+					uses to which you put these tools. While my visitor counter records the
+					IP address of the last 100 visitors, it continuously discards older
+					information, and I do not store any of it. I will not sell any
+					information concerning access of this site nor voluntarily share it
+					with anyone.
+				</p>
+				<span class="plain-white " style="display:none ">My name is Scott E. Kamholz. My name is sometimes
+					misspelled as <a target="_parent" href="https://plus.toolpat.com/ " class="plain-white">Kamholtz</a> or
+					<a target="_parent" href="https//plus.toolpat.com/" class="plain-white">Scott Kamholtz</a> or <a
+						target="_parent" href="https://plus.toolpat.com/ " class="plain-white">Scott E. Kamholtz</a></span>
+				<p class="fineprint" style="text-align:center ">Copyright &#169; 2005&ndash;2026 by Scott E. Kamholz,
+					M.D., Ph.D. and ToolPat PLLC. All Rights Reserved.
+				</p>
+			</div>
+		</div>
+	</div>
+</body>
+
+</html>
