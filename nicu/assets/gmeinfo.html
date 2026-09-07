@@ -1,0 +1,33 @@
+<script>
+function changepage(pageNo) {
+document.getElementById("pdf").src = "nicu/FY26-GME_Recruitment_Material_DC.pdf#view=FitH&toolbar=0&navpanes=0&page="+pageNo;
+document.getElementById("pdf").contentWindow.location.reload();
+}
+</script>
+<style>
+a.local {all:revert; cursor:default; font-size:16pt;display:block;text-align:center;padding:10pt} 
+a.local:hover {background:#002664;color:white} 
+a.local:active {background: #fcd900;color:black}
+hr.sub {border:1pt solid black;margin:0}
+#pdfcontent { float: right; width: 90%;height:100%}
+#submenucontent{float: left;width: 10%;height:100%;background-color:lightblue}
+</style>
+<div style="height:100%">
+  <div id=submenucontent>
+    <hr class=sub>
+    <a class=local onclick="javascript:changepage(10);">Stipends</a> <hr class=sub>
+    <a class=local onclick="javascript:changepage(18);">Work Authorization and Visa&nbsp;Information</a> <hr class=sub>
+    <a class=local onclick="javascript:changepage(2);">Sample Housestaff Agreement</a><hr class=sub>
+    <a class=local onclick="javascript:changepage(8);">Sample Compact</a> <hr class=sub>
+    <a class=local onclick="javascript:changepage(11);">Benefits</a> <hr class=sub>
+    <a class=local onclick="javascript:changepage(19);">Leave of Absence Policy</a> <hr class=sub>
+    <a class=local onclick="javascript:changepage(21);">Paid Time Off Policy</a> <hr class=sub>
+    <a class=local onclick="javascript:changepage(22);">Examination Policy</a> <hr class=sub>
+    <a class=local onclick="javascript:changepage(24);">Professional Liability Insurace</a> <hr class=sub>
+    <a class=local onclick="javascript:changepage(25);">Requirements for Employment</a> <hr class=sub>
+    <a class=local onclick="javascript:changepage(26);">Policy on Drugs and Alcohol in the Workplace</a><hr class=sub>
+  </div>
+  <div id=pdfcontent>
+    <iframe id="pdf" src="nicu/FY26-GME_Recruitment_Material_DC.pdf#view=FitH&toolbar=0&navpanes=0" width="100%" height="100%"/>
+  </div>
+</div>
