@@ -85,44 +85,30 @@ body {
 }
 
 .banner-home-link {
-  position: relative;
+  margin-left: var(--sidebar-width);
+  width: calc(100% - var(--sidebar-width));
   display: flex;
-  position: relative;
-  position: relative;
   align-items: center;
   justify-content: center;
-  width: 100%;
+  gap: 16px;
   text-decoration: none;
   color: inherit;
-  cursor: pointer;
-  position: relative;
-  padding-left: var(--sidebar-width);
+}
+
+.banner-logo {
+  height: 38px;
+  width: auto;
+  flex-shrink: 0;
 }
 
 .banner-title-desktop {
-  margin-left: calc(var(--sidebar-width) - 16px);
-  width: calc(100% - (var(--sidebar-width) - 16px));
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: 14px;
-  text-align: center;
   font-family: inherit;
   font-size: 1.25rem;
   font-weight: 800;
   color: #002664;
   letter-spacing: -0.01em;
   white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-}
-
-.banner-logo {
-  height: 36px;
-  width: auto;
-  flex-shrink: 0;
-  object-fit: contain;
-  vertical-align: middle;
+  display: block;
 }
 
 .banner-title-mobile {
@@ -653,6 +639,12 @@ body {
 
   .main-viewport {
     margin-left: 0;
+  }
+
+  .banner-home-link {
+    margin-left: 0;
+    width: 100%;
+    justify-content: flex-start;
     width: 100%;
   }
 
