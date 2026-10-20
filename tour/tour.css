@@ -97,10 +97,9 @@ em { font-family: var(--serif); font-style: italic; font-weight: 400; letter-spa
 .shot-media > img, .shot-media > video { width: 100%; height: 100%; object-fit: cover; object-position: top; }
 .shot figcaption { padding: .6rem 1rem; font-size: .8rem; color: var(--muted); border-top: 1px solid var(--line); }
 
-/* Full frame -> zoom into the detail (custom props set from data-* in JS) */
-.kb { transform-origin: var(--zx, 50%) var(--zy, 50%); }
-.playing .kb { animation: kenburns 14s cubic-bezier(.45,0,.25,1) infinite; }
-@keyframes kenburns { 0%, 18% { transform: scale(1); } 42%, 76% { transform: scale(var(--zs, 1.4)); } 100% { transform: scale(1); } }
+/* Keep video frame crisp and rock-solid without live browser scaling judder */
+.kb { transform: none !important; }
+.playing .kb { animation: none !important; }
 
 /* ---------- Proof strip ---------- */
 .proof { border-block: 1px solid var(--line); background: #fff; }
