@@ -38,6 +38,19 @@
 			color: #147ba8
 		}
 
+		.easter-egg-plus {
+			color: transparent;
+			text-decoration: none;
+			font-size: 0.8em;
+			background-color: transparent;
+			transition: color 0.1s ease;
+		}
+
+		.easter-egg-plus:hover {
+			color: #147ba8 !important;
+			background-color: transparent !important;
+		}
+
 		.reddish {
 			color: #d83b34
 		}
@@ -317,220 +330,7 @@
 		}
 	</style>
 
-	<script type="text/javascript">
-		var docCount = 0;
-		var totalDocCount = 0;
-		var docList = [];
-		var trialNo = "";
-		var po = "";
-		var pet = "";
-		var patNum = "";
-		var pdfLink = "";
-		var filingDate = "";
-		var lastModified = "";
-		var caseStatus = "";
-		var instDecisionDate = "";
-		var trialInfoObj = {};
-		var trialFromUrl = false;
-		var lastUpdate = "pending";
-		var updateStyle = "";
-		var trialNumber;
-		var patLinkCount = 0;
-
-
-
-		function popup(url) {
-			newwindow = window.open(url, 'name');//,'scrollbars=yes,height=400,width=550,resizable=yes');
-			if (window.focus) { newwindow.focus() }
-		}
-
-
-		function externalLinks() {
-			if (!document.getElementsByTagName) return;
-			var forms = document.getElementsByTagName("form");
-			for (var i = 0; i < forms.length; i++) {
-				if (forms[i].className.indexOf("external") != -1) {
-					forms[i].target = "_blank";
-				}
-			}
-		}
-
-
-		function patnumSearch() {
-			var docnum = new Array();
-			var patentquery = '';
-			var pgpubquery = '';
-			docnum = document.combinednum.patnumquery.value.split(' ');
-			for (var i = 0; i < docnum.length; i++) {
-				docnum[i] = rectifyPatNo(docnum[i]);
-				if (docnum[i].length > 10) { pgpubquery += ' ' + docnum[i] }
-				else if (docnum[i].length > 0) { patentquery += ' ' + docnum[i] };
-			}
-			if ((patentquery == '') && (pgpubquery == '')) {
-				alert('Enter a list of patent numbers and/or PgPub numbers separated by spaces.');
-				return;
-			}
-			if (patentquery != '') {
-				document.simplepatnumsearch.TERM1.value = patentquery;
-				document.simplepatnumsearch.submit();
-			}
-			if (pgpubquery != '') {
-				document.simplepgpubnumsearch.TERM1.value = pgpubquery;
-				document.simplepgpubnumsearch.submit();
-			}
-
-		}
-
-		function patnumLink() {
-			var docnum = new Array();
-			docnum = document.linktonum.patnumquery.value.split(' ');
-			for (var i = 0; i < docnum.length; i++) {
-				var docLink;
-				docnum[i] = rectifyPatNo(docnum[i]);
-				if (docnum[i].length > 10) {
-					//docLink="http://appft1.uspto.gov/netacgi/nph-Parser?Sect1=PTO2&Sect2=HITOFF&p=1&u=%2Fnetahtml%2FPTO%2Fsearch-adv.html&r=1&f=G&l=50&d=PG01&S1="+docnum[i];  // often linked to the wrong pgpub but one that usually bore some odd relation to the intended case: almost always similar subject matter and often similar inventors
-					docLink = "https://appft1.uspto.gov/netacgi/nph-Parser?Sect1=PTO1&Sect2=HITOFF&d=PG01&p=1&u=%2Fnetahtml%2FPTO%2Fsrchnum.html&r=1&f=G&l=50&s1=%22" + docnum[i] + "%22.PGNR.&OS=DN/" + docnum[i] + "&RS=DN/" + docnum[i]
-				}
-				else {
-					docLink = "http://patft1.uspto.gov/netacgi/nph-Parser?patentnumber=" + docnum[i];
-				}
-				window.open(docLink);
-			}
-		}
-
-		function patpdf() {
-			var docnum = new Array();
-			docnum = document.linktonum.patnumquery.value.split(' ');
-			for (var i = 0; i < docnum.length; i++) {
-				var docLink;
-				docnum[i] = rectifyPatNo(docnum[i]);
-				docLink = "https://www.freepatentsonline.com/" + docnum[i] + ".pdf";
-				//            		window.open(docLink);
-				var fpoFetch = new XMLHttpRequest();
-				fpoFetch.onerror = function () { window.open(docLink); };
-				fpoFetch.open("GET", docLink, true);
-				fpoFetch.onreadystatechange = function () {
-					if (fpoFetch.readyState == 4 && fpoFetch.status == 200) {
-						var fpoPage = fpoFetch.responseText;
-						var frameStart = fpoPage.indexOf("<iframe") + 13;
-						var frameEnd = fpoPage.indexOf("</iframe") - 52;
-						var patentLink = fpoPage.substring(frameStart, frameEnd) + "#zoom=150";
-						window.open(patentLink);
-					}
-				}
-				fpoFetch.send();
-			}
-		}
-
-		function patpdfLink(patnum) {
-			var fpoLink = "https://www.freepatentsonline.com/" + patnum + ".pdf";
-			var fpoFetch = new XMLHttpRequest();
-			var patentLink = fpoLink;
-			fpoFetch.open("GET", fpoLink, false);
-			fpoFetch.onreadystatechange = function () {
-				if (fpoFetch.readyState == 4 && fpoFetch.status == 200) {
-					var fpoPage = fpoFetch.responseText;
-					var frameStart = fpoPage.indexOf("<iframe") + 13;
-					var frameEnd = fpoPage.indexOf("</iframe") - 52;
-					patentLink = fpoPage.substring(frameStart, frameEnd) + "#zoom=150";
-				}
-			}
-			fpoFetch.send();
-			return patentLink;
-		}
-
-		function oldpatnumLink() {
-			var docnum = rectifyPatNo(document.linktonum.patnumquery.value);
-			var docLink = "";
-			if (docnum.length > 10) {
-				docLink = "http://appft1.uspto.gov/netacgi/nph-Parser?Sect1=PTO2&Sect2=HITOFF&p=1&u=%2Fnetahtml%2FPTO%2Fsearch-adv.html&r=1&f=G&l=50&d=PG01&S1=" + docnum;
-			}
-			else {
-				docLink = "http://patft1.uspto.gov/netacgi/nph-Parser?patentnumber=" + docnum;
-			}
-			alert(docLink);
-			window.open(docLink);
-		}
-
-		function configAssign() {
-			var assignaction = "https://assignment.uspto.gov/patent/index.html#/patent/search/resultAbstract?type=";
-			document.assign.submission.value = rectifyPatNo(document.assign.submission.value);
-			if (document.assign.submission.value.length > 10) { assignaction += "&pub=" + document.assign.submission.value; }
-			else { assignaction += "patNum&id=" + document.assign.submission.value; }
-			newwindow = window.open(assignaction, '_blank');
-			if (window.focus) { newwindow.focus() }
-			return false;
-		}
-
-		function rectifyPatNo(patno) {
-			patno = patno.toUpperCase();
-			patno = patno.replace(/\/|-|,| |US|[A-B][0-9]/ig, "");          // eliminate forward slash, hyphen, comma, space, 'US' and kind code
-			if (patno.match(/^H/)) {
-				while (patno.length < 7) { patno = 'H0' + patno.substr(1); }  // add leading zeros to SIR numbers
-			}
-			return patno;
-		}
-
-		function getUrlParameter(name) {  // taken from https://davidwalsh.name/query-string-javascript
-			name = name.replace(/[\[]/, '\\[').replace(/[\]]/, '\\]');
-			var regex = new RegExp('[\\?&]' + name + '=([^&#]*)');
-			var results = regex.exec(location.search);
-			return results === null ? '' : decodeURIComponent(results[1].replace(/\+/g, ' '));
-		};
-
-		function init() {
-			//alert(window.screen.width+":"+window.screen.height);
-			// quit if this function has already been called
-			if (arguments.callee.done) return;
-
-			// flag this function so we don't do the same thing twice
-			arguments.callee.done = true;
-
-			// do the init's
-			externalLinks();
-
-			/* for Mozilla */
-			if (document.addEventListener) {
-				document.addEventListener("DOMContentLoaded", init, false);
-			}
-
-			// for Internet Explorer (using conditional comments)
-			/*@cc_on @*/
-			/*@if (@_win32)
-			document.write("<script id=__ie_onload defer src=javascript:void(0)><\/script>");
-			var script = document.getElementById("__ie_onload");
-			script.onreadystatechange = function() {
-				if (this.readyState == "complete") {
-					init(); // call the onload handler
-				}
-			};
-			/*@end @*/
-
-			if (/WebKit/i.test(navigator.userAgent)) { // sniff
-				var _timer = setInterval(function () {
-					if (/loaded|complete/.test(document.readyState)) {
-						clearInterval(_timer);
-						init(); // call the onload handler
-					}
-				}, 10);
-			}
-
-
-
-			var inputElements = document.getElementsByTagName('input');
-			for (i = 0; inputElements[i]; i++) { inputElements[i].setAttribute('autocomplete', 'on'); }
-
-			document.getElementById('trialNo').addEventListener('keyup', function (event) {
-				event.preventDefault();
-				if (event.keyCode === 13) { document.getElementById('getDocket').click(); }
-			});
-		};
-
-		/* for other browsers */
-		window.onload = init;
-
-		//-->
-	</script>
+	<script src="main.js" defer></script>
 </head>
 
 <body>
@@ -539,14 +339,14 @@
   Check out the all-new <a href="https://plus.toolpat.com" style="text-decoration:none">ToolPat&#x271A;</a> for seamless file wrappers, PTAB documents, litigation dockets, and email tracking updates! 
   <a href="https://plus.toolpat.com">Go to ToolPat&#x271A;</a>
 </div>
-  <button class="close-banner-btn" onclick="document.getElementById('topAnnouncement').style.display='none';">&times;</button>
+  <button class="close-banner-btn" aria-label="Close announcement">&times;</button>
 </div>
 	<div class="container">
 		<!-- ....................................... HEADER ............................. -->
 		<div class="content">
 			<div class="header">
 				<div class="title">
-					<div style="display:inline-block"><span class="bluish">Tool</span><span class="reddish">Pat</span><span class="bluish"><a href="https://plus.toolpat.com" style="color: transparent; text-decoration: none; font-size: 0.8em; background-color: transparent;" onmouseover="this.style.color='#147ba8'; this.style.backgroundColor='transparent';" onmouseout="this.style.color='transparent'; this.style.backgroundColor='transparent';">&#x271A;</a></span>
+					<div style="display:inline-block"><span class="bluish">Tool</span><span class="reddish">Pat</span><span class="bluish"><a href="https://plus.toolpat.com" class="easter-egg-plus">&#x271A;</a></span>
 					</div>
 					<!--<div style="display:inline-block;background:white;text-align:center;margin-left:100px;width:15%;color:red;font-size:12px;">Take me back to <a target="_parent" href="http://www.toolpat.com/classic">Classic ToolPat</a>!</div>-->
 					<!--<div style="display:inline-block;background:white;border:1px solid red;margin:auto:center;width:32%;color:red;font-size:24px;transform:rotate(-20deg)">BOLD NEW LOOK, same great taste</div>-->
@@ -585,28 +385,26 @@
 				<div class="content-feature"
 					title="Retrieve patent full text from the USPTO or a PDF from freepatentsonline.com">
 
-					<form target="_parent" name="linktonum" action="" method="get" onsubmit="patnumLink(); return false;">
+					<form target="_parent" name="linktonum" action="" method="get">
 						<label>
 							<h2>Patent text or PDF: </h2><input type="text" size="20" name="patnumquery" maxlength="1024"
 								placeholder="patent/PGPub no.">
 							<input value="Text" type="submit">
 						</label>
-						<input value="PDF" type="button" onclick="patpdf(); return false;">
+						<input value="PDF" type="button">
 					</form>
 					<div class="subheading">Get full-text or PDF for a US Patent or Pre-grant publication.</div>
 				</div>
 				<!-- ................................... COMBINED PAT/PGPUB FULL-TEXT ..................... -->
 				<div class="content-feature">
-					<form name="patsearch" target="_blank" method="get" onsubmit="javascript:return(false);"> <label>
+					<form name="patsearch" target="_blank" method="get"> <label>
 							<h2><a href="http://patft.uspto.gov/netahtml/PTO/search-adv.htm"
 									title="Go to the USPTO Advanced Patent search page" class="plain-black">Search</a>
 								Patents: </h2>
 							<input type="text" size="20" name="Query" maxlength="1024">
 						</label>
-						<input value="Patent" type="button"
-							onclick="javascript:document.patsearch.action='http://patft.uspto.gov/netacgi/nph-Parser';document.patsearch.d.value='pall';document.patsearch.submit();">
-						<input value="PGPub" type="button"
-							onclick="javascript:document.patsearch.action='http://appft1.uspto.gov/netacgi/nph-Parser';document.patsearch.d.value='PG01';document.patsearch.submit();">
+						<input value="Patent" type="button">
+						<input value="PGPub" type="button">
 						<input name="Sect1" value="PTO2" type="hidden">
 						<input name="Sect2" value="HITOFF" type="hidden">
 						<input name="u" value="/netahtml/search-adv.htm" type="hidden">
@@ -621,7 +419,7 @@
 
 				<!-- ....................................... ASSIGNMENTS ............................. -->
 				<div class="content-feature">
-					<form target="_parent" class="external" name="assign" id="assign" onsubmit="return configAssign()"
+					<form target="_parent" class="external" name="assign" id="assign"
 						action="" method="get">
 						<label>
 							<h2>Assignments: </h2>
@@ -646,12 +444,8 @@
 
 				<div class="content-feature">
 					<h2>File Wrappers and PTAB dockets:</h2>
-					<div class="toolpat-container toolpatbluebg" onclick="location.href='https://plus.toolpat.com';"
-						style="display: inline-block; vertical-align: top;padding: 10px 20px; border-radius: 5px; font-weight: bold; color: white; cursor: pointer; user-select: none; box-shadow: 2px 2px 0px rgba(0,0,0,0.2); text-shadow: 1px 1px 1px rgba(0,0,0,0.3); overflow: hidden !important; background-clip: padding-box !important; border: 1px solid transparent !important; transition: filter 0.1s ease, background-color 0.1s ease, transform 0.1s ease, box-shadow 0.1s ease;"
-						onmouseenter="this.style.filter='brightness(85%)';"
-						onmouseleave="this.style.filter='none'; this.style.backgroundColor='';"
-						onmousedown="this.style.filter='none'; this.classList.add('toolpatredbg'); this.style.backgroundColor='var(--btn-bg)'; this.style.transform='translate(2px, 2px)'; this.style.boxShadow='0px 0px 0px rgba(0,0,0,0)';"
-						onmouseup="this.classList.remove('toolpatredbg'); this.style.backgroundColor=''; this.style.filter='brightness(85%)'; this.style.transform='none'; this.style.boxShadow='2px 2px 0px rgba(0,0,0,0.2)';">
+					<div class="toolpat-container toolpatbluebg"
+						style="display: inline-block; vertical-align: top;padding: 10px 20px; border-radius: 5px; font-weight: bold; color: white; cursor: pointer; user-select: none; box-shadow: 2px 2px 0px rgba(0,0,0,0.2); text-shadow: 1px 1px 1px rgba(0,0,0,0.3); overflow: hidden !important; background-clip: padding-box !important; border: 1px solid transparent !important; transition: filter 0.1s ease, background-color 0.1s ease, transform 0.1s ease, box-shadow 0.1s ease;">
 						<span
 							style="display: block !important; margin: 0 !important; padding: 0 !important; border: none !important; line-height: 1.2 !important;">Go
 							to ToolPat&#x271A;</span>
@@ -677,12 +471,9 @@
 				<div class="content-feature" title="Search the WIPO Patentscope database">
 					<label>
 						<h2>PCT number search: </h2>
-						<input id="pctsearch" name="pctdsearch" placeholder="WO or PCT number" type="text" size="25"
-							maxlength="1024"
-							onkeyup="javascript:if (event.keyCode == 13) {document.getElementById('pctbutton').click();};">
+						<input id="pctsearch" name="pctdsearch" placeholder="WO or PCT number" type="text" size="25" maxlength="1024">
 					</label>
-					<input value="Search" id="pctbutton" type="button"
-						onclick="javascript:window.open('https://patentscope.wipo.int/search/en/detail.jsf?docId='+document.getElementById('pctsearch').value.replace(/\//g,'').toUpperCase());">
+					<input value="Search" id="pctbutton" type="button">
 					<div class="subheading">
 						<a target="_parent" href="https://patentscope.wipo.int/search/en/search.jsf"
 							title="WIPO patent search page">Patentscope</a> &middot;
