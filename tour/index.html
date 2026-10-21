@@ -4,9 +4,9 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Tour — ToolPat+ | Patents, PTAB, Reexams & Litigation in One Clear View</title>
-  <meta name="description" content="See how patent attorneys use ToolPat+ to search patents, PTAB trials, reexaminations and litigation, explore whole patent families, read the record, track every filing, and follow PTAB & reexam activity as it posts. Free account." />
-  <meta property="og:title" content="ToolPat+ — Every patent case. One clear view." />
-  <meta property="og:description" content="Search, explore, track and watch PTAB & reexam activity. Create your free account." />
+  <meta name="description" content="Search patents, PTAB trials, reexaminations, and court litigation. Explore related proceedings, read the record, and track new developments in one place. Free account." />
+  <meta property="og:title" content="ToolPat+ — Connected cases. A clearer picture." />
+  <meta property="og:description" content="Search patents, PTAB trials, reexaminations, and litigation. Explore related proceedings, read the record, and track new developments." />
   <meta property="og:image" content="assets/explore.jpg" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -33,6 +33,17 @@
   <div class="nav-progress" id="nav-progress"></div>
 </header>
 
+<!-- Mobile Sticky Chapter Navigation -->
+<nav class="mobile-nav" id="mobile-nav" aria-label="Tour chapters mobile navigation">
+  <div class="mobile-nav-inner">
+    <a href="#find" data-spy="find">01 Find</a>
+    <a href="#explore" data-spy="explore">02 Explore</a>
+    <a href="#understand" data-spy="understand">03 Understand</a>
+    <a href="#track" data-spy="track">04 Track</a>
+    <a href="#live" data-spy="live">05 PTAB &amp; Reexam</a>
+  </div>
+</nav>
+
 <main id="top">
 
 <!-- ============ HERO ============ -->
@@ -40,31 +51,32 @@
   <div class="hero-bg" aria-hidden="true"></div>
   <div class="wrap hero-copy reveal">
     <span class="eyebrow-pill">Built for patent professionals</span>
-    <h1 id="hero-title">Every patent case.<br /><em class="hl">One clear view.</em></h1>
-    <p class="lede">Search patents, PTAB trials, reexams and litigation. Explore the whole family, read the record, and track every filing, all from one place.</p>
+    <h1 id="hero-title">Connected cases.<br /><em class="hl">A clearer picture.</em></h1>
+    <p class="lede">Search patents, PTAB trials, reexaminations, and court litigation. Explore related proceedings, read the record, and track new developments in one place.</p>
     <div class="hero-actions">
       <a href="https://plus.toolpat.com/signup" class="btn btn-primary btn-lg" id="hero-cta">Create your free account</a>
       <button class="btn btn-ghost btn-lg" id="hero-overview-btn" data-open-overview>
-        <span class="play-dot" aria-hidden="true"></span>Watch the guided overview
+        <span class="play-dot" aria-hidden="true"></span>Watch the product walkthrough &middot; 1&frac12;&nbsp;min
       </button>
-    </div>
-    <div class="presented" id="hero-presented">
-      <span class="avatar" aria-hidden="true">SK</span>
-      <span>Presented by the founder &middot; 3&nbsp;min</span>
     </div>
   </div>
 
   <div class="wrap-wide hero-stage reveal">
-    <figure class="shot shot-hero" data-zoom="1.45" data-zx="22%" data-zy="62%">
+    <figure class="shot shot-hero">
       <div class="shot-bar"><span></span><span></span><span></span><b>plus.toolpat.com &middot; Patent Family Tree &middot; 90/016,506</b></div>
       <div class="shot-media">
         <video class="kb" src="assets/hero.mp4" poster="assets/hero.jpg" muted loop playsinline preload="none"></video>
+        <div class="shot-controls">
+          <button class="vid-btn vid-toggle" aria-label="Pause demonstration" title="Pause / Play">
+            <svg class="icon-pause" viewBox="0 0 24 24" width="14" height="14" fill="currentColor"><rect x="6" y="4" width="4" height="16" rx="1"/><rect x="14" y="4" width="4" height="16" rx="1"/></svg>
+            <svg class="icon-play" viewBox="0 0 24 24" width="14" height="14" fill="currentColor" style="display:none"><polygon points="6,4 20,12 6,20"/></svg>
+          </button>
+          <button class="vid-btn vid-replay" aria-label="Replay demonstration" title="Replay">
+            <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M1 4v6h6"/><path d="M3.51 15a9 9 0 1 0 2.13-9.36L1 10"/></svg>
+          </button>
+        </div>
       </div>
     </figure>
-    <span class="chip float f1 mono">90/016,506 &middot; Reexam</span>
-    <span class="chip float f2 mono">IPR2025-00351 &middot; FWD</span>
-    <span class="chip float f3 mono">US 12,075,116</span>
-    <span class="chip float f4"><span class="live-dot"></span>New reexam order</span>
   </div>
 </section>
 
@@ -92,24 +104,35 @@
         <span class="sb-tag" id="typed-tag">Patent</span>
       </div>
     </div>
-    <figure class="shot reveal" data-zoom="1.6" data-zx="20%" data-zy="20%">
+    <figure class="shot reveal">
       <div class="shot-bar"><span></span><span></span><span></span><b>plus.toolpat.com/view/90016506</b></div>
-      <div class="shot-media"><video class="kb" src="assets/find.mp4" poster="assets/find.jpg" muted loop playsinline preload="none"></video></div>
-      <figcaption>Search &rarr; full case record, waits trimmed.</figcaption>
+      <div class="shot-media">
+        <video class="kb" src="assets/find.mp4" poster="assets/find.jpg" muted loop playsinline preload="none"></video>
+        <div class="shot-controls">
+          <button class="vid-btn vid-toggle" aria-label="Pause demonstration" title="Pause / Play">
+            <svg class="icon-pause" viewBox="0 0 24 24" width="14" height="14" fill="currentColor"><rect x="6" y="4" width="4" height="16" rx="1"/><rect x="14" y="4" width="4" height="16" rx="1"/></svg>
+            <svg class="icon-play" viewBox="0 0 24 24" width="14" height="14" fill="currentColor" style="display:none"><polygon points="6,4 20,12 6,20"/></svg>
+          </button>
+          <button class="vid-btn vid-replay" aria-label="Replay demonstration" title="Replay">
+            <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M1 4v6h6"/><path d="M3.51 15a9 9 0 1 0 2.13-9.36L1 10"/></svg>
+          </button>
+        </div>
+      </div>
+      <figcaption>Query &rarr; full case record, waits trimmed.</figcaption>
     </figure>
   </div>
 
   <div class="wrap tiles reveal">
     <article class="tile" id="tile-patent">
-      <div class="tile-img"><img src="assets/tile-patent.jpg" alt="Patent case view in ToolPat+" loading="lazy" /></div>
+      <div class="tile-img"><img src="assets/tile-patent.jpg" alt="Patent case view in ToolPat+" /></div>
       <h3>Patents &amp; applications</h3><code>11,140,441</code>
     </article>
     <article class="tile" id="tile-ptab">
-      <div class="tile-img"><img src="assets/tile-ptab.jpg" alt="PTAB trial view in ToolPat+" loading="lazy" /></div>
+      <div class="tile-img"><img src="assets/tile-ptab.jpg" alt="PTAB trial view in ToolPat+" /></div>
       <h3>PTAB trials</h3><code>IPR2025-00351</code>
     </article>
     <article class="tile" id="tile-rex">
-      <div class="tile-img"><img src="assets/tile-rex.jpg" alt="Reexamination case view in ToolPat+" loading="lazy" /></div>
+      <div class="tile-img"><img src="assets/tile-rex.jpg" alt="Reexamination case view in ToolPat+" /></div>
       <h3>Reexaminations</h3><code>90/016,506</code>
     </article>
     <article class="tile tile-soon" id="tile-lit">
@@ -128,14 +151,17 @@
     <p>The Family Navigator lays out parents, continuations, PTAB trials and reexams as one connected tree. Click any case and its record opens alongside.</p>
   </div>
 
-  <div class="wrap-wide annotated reveal">
-    <ol class="callouts callouts-left">
-      <li data-pin="1"><b>PTAB trials, in context</b><span>IPRs sit right next to the patents they challenge.</span></li>
-      <li data-pin="2"><b>Reexams on the same tree</b><span>Ex parte reexams link to their parent patent.</span></li>
-      <li data-pin="3"><b>Not public yet? Still visible.</b><span>Pending continuations appear from continuity data.</span></li>
-    </ol>
-    <figure class="shot shot-still">
-      <div class="shot-bar"><span></span><span></span><span></span><b>Patent Family Tree &middot; 13 cases &middot; 8 generations</b></div>
+  <!-- Full-width readable family tree centerpiece -->
+  <div class="wrap-wide tree-stage reveal">
+    <figure class="shot shot-centerpiece">
+      <div class="shot-bar">
+        <span></span><span></span><span></span>
+        <b>Patent Family Tree &middot; 13 cases &middot; 8 generations</b>
+        <button class="btn-zoom" data-zoom-src="assets/explore.jpg" data-zoom-caption="Patent Family Tree showing 13 connected cases and 8 generations with PTAB trial inspector">
+          <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg>
+          View larger
+        </button>
+      </div>
       <div class="shot-media pins">
         <img src="assets/explore.jpg" alt="ToolPat+ Patent Family Tree with a PTAB proceeding open in the inspector" />
         <span class="pin" style="--x:12.6%;--y:58.8%">1</span>
@@ -144,26 +170,114 @@
         <span class="pin" style="--x:66%;--y:14%">4</span>
       </div>
     </figure>
-    <ol class="callouts callouts-right" start="4">
-      <li data-pin="4"><b>The record, beside the tree</b><span>Documents, timeline and status for whichever case you click.</span></li>
-      <li class="plain"><b>Watch the whole family</b><span>One click to follow every member, including future filings.</span></li>
+
+    <!-- Explanations positioned underneath full-width tree -->
+    <ol class="tree-callouts">
+      <li data-pin="1">
+        <span class="pin-badge">1</span>
+        <div>
+          <b>PTAB trials, in context</b>
+          <span>IPRs sit right next to the patents they challenge.</span>
+        </div>
+      </li>
+      <li data-pin="2">
+        <span class="pin-badge">2</span>
+        <div>
+          <b>Reexams on the same tree</b>
+          <span>Ex parte reexams link to their parent patent.</span>
+        </div>
+      </li>
+      <li data-pin="3">
+        <span class="pin-badge">3</span>
+        <div>
+          <b>Pending continuations</b>
+          <span>Identify pending continuations from public continuity data. Track them before their full records become publicly available.</span>
+        </div>
+      </li>
+      <li data-pin="4">
+        <span class="pin-badge">4</span>
+        <div>
+          <b>The record, beside the tree</b>
+          <span>Documents, timeline and status for whichever case you click.</span>
+        </div>
+      </li>
     </ol>
   </div>
 
-  <div class="wrap reveal">
-    <figure class="shot shot-narrow" data-zoom="1.35" data-zx="18%" data-zy="55%">
-      <div class="shot-bar"><span></span><span></span><span></span><b>Moving between family members</b></div>
-      <div class="shot-media"><video class="kb" src="assets/explore.mp4" poster="assets/explore.jpg" muted loop playsinline preload="none"></video></div>
-    </figure>
+  <!-- Close-up details: IPR in context, Continuation, Case inspector -->
+  <div class="wrap detail-grid reveal">
+    <article class="detail-card">
+      <div class="detail-img">
+        <img src="assets/detail_ipr_tree.jpg" alt="Connected IPR proceeding on the family tree" />
+        <button class="btn-zoom-corner" data-zoom-src="assets/detail_ipr_tree.jpg" data-zoom-caption="Close-up: PTAB IPR2025-00351 connected directly to US 12,075,116 on the family tree" title="View larger">
+          <svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg>
+        </button>
+      </div>
+      <div class="detail-text">
+        <h3>Connected PTAB trials</h3>
+        <p>IPRs sit directly adjacent to the challenged patent so you immediately see proceeding status and challenged claims in context.</p>
+      </div>
+    </article>
+
+    <article class="detail-card">
+      <div class="detail-img">
+        <img src="assets/detail_continuation_tree.jpg" alt="Pending continuation from continuity data" />
+        <button class="btn-zoom-corner" data-zoom-src="assets/detail_continuation_tree.jpg" data-zoom-caption="Close-up: Pending continuation 19/754,591 identified from continuity data" title="View larger">
+          <svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg>
+        </button>
+      </div>
+      <div class="detail-text">
+        <h3>Public continuity data</h3>
+        <p>Identify pending continuations from public continuity data. Track them before their full records become publicly available.</p>
+      </div>
+    </article>
+
+    <article class="detail-card">
+      <div class="detail-img">
+        <img src="assets/detail_inspector_record.jpg" alt="Inspector panel with document list and status" />
+        <button class="btn-zoom-corner" data-zoom-src="assets/detail_inspector_record.jpg" data-zoom-caption="Close-up: Inspector panel displaying case timeline, file history, and status" title="View larger">
+          <svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg>
+        </button>
+      </div>
+      <div class="detail-text">
+        <h3>Record alongside the tree</h3>
+        <p>Inspect timeline flags, download file history papers, and review status without navigating away or losing your place.</p>
+      </div>
+    </article>
   </div>
 </section>
+
+<!-- ============ MID-PAGE INVITATION ============ -->
+<aside class="mid-cta reveal" aria-label="Account invitation">
+  <div class="wrap mid-cta-inner">
+    <div class="mid-cta-text">
+      <h3>Ready to explore your own cases?</h3>
+      <p>Create a free account in two minutes to search patents, PTAB trials, and reexaminations.</p>
+    </div>
+    <div class="mid-cta-action">
+      <a href="https://plus.toolpat.com/signup" class="btn btn-primary btn-md">Create your free account</a>
+    </div>
+  </div>
+</aside>
 
 <!-- ============ 03 UNDERSTAND ============ -->
 <section class="chapter" id="understand" aria-labelledby="understand-title">
   <div class="wrap split split-rev">
-    <figure class="shot reveal" data-zoom="1.5" data-zx="72%" data-zy="22%">
+    <figure class="shot reveal">
       <div class="shot-bar"><span></span><span></span><span></span><b>Timeline &rarr; document</b></div>
-      <div class="shot-media"><video class="kb" src="assets/understand.mp4" poster="assets/understand.jpg" muted loop playsinline preload="none"></video></div>
+      <div class="shot-media">
+        <video class="kb" src="assets/understand.mp4" poster="assets/understand.jpg" muted loop playsinline preload="none"></video>
+        <div class="shot-controls">
+          <button class="vid-btn vid-toggle" aria-label="Pause demonstration" title="Pause / Play">
+            <svg class="icon-pause" viewBox="0 0 24 24" width="14" height="14" fill="currentColor"><rect x="6" y="4" width="4" height="16" rx="1"/><rect x="14" y="4" width="4" height="16" rx="1"/></svg>
+            <svg class="icon-play" viewBox="0 0 24 24" width="14" height="14" fill="currentColor" style="display:none"><polygon points="6,4 20,12 6,20"/></svg>
+          </button>
+          <button class="vid-btn vid-replay" aria-label="Replay demonstration" title="Replay">
+            <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M1 4v6h6"/><path d="M3.51 15a9 9 0 1 0 2.13-9.36L1 10"/></svg>
+          </button>
+        </div>
+      </div>
+      <figcaption>Timeline flag hover &rarr; instant document preview.</figcaption>
     </figure>
     <div class="copy reveal">
       <div class="num" aria-hidden="true">03</div>
@@ -179,12 +293,26 @@
   </div>
   <div class="wrap duo reveal">
     <figure class="shot shot-still">
-      <div class="shot-bar"><span></span><span></span><span></span><b>Full file history, color-coded</b></div>
-      <div class="shot-media"><img src="assets/docs.jpg" alt="File history document list for reexam 90/016,506" loading="lazy" /></div>
+      <div class="shot-bar">
+        <span></span><span></span><span></span>
+        <b>Full file history, color-coded</b>
+        <button class="btn-zoom" data-zoom-src="assets/docs.jpg" data-zoom-caption="Color-coded file history document list for reexam 90/016,506">
+          <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg>
+          View larger
+        </button>
+      </div>
+      <div class="shot-media"><img src="assets/docs.jpg" alt="File history document list for reexam 90/016,506" /></div>
     </figure>
     <figure class="shot shot-still">
-      <div class="shot-bar"><span></span><span></span><span></span><b>PTAB papers, readable in place</b></div>
-      <div class="shot-media"><img src="assets/paper.jpg" alt="Final Written Decision for IPR2025-00351 open in ToolPat+" loading="lazy" /></div>
+      <div class="shot-bar">
+        <span></span><span></span><span></span>
+        <b>PTAB papers, readable in place</b>
+        <button class="btn-zoom" data-zoom-src="assets/paper.jpg" data-zoom-caption="Final Written Decision for IPR2025-00351 readable directly in ToolPat+">
+          <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg>
+          View larger
+        </button>
+      </div>
+      <div class="shot-media"><img src="assets/paper.jpg" alt="Final Written Decision for IPR2025-00351 open in ToolPat+" /></div>
     </figure>
   </div>
 </section>
@@ -203,26 +331,59 @@
         <div class="ac-row mono">90/016,506</div>
         <div class="ac-new"><span class="dot-red"></span>New document: Determination &mdash; Reexam Ordered</div>
       </div>
-    </div>
-    <figure class="shot reveal" data-zoom="1.5" data-zx="30%" data-zy="25%">
-      <div class="shot-bar"><span></span><span></span><span></span><b>plus.toolpat.com/track</b></div>
-      <div class="shot-media"><video class="kb" src="assets/track.mp4" poster="assets/track.jpg" muted loop playsinline preload="none"></video></div>
-    </figure>
-  </div>
-  <div class="wrap duo duo-text reveal">
-    <figure class="shot shot-still">
-      <div class="shot-bar"><span></span><span></span><span></span><b>Track it before it's public</b></div>
-      <div class="shot-media"><img src="assets/continuation.jpg" alt="Tracking a pending continuation, 19/754,591, before full details are public" loading="lazy" /></div>
-    </figure>
-    <div class="copy">
-      <h3>Get ahead of new filings.</h3>
-      <p>Spot a continuation that isn't public yet? Track it anyway, and ToolPat+ alerts you when it becomes available. Or watch an entire family and hear about every new member.</p>
       <ul class="ticks">
         <li>Track case status and new documents</li>
         <li>Watch whole patent families</li>
         <li>Monitor applicants and assignees</li>
       </ul>
     </div>
+    <figure class="shot reveal">
+      <div class="shot-bar"><span></span><span></span><span></span><b>plus.toolpat.com/track</b></div>
+      <div class="shot-media">
+        <video class="kb" src="assets/track.mp4" poster="assets/track.jpg" muted loop playsinline preload="none"></video>
+        <div class="shot-controls">
+          <button class="vid-btn vid-toggle" aria-label="Pause demonstration" title="Pause / Play">
+            <svg class="icon-pause" viewBox="0 0 24 24" width="14" height="14" fill="currentColor"><rect x="6" y="4" width="4" height="16" rx="1"/><rect x="14" y="4" width="4" height="16" rx="1"/></svg>
+            <svg class="icon-play" viewBox="0 0 24 24" width="14" height="14" fill="currentColor" style="display:none"><polygon points="6,4 20,12 6,20"/></svg>
+          </button>
+          <button class="vid-btn vid-replay" aria-label="Replay demonstration" title="Replay">
+            <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M1 4v6h6"/><path d="M3.51 15a9 9 0 1 0 2.13-9.36L1 10"/></svg>
+          </button>
+        </div>
+      </div>
+      <figcaption>One-click track setup &rarr; added to your tracker dashboard.</figcaption>
+    </figure>
+  </div>
+
+  <!-- Setup dialog close-up followed by resulting tracker row -->
+  <div class="wrap track-workflow reveal">
+    <article class="track-step-card">
+      <div class="track-card-head">
+        <span class="step-num">Step 1</span>
+        <h3>Close-up: Track setup dialog</h3>
+      </div>
+      <div class="track-img-wrap">
+        <img src="assets/detail_track_modal.jpg" alt="Track Case modal dialog with custom nickname and email alert settings" />
+        <button class="btn-zoom-corner" data-zoom-src="assets/detail_track_modal.jpg" data-zoom-caption="Close-up: Track Case dialog with nickname input and email alert checkboxes" title="View larger">
+          <svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg>
+        </button>
+      </div>
+      <p class="track-card-desc">Assign a nickname you'll remember and choose email alert preferences for new documents and transactions.</p>
+    </article>
+
+    <article class="track-step-card">
+      <div class="track-card-head">
+        <span class="step-num">Step 2</span>
+        <h3>Result: Tracked case in your dashboard</h3>
+      </div>
+      <div class="track-img-wrap">
+        <img src="assets/detail_track_row.jpg" alt="Track dashboard displaying tracked case status and latest documents" />
+        <button class="btn-zoom-corner" data-zoom-src="assets/detail_track_row.jpg" data-zoom-caption="Close-up: Resulting tracker dashboard row showing current status, latest document, and transaction" title="View larger">
+          <svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg>
+        </button>
+      </div>
+      <p class="track-card-desc">Your dashboard tracks current status, latest document, and latest transaction date at a glance.</p>
+    </article>
   </div>
 </section>
 
@@ -232,9 +393,9 @@
   <div class="wrap center-head reveal">
     <div class="num" aria-hidden="true">05</div>
     <span class="kicker kicker-live"><span class="live-dot"></span>PTAB &amp; Reexam Recent Activity</span>
-    <h2 id="live-title">PTAB and reexam activity, <em>as it posts.</em></h2>
-    <p>Two live feeds, side by side: new PTAB petitions and decisions, and new ex parte reexam requests, orders and determinations. Spot what matters, then open the full record in one click.</p>
-    <div class="seg" role="tablist" aria-label="Live feed">
+    <h2 id="live-title">Follow recent PTAB and <em>reexamination activity.</em></h2>
+    <p>Switch between PTAB and reexamination feeds to spot what matters, then open the full record in one click.</p>
+    <div class="seg" role="tablist" aria-label="Live feed selector">
       <button role="tab" id="seg-ptab" class="on" data-feed="ptab" aria-selected="true">PTAB</button>
       <button role="tab" id="seg-rex" data-feed="rex" aria-selected="false">Reexam</button>
       <span class="seg-thumb" aria-hidden="true"></span>
@@ -243,12 +404,26 @@
 
   <div class="wrap-wide live-stage reveal">
     <figure class="shot shot-dark feed on" data-feed-panel="ptab">
-      <div class="shot-bar"><span></span><span></span><span></span><b>PTAB tab &middot; recent petitions &amp; decisions</b></div>
-      <div class="shot-media"><img src="assets/live-ptab.jpg" alt="PTAB recent petitions filed and recent decisions" loading="lazy" /></div>
+      <div class="shot-bar">
+        <span></span><span></span><span></span>
+        <b>PTAB tab &middot; recent petitions &amp; decisions</b>
+        <button class="btn-zoom btn-zoom-dark" data-zoom-src="assets/live-ptab.jpg" data-zoom-caption="PTAB live feed showing recent petitions and decisions">
+          <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg>
+          View larger
+        </button>
+      </div>
+      <div class="shot-media"><img src="assets/live-ptab.jpg" alt="PTAB recent petitions filed and recent decisions" /></div>
     </figure>
     <figure class="shot shot-dark feed" data-feed-panel="rex">
-      <div class="shot-bar"><span></span><span></span><span></span><b>REX tab &middot; recent reexam requests &amp; decisions</b></div>
-      <div class="shot-media"><img src="assets/live-rex.jpg" alt="Reexam recent requests and decisions" loading="lazy" /></div>
+      <div class="shot-bar">
+        <span></span><span></span><span></span>
+        <b>REX tab &middot; recent reexam requests &amp; decisions</b>
+        <button class="btn-zoom btn-zoom-dark" data-zoom-src="assets/live-rex.jpg" data-zoom-caption="Reexamination live feed showing recent requests and decisions">
+          <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg>
+          View larger
+        </button>
+      </div>
+      <div class="shot-media"><img src="assets/live-rex.jpg" alt="Reexam recent requests and decisions" /></div>
     </figure>
   </div>
 
@@ -264,13 +439,13 @@
 <section class="cta" id="cta" aria-labelledby="cta-title">
   <div class="wrap cta-inner reveal">
     <h2 id="cta-title">Try it on <em>your own cases.</em></h2>
-    <p>Create a free account and start searching in minutes. Free accounts include generous monthly access quotas.</p>
+    <p>Create a free account to explore ToolPat with your own cases. Usage limits apply.</p>
     <div class="hero-actions center">
       <a href="https://plus.toolpat.com/signup" class="btn btn-primary btn-lg" id="cta-signup">Create your free account</a>
-      <button class="btn btn-ghost btn-lg" id="cta-overview-btn" data-open-overview><span class="play-dot" aria-hidden="true"></span>Watch the overview</button>
+      <button class="btn btn-ghost btn-lg" id="cta-overview-btn" data-open-overview><span class="play-dot" aria-hidden="true"></span>Watch the product walkthrough</button>
     </div>
     <div class="firm" id="cta-firm">
-      <b>Bringing ToolPat+ to your firm?</b> Firm-wide accounts give every attorney unlimited access, with a free trial at the enterprise level. <a href="#" id="cta-firm-link">Talk to us &rarr;</a>
+      <b>Interested in ToolPat for your firm?</b> <a href="mailto:info@toolpat.com" id="cta-firm-link">Contact us about firm-wide access &rarr;</a>
     </div>
   </div>
 </section>
@@ -284,14 +459,30 @@
 </footer>
 
 <!-- ============ OVERVIEW MODAL ============ -->
-<div class="modal" id="overview-modal" role="dialog" aria-modal="true" aria-label="Guided overview" hidden>
+<div class="modal" id="overview-modal" role="dialog" aria-modal="true" aria-labelledby="overview-modal-title" hidden>
   <div class="modal-box">
-    <button class="modal-x" id="overview-close" aria-label="Close">&times;</button>
-    <video id="overview-video" src="assets/overview.mp4" poster="assets/hero.jpg" controls playsinline preload="none"></video>
-    <div class="chapters-row">
-      <button data-t="0">Find</button><button data-t="25">Understand</button><button data-t="55">Explore</button><button data-t="120">Track</button><button data-t="4">PTAB &amp; Reexam</button>
+    <div class="modal-box-header">
+      <h3 id="overview-modal-title" class="modal-title">Product Walkthrough &middot; 1&frac12; min</h3>
+      <button class="modal-x" id="overview-close" aria-label="Close walkthrough dialog">&times;</button>
     </div>
-    <p class="modal-note">Draft: silent screen recording. The narrated founder version will replace it.</p>
+    <video id="overview-video" src="assets/overview.mp4" poster="assets/hero.jpg" controls playsinline preload="none"></video>
+    <div class="chapters-row" aria-label="Jump to chapter">
+      <button data-t="0"><span>01</span>Find</button>
+      <button data-t="25"><span>02</span>Explore</button>
+      <button data-t="55"><span>03</span>Understand</button>
+      <button data-t="75"><span>04</span>Track</button>
+      <button data-t="95"><span>05</span>PTAB &amp; Reexam</button>
+    </div>
+    <p class="modal-note">Overview of the core ToolPat+ workflow: search to connected family tree, document inspection, and case tracking.</p>
+  </div>
+</div>
+
+<!-- ============ LIGHTBOX ZOOM MODAL ============ -->
+<div class="lightbox" id="lightbox-modal" role="dialog" aria-modal="true" aria-label="Enlarged screenshot" hidden>
+  <div class="lightbox-box">
+    <button class="lightbox-close" id="lightbox-close" aria-label="Close enlarged view">&times;</button>
+    <img id="lightbox-img" src="" alt="Enlarged screenshot" />
+    <p id="lightbox-caption" class="lightbox-caption"></p>
   </div>
 </div>
 
