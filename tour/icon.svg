@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="100%" height="100%"> 
+  <!-- ToolPat+ Icon Build 20260927-v2 - Cloudflare ETag Bust -->
+  <!-- ToolPat Blue Rounded Background Square (Fills full canvas) --> 
+  <rect x="0" y="0" width="512" height="512" rx="116" fill="#147ba8" /> 
+  
+  <!-- Fat Greek Cross plus symbol in pure white --> 
+  <path d="M 204 48 H 308 V 204 H 464 V 308 H 308 V 464 H 204 V 308 H 48 V 204 H 204 Z" fill="#ffffff" /> 
+ 
+</svg>
