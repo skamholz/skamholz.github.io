@@ -1,4 +1,24 @@
 // ToolPat+ /tour interactivity — Focused & lightweight
+
+// Native Web Component for ToolPat+ Logo (<tp-logo>, <tp-logo size="sm">, <tp-logo size="lg">)
+class TpLogo extends HTMLElement {
+  connectedCallback() {
+    const size = this.getAttribute('size');
+    let sizeClass = '';
+    if (size === 'sm') sizeClass = 'logo-sm';
+    else if (size === 'lg') sizeClass = 'logo-lg';
+    else if (size === 'xl') sizeClass = 'logo-xl';
+    else if (size === '2xl') sizeClass = 'logo-2xl';
+
+    this.classList.add('logo');
+    if (sizeClass) this.classList.add(sizeClass);
+    this.innerHTML = `<span class="l-tool">Tool</span><span class="l-pat">Pat</span><span class="l-plus">&#x271A;</span>`;
+  }
+}
+if (!customElements.get('tp-logo')) {
+  customElements.define('tp-logo', TpLogo);
+}
+
 document.addEventListener('DOMContentLoaded', () => {
   const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
@@ -47,7 +67,7 @@ document.addEventListener('DOMContentLoaded', () => {
       entries.forEach(entry => {
         const vid = entry.target;
         if (entry.isIntersecting) {
-          vid.play().then(() => updatePlayIcon(vid, true)).catch(() => {});
+          vid.play().then(() => updatePlayIcon(vid, true)).catch(() => { });
         } else {
           vid.pause();
           updatePlayIcon(vid, false);
@@ -74,7 +94,7 @@ document.addEventListener('DOMContentLoaded', () => {
       toggleBtn.addEventListener('click', (e) => {
         e.stopPropagation();
         if (vid.paused) {
-          vid.play().then(() => updatePlayIcon(vid, true)).catch(() => {});
+          vid.play().then(() => updatePlayIcon(vid, true)).catch(() => { });
         } else {
           vid.pause();
           updatePlayIcon(vid, false);
@@ -86,7 +106,7 @@ document.addEventListener('DOMContentLoaded', () => {
       replayBtn.addEventListener('click', (e) => {
         e.stopPropagation();
         vid.currentTime = 0;
-        vid.play().then(() => updatePlayIcon(vid, true)).catch(() => {});
+        vid.play().then(() => updatePlayIcon(vid, true)).catch(() => { });
       });
     }
 
@@ -174,11 +194,34 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   }
 
-  document.querySelectorAll('[data-zoom-src]').forEach(btn => {
-    btn.addEventListener('click', (e) => {
+  // Wire up both the button and the screenshot image itself
+  document.querySelectorAll('.shot').forEach(shot => {
+    const zoomBtn = shot.querySelector('[data-zoom-src]');
+    const media = shot.querySelector('.shot-media');
+    if (!zoomBtn) return;
+
+    if (media && media.querySelector('img')) {
+      media.classList.add('zoomable');
+      media.removeAttribute('title');
+      if (!media.querySelector('.shot-zoom-badge')) {
+        const badge = document.createElement('div');
+        badge.className = 'shot-zoom-badge';
+        badge.setAttribute('aria-hidden', 'true');
+        badge.innerHTML = `<svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/><path d="M11 8v6M8 11h6"/></svg><span>Click to enlarge</span>`;
+        media.appendChild(badge);
+      }
+      media.addEventListener('click', (e) => {
+        if (e.target.closest('.shot-controls')) return;
+        const src = zoomBtn.getAttribute('data-zoom-src');
+        const caption = zoomBtn.getAttribute('data-zoom-caption') || '';
+        openLightbox(src, caption);
+      });
+    }
+
+    zoomBtn.addEventListener('click', (e) => {
       e.stopPropagation();
-      const src = btn.getAttribute('data-zoom-src');
-      const caption = btn.getAttribute('data-zoom-caption') || '';
+      const src = zoomBtn.getAttribute('data-zoom-src');
+      const caption = zoomBtn.getAttribute('data-zoom-caption') || '';
       openLightbox(src, caption);
     });
   });
