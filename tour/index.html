@@ -30,7 +30,7 @@
       <nav class="nav-links" aria-label="Tour topics">
         <a href="#file-wrappers" data-spy="file-wrappers">File wrappers</a>
         <a href="#ptab-documents" data-spy="ptab-documents">PTAB documents</a>
-        <a href="#tools" data-spy="tools">Supporting tools</a>
+        <a href="#tools" data-spy="tools">Related cases</a>
       </nav>
       <a href="https://plus.toolpat.com/signup" class="btn btn-primary btn-sm" id="nav-cta">Create free account</a>
     </div>
@@ -44,15 +44,9 @@
       <div class="hero-bg" aria-hidden="true"></div>
       <div class="wrap hero-copy reveal">
         <div class="hero-logo-wrap"><tp-logo size="2xl"></tp-logo></div>
-        <h1 id="hero-title">File wrappers in seconds.
-          <!-- <br /><em class="hl">Grab it and get back to work.</em> -->
-        </h1>
-        <!-- <p class="lede">One-click downloads. Plus Searching, Tracking, Family Navigation and More.</p> -->
-        <div class="hero-actions">
-          <a href="https://plus.toolpat.com/signup" class="btn btn-primary btn-lg" id="hero-cta">Create your free
-            account</a>
-        </div>
-        <p class="hero-note">Free accounts include limited access.</p>
+        <h1 id="hero-title">File wrappers in seconds.</h1>
+        <!-- <p class="hero-sub">Prosecution history, clearly presented.</p> -->
+
       </div>
 
       <div class="wrap-wide hero-stage reveal">
@@ -60,189 +54,117 @@
           <div class="shot-bar">
             <span></span><span></span><span></span>
             <b>plus.toolpat.com &middot; File Wrapper &middot; 19/075,701</b>
-            <button class="btn-zoom" data-zoom-src="assets/file_wrapper_hero.png"
-              data-zoom-caption="Patent file wrapper in ToolPat+ showing full prosecution history documents, filing dates, page counts, and download actions">
-              <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2">
-                <path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7" />
-              </svg>
-              View larger
-            </button>
           </div>
-          <div class="shot-media">
+          <div class="shot-media hero-shot-media" id="hero-media">
             <img src="assets/file_wrapper_hero.png"
-              alt="Patent file wrapper and prosecution history document list in ToolPat+" />
+              alt="Patent file wrapper and prosecution history document list in ToolPat+" class="hero-poster" />
+            <video class="hero-video" src="assets/dl-and-view.mp4" playsinline preload="metadata"
+              style="display:none;"></video>
+            <div class="hero-play-overlay" id="hero-play-overlay" role="button" aria-label="Play demonstration video"
+              tabindex="0">
+              <div class="play-btn-circle">
+                <svg class="icon-play-svg" viewBox="0 0 100 100" width="120%" height="100%" fill="none"
+                  xmlns="http://www.w3.org/2000/svg">
+                  <circle cx="50" cy="50" r="45" stroke="white" stroke-width="4.5" />
+                  <path
+                    d="M40 33.5C40 31.8 41.9 30.7 43.4 31.6L68.8 48.1C70.3 49 70.3 51 68.8 51.9L43.4 68.4C41.9 69.3 40 68.2 40 66.5V33.5Z"
+                    fill="white" />
+                </svg>
+                <svg class="icon-replay-svg" viewBox="0 0 100 100" width="100%" height="100%" fill="none"
+                  xmlns="http://www.w3.org/2000/svg" style="display:none;">
+                  <circle cx="50" cy="50" r="45" stroke="white" stroke-width="4.5" />
+                  <path d="M34 50A16 16 0 1 0 50 34H44M44 34L50 28M44 34L50 40" stroke="white" stroke-width="5"
+                    stroke-linecap="round" stroke-linejoin="round" />
+                </svg>
+              </div>
+            </div>
           </div>
-          <figcaption>Full prosecution history with color-coded document descriptions, dates, page counts, and instant
-            downloads.
-          </figcaption>
         </figure>
       </div>
+      <div class="hero-actions">
+        <a href="https://plus.toolpat.com/signup" class="btn btn-primary btn-lg" id="hero-cta">Create your free
+          account</a>
+      </div>
+      <p class="hero-note">Free accounts include limited access.</p>
     </section>
 
-    <!-- ============ 1. THE CORE WORKFLOW: GET A FILE WRAPPER ============ -->
+    <!-- ============ 1. THE CORE WORKFLOW: FOLLOW THE EXCHANGE ============ -->
     <section class="section" id="file-wrappers" aria-labelledby="workflow-title">
       <div class="wrap center-head reveal">
-        <span class="kicker">File Wrappers</span>
-        <h2 id="workflow-title">From a patent number to the documents you need.</h2>
-        <p>Enter a patent, application, or reexamination number. Review the prosecution history and download individual
-          filings or the complete record.</p>
+        <span class="kicker">Prosecution History</span>
+        <h2 id="workflow-title">Follow the exchange.</h2>
+        <p>Color-coded descriptions make the back-and-forth between applicant and examiner immediately clear.</p>
       </div>
 
-      <!-- 3-Step Workflow Cards -->
-      <div class="wrap workflow-grid reveal">
-        <article class="wf-card">
-          <span class="wf-step">1</span>
-          <h3>Find the case</h3>
-          <p>Enter a patent number, application number, or reexamination control number. ToolPat identifies the
-            proceeding and takes you straight to the case.</p>
-        </article>
-        <article class="wf-card">
-          <span class="wf-step">2</span>
-          <h3>Review the file wrapper</h3>
-          <p>Scan the full prosecution history, organized chronologically with official document descriptions, filing
-            dates, and page counts.</p>
-        </article>
-        <article class="wf-card">
-          <span class="wf-step">3</span>
-          <h3>Download documents</h3>
-          <p>Select specific office actions, responses, or claims, or download the full wrapper in one click—without
-            navigating USPTO portal hurdles.</p>
-        </article>
-      </div>
-
-      <!-- Focused Demonstration Video -->
       <div class="wrap-wide demo-stage reveal">
         <figure class="shot">
           <div class="shot-bar">
             <span></span><span></span><span></span>
-            <b>plus.toolpat.com/view/90016506 &middot; File Wrapper &middot; Prosecution History</b>
-            <button class="btn-zoom" data-zoom-src="assets/docs.jpg"
-              data-zoom-caption="Prosecution history and file wrapper view for reexamination 90/016,506">
-              <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2">
-                <path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7" />
-              </svg>
-              View larger
-            </button>
+            <b>plus.toolpat.com &middot; Prosecution History Detail &middot; Document Descriptions</b>
           </div>
           <div class="shot-media">
-            <video class="kb" src="assets/find.mp4" poster="assets/docs.jpg" muted loop playsinline
-              preload="none"></video>
-            <div class="shot-controls">
-              <button class="vid-btn vid-toggle" aria-label="Pause demonstration" title="Pause / Play">
-                <svg class="icon-pause" viewBox="0 0 24 24" width="14" height="14" fill="currentColor">
-                  <rect x="6" y="4" width="4" height="16" rx="1" />
-                  <rect x="14" y="4" width="4" height="16" rx="1" />
-                </svg>
-                <svg class="icon-play" viewBox="0 0 24 24" width="14" height="14" fill="currentColor"
-                  style="display:none">
-                  <polygon points="6,4 20,12 6,20" />
-                </svg>
-              </button>
-              <button class="vid-btn vid-replay" aria-label="Replay demonstration" title="Replay">
-                <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"
-                  stroke-linecap="round" stroke-linejoin="round">
-                  <path d="M1 4v6h6" />
-                  <path d="M3.51 15a9 9 0 1 0 2.13-9.36L1 10" />
-                </svg>
-              </button>
-            </div>
+            <img src="assets/prosecution_exchange.png"
+              alt="Color-coded document descriptions in ToolPat+ prosecution history" />
           </div>
-          <figcaption>Query &rarr; full prosecution history record, ready for review and download.</figcaption>
+          <figcaption>Color-coded descriptions make the prosecution history easier to scan.</figcaption>
         </figure>
       </div>
     </section>
 
-    <!-- ============ 2. A NATURAL EXTENSION: PTAB TRIAL DOCUMENTS ============ -->
+    <!-- ============ 2. PTAB TRIAL DOCUMENTS ============ -->
     <section class="section section-tint" id="ptab-documents" aria-labelledby="ptab-title">
-      <div class="wrap split reveal">
-        <div class="copy">
-          <span class="kicker">PTAB Documents</span>
-          <h2 id="ptab-title">PTAB trial documents, too.</h2>
-          <p>Trial petitions, patent owner preliminary responses, institution decisions, and final written
-            decisions—accessible as easily as patent file wrappers.</p>
-          <ul class="benefit-list">
-            <li>
-              <b>Direct access to major papers</b>
-              <span>Quickly locate petitions, patent owner responses, institution decisions, and final written
-                decisions.</span>
-            </li>
-            <li>
-              <b>Timeline to pinpoint filings</b>
-              <span>The visual timeline arranges petitioner, patent owner, and board filings chronologically, so you can
-                find key decisions without sorting through procedural notices.</span>
-            </li>
-            <li>
-              <b>Read in place or download</b>
-              <span>Review PDFs directly in your browser or download clean documents immediately.</span>
-            </li>
-          </ul>
-        </div>
+      <div class="wrap center-head reveal">
+        <span class="kicker">PTAB Documents</span>
+        <h2 id="ptab-title">PTAB trial documents, too.</h2>
+        <p>Read in place or download.</p>
+      </div>
+
+      <div class="wrap-wide demo-stage reveal">
         <figure class="shot">
           <div class="shot-bar">
             <span></span><span></span><span></span>
             <b>IPR2025-00351 &middot; Proceeding Papers &amp; Timeline</b>
-            <button class="btn-zoom" data-zoom-src="assets/ptab_documents.jpg"
-              data-zoom-caption="PTAB trial documents list and chronological timeline for IPR2025-00351">
-              <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2">
-                <path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7" />
-              </svg>
-              View larger
-            </button>
           </div>
           <div class="shot-media">
             <img src="assets/ptab_documents.jpg"
               alt="PTAB trial document list and timeline for IPR2025-00351 in ToolPat+" />
           </div>
-          <figcaption>PTAB proceeding papers listed with a chronological timeline of petitioner, board, and patent owner
-            filings.</figcaption>
+          <figcaption>Petitioner, patent owner, and board filings arranged chronologically with one-click access.
+          </figcaption>
         </figure>
       </div>
     </section>
 
-    <!-- ============ 3. SUPPORTING TOOLS: AROUND THE RECORD ============ -->
+    <!-- ============ 3. SUPPORTING TOOLS: RELATED CASES ============ -->
     <section class="section" id="tools" aria-labelledby="tools-title">
       <div class="wrap center-head reveal">
         <span class="kicker">Supporting Tools</span>
-        <h2 id="tools-title">Useful tools around the record.</h2>
-        <p>When your work calls for deeper context, ToolPat provides the tools you need without getting in the way of
-          the core documents.</p>
-      </div>
-
-      <div class="wrap tools-grid reveal">
-        <article class="tool-card">
-          <div class="tool-icon">
-            <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2">
+        <h2 id="tools-title">Related cases. Ongoing developments.</h2>
+        <div class="compact-badges">
+          <span class="c-badge">
+            <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2">
               <circle cx="12" cy="5" r="3" />
               <circle cx="5" cy="19" r="3" />
               <circle cx="19" cy="19" r="3" />
               <path d="M12 8v4m0 0l-5 4m5-4l5 4" />
             </svg>
-          </div>
-          <h3>Find related cases</h3>
-          <p>Navigate patent families, continuations, PTAB trials, and reexaminations on one connected tree.</p>
-        </article>
-
-        <article class="tool-card">
-          <div class="tool-icon">
-            <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2">
+            Patent families
+          </span>
+          <span class="c-badge">
+            <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2">
               <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9" />
               <path d="M13.73 21a2 2 0 0 1-3.46 0" />
             </svg>
-          </div>
-          <h3>Follow a case</h3>
-          <p>Track status changes and new filings with one click, and receive email alerts when something moves.</p>
-        </article>
-
-        <article class="tool-card">
-          <div class="tool-icon">
-            <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2">
+            Case tracking
+          </span>
+          <span class="c-badge">
+            <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2">
               <circle cx="12" cy="12" r="10" />
               <polyline points="12 6 12 12 16 14" />
             </svg>
-          </div>
-          <h3>Check recent activity</h3>
-          <p>Review new PTAB petitions, decisions, and ex parte reexamination requests as they post.</p>
-        </article>
+            Recent PTAB &amp; reexamination activity
+          </span>
+        </div>
       </div>
 
       <!-- Single Supporting Visual: Family Tree -->
@@ -251,18 +173,11 @@
           <div class="shot-bar">
             <span></span><span></span><span></span>
             <b>Patent Family Tree &middot; 13 connected cases</b>
-            <button class="btn-zoom" data-zoom-src="assets/explore.jpg"
-              data-zoom-caption="Patent family tree connecting parents, continuations, PTAB trials, and reexaminations">
-              <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2">
-                <path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7" />
-              </svg>
-              View larger
-            </button>
           </div>
           <div class="shot-media">
             <img src="assets/explore.jpg" alt="Patent Family Tree connecting related proceedings in ToolPat+" />
           </div>
-          <figcaption>Family Navigator: see parents, continuations, and challenges connected on one tree.</figcaption>
+          <figcaption>Family Navigator: parents, continuations, and challenges connected on one tree.</figcaption>
         </figure>
       </div>
     </section>
@@ -291,15 +206,6 @@
       <span>&copy; 2026 ToolPat PLLC &middot; plus.toolpat.com</span>
     </div>
   </footer>
-
-  <!-- ============ LIGHTBOX ZOOM MODAL ============ -->
-  <div class="lightbox" id="lightbox-modal" role="dialog" aria-modal="true" aria-label="Enlarged screenshot" hidden>
-    <div class="lightbox-box">
-      <button class="lightbox-close" id="lightbox-close" aria-label="Close enlarged view">&times;</button>
-      <img id="lightbox-img" src="" alt="Enlarged screenshot" />
-      <p id="lightbox-caption" class="lightbox-caption"></p>
-    </div>
-  </div>
 
   <script src="tour.js"></script>
 </body>

@@ -40,79 +40,63 @@ document.addEventListener('DOMContentLoaded', () => {
   if (heroCopy) heroCopy.classList.add('in');
   if (heroStage) heroStage.classList.add('in');
 
-  // 2. Video Controls & Playback
-  const videos = document.querySelectorAll('video.kb');
+  // 2. Hero Video: Big Silhouetted Play Overlay & Click-to-Play
+  const heroMedia = document.getElementById('hero-media');
+  const heroPlayOverlay = document.getElementById('hero-play-overlay');
+  const heroVideo = document.querySelector('.hero-video');
+  const heroPoster = document.querySelector('.hero-poster');
+  const playMetaTitle = heroPlayOverlay ? heroPlayOverlay.querySelector('.play-meta-title') : null;
+  const playMetaDur = document.getElementById('hero-meta-dur');
+  const iconPlay = heroPlayOverlay ? heroPlayOverlay.querySelector('.icon-play-svg') : null;
+  const iconReplay = heroPlayOverlay ? heroPlayOverlay.querySelector('.icon-replay-svg') : null;
 
-  function updatePlayIcon(vid, isPlaying) {
-    const shot = vid.closest('.shot');
-    if (!shot) return;
-    const pauseIcon = shot.querySelector('.icon-pause');
-    const playIcon = shot.querySelector('.icon-play');
-    const toggleBtn = shot.querySelector('.vid-toggle');
-    if (pauseIcon && playIcon) {
-      if (isPlaying) {
-        pauseIcon.style.display = '';
-        playIcon.style.display = 'none';
-        if (toggleBtn) toggleBtn.setAttribute('aria-label', 'Pause demonstration');
-      } else {
-        pauseIcon.style.display = 'none';
-        playIcon.style.display = '';
-        if (toggleBtn) toggleBtn.setAttribute('aria-label', 'Play demonstration');
-      }
-    }
+  function formatTime(seconds) {
+    const mins = Math.floor(seconds / 60);
+    const secs = Math.floor(seconds % 60);
+    return `${mins}:${secs.toString().padStart(2, '0')}`;
   }
 
-  if (!prefersReducedMotion) {
-    const videoObserver = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        const vid = entry.target;
-        if (entry.isIntersecting) {
-          vid.play().then(() => updatePlayIcon(vid, true)).catch(() => { });
-        } else {
-          vid.pause();
-          updatePlayIcon(vid, false);
-        }
-      });
-    }, { threshold: 0.25 });
+  if (heroVideo && heroMedia && heroPlayOverlay) {
+    heroVideo.addEventListener('loadedmetadata', () => {
+      if (heroVideo.duration && isFinite(heroVideo.duration) && playMetaDur) {
+        playMetaDur.textContent = formatTime(heroVideo.duration);
+      }
+    });
 
-    videos.forEach(v => videoObserver.observe(v));
-  } else {
-    videos.forEach(v => {
-      v.pause();
-      updatePlayIcon(v, false);
+    function startPlayback() {
+      if (heroPoster) heroPoster.style.display = 'none';
+      heroVideo.style.display = 'block';
+      heroPlayOverlay.classList.add('playing');
+      if (heroVideo.ended) {
+        heroVideo.currentTime = 0;
+      }
+      heroVideo.play().catch(() => { });
+    }
+
+    function pausePlayback() {
+      heroVideo.pause();
+      heroPlayOverlay.classList.remove('playing');
+      if (iconPlay) iconPlay.style.display = '';
+      if (iconReplay) iconReplay.style.display = 'none';
+      if (playMetaTitle) playMetaTitle.textContent = 'Resume demonstration';
+    }
+
+    heroMedia.addEventListener('click', (e) => {
+      e.stopPropagation();
+      if (heroVideo.style.display === 'none' || heroVideo.paused) {
+        startPlayback();
+      } else {
+        pausePlayback();
+      }
+    });
+
+    heroVideo.addEventListener('ended', () => {
+      heroPlayOverlay.classList.remove('playing');
+      if (iconPlay) iconPlay.style.display = 'none';
+      if (iconReplay) iconReplay.style.display = '';
+      if (playMetaTitle) playMetaTitle.textContent = 'Replay demonstration';
     });
   }
-
-  document.querySelectorAll('.shot').forEach(shot => {
-    const vid = shot.querySelector('video.kb');
-    if (!vid) return;
-
-    const toggleBtn = shot.querySelector('.vid-toggle');
-    const replayBtn = shot.querySelector('.vid-replay');
-
-    if (toggleBtn) {
-      toggleBtn.addEventListener('click', (e) => {
-        e.stopPropagation();
-        if (vid.paused) {
-          vid.play().then(() => updatePlayIcon(vid, true)).catch(() => { });
-        } else {
-          vid.pause();
-          updatePlayIcon(vid, false);
-        }
-      });
-    }
-
-    if (replayBtn) {
-      replayBtn.addEventListener('click', (e) => {
-        e.stopPropagation();
-        vid.currentTime = 0;
-        vid.play().then(() => updatePlayIcon(vid, true)).catch(() => { });
-      });
-    }
-
-    vid.addEventListener('play', () => updatePlayIcon(vid, true));
-    vid.addEventListener('pause', () => updatePlayIcon(vid, false));
-  });
 
   // 3. Scroll progress & Nav scroll-spy
   const progressBar = document.getElementById('nav-progress');
@@ -147,96 +131,4 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     });
   }, { passive: true });
-
-  // 4. Accessible Lightbox Zoom Modal
-  const lightbox = document.getElementById('lightbox-modal');
-  const lightboxImg = document.getElementById('lightbox-img');
-  const lightboxCaption = document.getElementById('lightbox-caption');
-  const lightboxClose = document.getElementById('lightbox-close');
-  let lastActiveElement = null;
-
-  function trapFocus(e, container) {
-    if (e.key !== 'Tab') return;
-    const focusable = container.querySelectorAll('button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])');
-    if (focusable.length === 0) return;
-    const first = focusable[0];
-    const last = focusable[focusable.length - 1];
-
-    if (e.shiftKey) {
-      if (document.activeElement === first) {
-        last.focus();
-        e.preventDefault();
-      }
-    } else {
-      if (document.activeElement === last) {
-        first.focus();
-        e.preventDefault();
-      }
-    }
-  }
-
-  function openLightbox(src, caption) {
-    if (!lightbox || !lightboxImg) return;
-    lastActiveElement = document.activeElement;
-    lightboxImg.src = src;
-    lightboxCaption.textContent = caption || '';
-    lightbox.removeAttribute('hidden');
-    if (lightboxClose) lightboxClose.focus();
-  }
-
-  function closeLightbox() {
-    if (!lightbox) return;
-    lightbox.setAttribute('hidden', '');
-    if (lightboxImg) lightboxImg.src = '';
-    if (lastActiveElement) {
-      lastActiveElement.focus();
-      lastActiveElement = null;
-    }
-  }
-
-  // Wire up both the button and the screenshot image itself
-  document.querySelectorAll('.shot').forEach(shot => {
-    const zoomBtn = shot.querySelector('[data-zoom-src]');
-    const media = shot.querySelector('.shot-media');
-    if (!zoomBtn) return;
-
-    if (media && media.querySelector('img')) {
-      media.classList.add('zoomable');
-      media.removeAttribute('title');
-      if (!media.querySelector('.shot-zoom-badge')) {
-        const badge = document.createElement('div');
-        badge.className = 'shot-zoom-badge';
-        badge.setAttribute('aria-hidden', 'true');
-        badge.innerHTML = `<svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/><path d="M11 8v6M8 11h6"/></svg><span>Click to enlarge</span>`;
-        media.appendChild(badge);
-      }
-      media.addEventListener('click', (e) => {
-        if (e.target.closest('.shot-controls')) return;
-        const src = zoomBtn.getAttribute('data-zoom-src');
-        const caption = zoomBtn.getAttribute('data-zoom-caption') || '';
-        openLightbox(src, caption);
-      });
-    }
-
-    zoomBtn.addEventListener('click', (e) => {
-      e.stopPropagation();
-      const src = zoomBtn.getAttribute('data-zoom-src');
-      const caption = zoomBtn.getAttribute('data-zoom-caption') || '';
-      openLightbox(src, caption);
-    });
-  });
-
-  if (lightboxClose) lightboxClose.addEventListener('click', closeLightbox);
-  if (lightbox) {
-    lightbox.addEventListener('click', (e) => {
-      if (e.target === lightbox) closeLightbox();
-    });
-    lightbox.addEventListener('keydown', (e) => trapFocus(e, lightbox));
-  }
-
-  document.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape' && lightbox && !lightbox.hasAttribute('hidden')) {
-      closeLightbox();
-    }
-  });
 });
