@@ -43,6 +43,28 @@ document.addEventListener('DOMContentLoaded', () => {
   const modalVideo = document.getElementById('modal-video');
   const modalCloseBtn = document.getElementById('modal-close-btn');
 
+  function updateModalDimensions() {
+    if (!modalVideo) return;
+    const natW = modalVideo.videoWidth || 1440;
+    const natH = modalVideo.videoHeight || 1440;
+
+    // Viewport space minus margins and the window top-bar
+    const padW = window.innerWidth <= 768 ? 24 : 48;
+    const padH = window.innerWidth <= 768 ? 60 : 84;
+    const maxW = Math.max(200, window.innerWidth - padW);
+    const maxH = Math.max(200, window.innerHeight - padH);
+
+    // If viewport is large enough: scale is 1.0 (FULL ORIGINAL RESOLUTION).
+    // If viewport is not large enough: scale down to fit comfortably on screen.
+    const scale = Math.min(1.0, maxW / natW, maxH / natH);
+
+    const targetW = Math.round(natW * scale);
+    const targetH = Math.round(natH * scale);
+
+    modalVideo.style.width = `${targetW}px`;
+    modalVideo.style.height = `${targetH}px`;
+  }
+
   function openVideoModal(videoSrc) {
     if (!modalBackdrop || !modalVideo) return;
     if (videoSrc && modalVideo.src !== videoSrc) {
@@ -50,6 +72,13 @@ document.addEventListener('DOMContentLoaded', () => {
     }
     modalBackdrop.classList.add('active');
     document.body.classList.add('modal-open');
+
+    if (modalVideo.readyState >= 1) {
+      updateModalDimensions();
+    } else {
+      modalVideo.addEventListener('loadedmetadata', updateModalDimensions, { once: true });
+    }
+
     modalVideo.currentTime = 0;
     modalVideo.play().catch(() => {});
   }
@@ -60,6 +89,12 @@ document.addEventListener('DOMContentLoaded', () => {
     modalBackdrop.classList.remove('active');
     document.body.classList.remove('modal-open');
   }
+
+  window.addEventListener('resize', () => {
+    if (modalBackdrop && modalBackdrop.classList.contains('active')) {
+      updateModalDimensions();
+    }
+  });
 
   if (heroMedia) {
     heroMedia.addEventListener('click', (e) => {
