@@ -227,6 +227,11 @@ tp-logo {
   text-align: center;
 }
 
+.hero-brand-top + .hero-brand-top {
+  margin-top: -1.2rem;
+  margin-bottom: 2.8rem;
+}
+
 .section {
   position: relative;
   padding: 4.5rem 0;
@@ -295,6 +300,36 @@ tp-logo {
   line-height: 1.6;
   color: var(--ink-2);
   margin-bottom: 1.4rem;
+}
+
+/* Hero Bulleted List */
+.hero-bullet-list {
+  list-style: none;
+  padding: 0;
+  margin: 1.25rem 0 1.8rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.7rem;
+}
+
+.hero-bullet-list li {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  font-size: 1.18rem;
+  font-weight: 700;
+  color: var(--toolpat-red);
+  line-height: 1.35;
+}
+
+.hero-bullet-list li::before {
+  content: "";
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--toolpat-red);
+  flex-shrink: 0;
 }
 
 .hero-actions-row {
