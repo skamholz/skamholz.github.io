@@ -36,6 +36,9 @@
   --pastel-slate-border: color-mix(in srgb, var(--slate) 18%, transparent);
   --pastel-sand-border: color-mix(in srgb, var(--sand) 22%, transparent);
 
+  /* Global column proportion: adjust media column percentage here (e.g. 60%, 65%, 70%) */
+  --tour-media-width: 65%;
+
   --grad: linear-gradient(100deg, var(--teal) 0%, var(--cyan) 60%, var(--indigo) 110%);
   --radius: 14px;
   --shadow: 0 4px 20px -4px rgba(13, 23, 38, 0.08), 0 1px 3px rgba(13, 23, 38, 0.05);
@@ -258,6 +261,8 @@ tp-logo {
 
 .tour-row {
   --row-gap: clamp(2rem, 3.5vw, 3.5rem);
+  --media-w: var(--tour-media-width, 65%);
+  --text-w: calc(100% - var(--media-w));
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -265,14 +270,14 @@ tp-logo {
 }
 
 .tour-row>.tour-text {
-  flex: 0 0 calc(35% - (var(--row-gap) * 0.65));
-  max-width: calc(35% - (var(--row-gap) * 0.65));
+  flex: 0 0 calc(var(--text-w) - (var(--row-gap) * 0.5));
+  max-width: calc(var(--text-w) - (var(--row-gap) * 0.5));
   min-width: 0;
 }
 
 .tour-row>.tour-media {
-  flex: 0 0 calc(65% - (var(--row-gap) * 0.35));
-  max-width: calc(65% - (var(--row-gap) * 0.35));
+  flex: 0 0 calc(var(--media-w) - (var(--row-gap) * 0.5));
+  max-width: calc(var(--media-w) - (var(--row-gap) * 0.5));
   min-width: 0;
 }
 
