@@ -9,14 +9,33 @@
   --paper: #fbfaf7;
   --paper-2: #f3f6f8;
   --line: rgba(13, 23, 38, 0.09);
-  --teal: #147ba8;
+  --teal: var(--toolpat-blue);
   /* ToolPat brand blue */
   --teal-d: #0f5f83;
   --cyan: #22c3e6;
   /* accent highlight */
   --indigo: #3b4fd8;
-  --red: #d83b34;
-  /* ToolPat red: logo "Pat" */
+  --red: var(--toolpat-red);
+  --mint: #109566;
+  --slate: #3b4fd8;
+  --sand: #d2913c;
+
+  /* Pastels defined dynamically in terms of solid colors via color-mix */
+  --pastel-toolpat-blue: color-mix(in srgb, var(--toolpat-blue) 12%, white);
+  --pastel-toolpat-red: color-mix(in srgb, var(--toolpat-red) 12%, white);
+  --pastel-teal: color-mix(in srgb, var(--teal) 12%, white);
+  --pastel-mint: color-mix(in srgb, var(--mint) 12%, white);
+  --pastel-slate: color-mix(in srgb, var(--slate) 10%, white);
+  --pastel-sand: color-mix(in srgb, var(--sand) 12%, white);
+
+  /* Pastel borders derived from solid colors */
+  --pastel-toolpat-blue-border: color-mix(in srgb, var(--toolpat-blue) 22%, transparent);
+  --pastel-toolpat-red-border: color-mix(in srgb, var(--toolpat-red) 22%, transparent);
+  --pastel-teal-border: color-mix(in srgb, var(--teal) 22%, transparent);
+  --pastel-mint-border: color-mix(in srgb, var(--mint) 22%, transparent);
+  --pastel-slate-border: color-mix(in srgb, var(--slate) 18%, transparent);
+  --pastel-sand-border: color-mix(in srgb, var(--sand) 22%, transparent);
+
   --grad: linear-gradient(100deg, var(--teal) 0%, var(--cyan) 60%, var(--indigo) 110%);
   --radius: 14px;
   --shadow: 0 4px 20px -4px rgba(13, 23, 38, 0.08), 0 1px 3px rgba(13, 23, 38, 0.05);
@@ -302,34 +321,42 @@ tp-logo {
   margin-bottom: 1.4rem;
 }
 
-/* Hero Bulleted List */
-.hero-bullet-list {
+/* ---------- Hero Feature Items with Rounded Square Pastel Icons ---------- */
+.hero-feature-list {
   list-style: none;
   padding: 0;
-  margin: 1.25rem 0 1.8rem;
+  margin: 1.5rem 0 2rem;
   display: flex;
   flex-direction: column;
-  gap: 0.7rem;
+  gap: 1.05rem;
 }
 
-.hero-bullet-list li {
+.feature-item {
   display: flex;
   align-items: center;
-  gap: 0.75rem;
-  font-size: 1.18rem;
-  font-weight: 700;
-  color: var(--toolpat-red);
-  line-height: 1.35;
+  gap: 1rem;
 }
 
-.hero-bullet-list li::before {
-  content: "";
-  display: inline-block;
-  width: 8px;
-  height: 8px;
-  border-radius: 50%;
-  background: var(--toolpat-red);
+.feature-icon-box {
+  width: 44px;
+  height: 44px;
+  border-radius: 13px;
+  display: grid;
+  place-items: center;
   flex-shrink: 0;
+  transition: transform 0.2s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+.feature-item:hover .feature-icon-box {
+  transform: scale(1.06);
+}
+
+.feature-text {
+  font-size: 1.18rem;
+  font-weight: 700;
+  color: var(--ink);
+  letter-spacing: -0.015em;
+  line-height: 1.35;
 }
 
 .hero-actions-row {
@@ -382,23 +409,38 @@ em {
 }
 
 .pastel-teal {
-  background: #eaf4f7;
-  border: 1px solid rgba(20, 123, 168, 0.14);
+  background: var(--pastel-teal);
+  border: 1px solid var(--pastel-teal-border);
+}
+
+.pastel-toolpat-blue {
+  background: var(--pastel-toolpat-blue);
+  border: 1px solid var(--pastel-toolpat-blue-border);
+}
+
+.pastel-toolpat-red {
+  background: var(--pastel-toolpat-red);
+  border: 1px solid var(--pastel-toolpat-red-border);
 }
 
 .pastel-mint {
-  background: #e8f5ec;
-  border: 1px solid rgba(16, 149, 102, 0.14);
+  background: var(--pastel-mint);
+  border: 1px solid var(--pastel-mint-border);
 }
 
 .pastel-slate {
-  background: #edf2f9;
-  border: 1px solid rgba(59, 79, 216, 0.12);
+  background: var(--pastel-slate);
+  border: 1px solid var(--pastel-slate-border);
 }
 
 .pastel-sand {
-  background: #faf4ea;
-  border: 1px solid rgba(210, 145, 60, 0.16);
+  background: var(--pastel-sand);
+  border: 1px solid var(--pastel-sand-border);
+}
+
+.pastel-stripes-box {
+  background: color-mix(in srgb, var(--pastel-toolpat-blue) 50%, var(--pastel-toolpat-red));
+  border: 1px solid color-mix(in srgb, var(--toolpat-blue) 20%, transparent);
 }
 
 /* ---------- Product Shot Inside Pastel Frame ---------- */
@@ -591,8 +633,8 @@ em {
 }
 
 .pastel-cta-banner {
-  background: #eaf4f7;
-  border: 1px solid rgba(20, 123, 168, 0.16);
+  background: var(--pastel-teal);
+  border: 1px solid var(--pastel-teal-border);
   border-radius: 28px;
   padding: 3.5rem 4rem;
   display: flex;
