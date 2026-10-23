@@ -22,7 +22,7 @@
 
   /* Pastels defined dynamically in terms of solid colors via color-mix */
   --pastel-toolpat-blue: color-mix(in srgb, var(--toolpat-blue) 12%, white);
-  --pastel-toolpat-red: color-mix(in srgb, var(--toolpat-red) 12%, white);
+  --pastel-toolpat-red: color-mix(in srgb, var(--toolpat-red) 8%, white);
   --pastel-teal: color-mix(in srgb, var(--teal) 12%, white);
   --pastel-mint: color-mix(in srgb, var(--mint) 12%, white);
   --pastel-slate: color-mix(in srgb, var(--slate) 10%, white);
