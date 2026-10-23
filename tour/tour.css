@@ -246,7 +246,7 @@ tp-logo {
   text-align: center;
 }
 
-.hero-brand-top + .hero-brand-top {
+.hero-brand-top+.hero-brand-top {
   margin-top: -1.2rem;
   margin-bottom: 2.8rem;
 }
@@ -257,35 +257,23 @@ tp-logo {
 }
 
 .tour-row {
+  --row-gap: clamp(2rem, 3.5vw, 3.5rem);
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: clamp(2.5rem, 5vw, 4.5rem);
+  gap: var(--row-gap);
 }
 
 .tour-row>.tour-text {
-  flex: 0 1 45%;
+  flex: 0 0 calc(35% - (var(--row-gap) * 0.65));
+  max-width: calc(35% - (var(--row-gap) * 0.65));
   min-width: 0;
 }
 
 .tour-row>.tour-media {
-  flex: 1 1 55%;
+  flex: 0 0 calc(65% - (var(--row-gap) * 0.35));
+  max-width: calc(65% - (var(--row-gap) * 0.35));
   min-width: 0;
-}
-
-/* Hero Section: 35% Text / 65% Media Split */
-.hero-section .tour-row {
-  display: grid;
-  grid-template-columns: 35fr 65fr;
-  gap: clamp(2rem, 3.5vw, 3.5rem);
-  align-items: center;
-}
-
-.hero-section .tour-row > .tour-text,
-.hero-section .tour-row > .tour-media {
-  width: 100%;
-  min-width: 0;
-  flex: none;
 }
 
 /* Desktop Alternating: Media Left, Text Right */
@@ -525,8 +513,8 @@ em {
   overflow: hidden;
 }
 
-.hero-shot-media > img,
-.hero-shot-media > video,
+.hero-shot-media>img,
+.hero-shot-media>video,
 .hero-poster,
 .hero-video {
   width: 100%;
@@ -751,7 +739,7 @@ em {
   visibility: hidden;
   pointer-events: none;
   transition: opacity 0.28s cubic-bezier(0.2, 0.8, 0.2, 1),
-              visibility 0.28s cubic-bezier(0.2, 0.8, 0.2, 1);
+    visibility 0.28s cubic-bezier(0.2, 0.8, 0.2, 1);
 }
 
 .video-backdrop.active {
@@ -771,7 +759,9 @@ body.modal-open footer {
   transition: filter 0.28s ease;
 }
 
-main, header, footer {
+main,
+header,
+footer {
   transition: filter 0.28s ease;
 }
 
@@ -860,8 +850,7 @@ main, header, footer {
 
   /* Enforce strict vertical chain: Text top, Media bottom for ALL sections */
   .tour-row,
-  .tour-row.row-reverse,
-  .hero-section .tour-row {
+  .tour-row.row-reverse {
     display: flex !important;
     flex-direction: column !important;
     gap: 2.25rem;
@@ -869,8 +858,9 @@ main, header, footer {
 
   .tour-row>.tour-text,
   .tour-row>.tour-media {
-    width: 100%;
-    flex: none;
+    width: 100% !important;
+    max-width: 100% !important;
+    flex: none !important;
   }
 
   .hero-section {
