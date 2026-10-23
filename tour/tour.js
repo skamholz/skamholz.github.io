@@ -34,67 +34,81 @@ document.addEventListener('DOMContentLoaded', () => {
 
   reveals.forEach(el => revealObserver.observe(el));
 
-  // Trigger hero immediately
-  const heroReveal = document.querySelector('#hero .reveal');
-  if (heroReveal) heroReveal.classList.add('in');
+  // Trigger hero reveals immediately
+  document.querySelectorAll('#hero .reveal').forEach(el => el.classList.add('in'));
 
-  // 2. Hero Video: Big Silhouetted Play Overlay & Click-to-Play
+  // 2. Video Modal / Enlarge on Click (Full size, dims & blurs behind)
   const heroMedia = document.getElementById('hero-media');
-  const heroPlayOverlay = document.getElementById('hero-play-overlay');
-  const heroVideo = document.querySelector('.hero-video');
-  const heroPoster = document.querySelector('.hero-poster');
-  const playMetaTitle = heroPlayOverlay ? heroPlayOverlay.querySelector('.play-meta-title') : null;
-  const playMetaDur = document.getElementById('hero-meta-dur');
-  const iconPlay = heroPlayOverlay ? heroPlayOverlay.querySelector('.icon-play-svg') : null;
-  const iconReplay = heroPlayOverlay ? heroPlayOverlay.querySelector('.icon-replay-svg') : null;
+  const modalBackdrop = document.getElementById('video-backdrop');
+  const modalVideo = document.getElementById('modal-video');
+  const modalCloseBtn = document.getElementById('modal-close-btn');
 
-  function formatTime(seconds) {
-    const mins = Math.floor(seconds / 60);
-    const secs = Math.floor(seconds % 60);
-    return `${mins}:${secs.toString().padStart(2, '0')}`;
+  function openVideoModal(videoSrc) {
+    if (!modalBackdrop || !modalVideo) return;
+    if (videoSrc && modalVideo.src !== videoSrc) {
+      modalVideo.src = videoSrc;
+    }
+    modalBackdrop.classList.add('active');
+    document.body.classList.add('modal-open');
+    modalVideo.currentTime = 0;
+    modalVideo.play().catch(() => {});
   }
 
-  if (heroVideo && heroMedia && heroPlayOverlay) {
-    heroVideo.addEventListener('loadedmetadata', () => {
-      if (heroVideo.duration && isFinite(heroVideo.duration) && playMetaDur) {
-        playMetaDur.textContent = formatTime(heroVideo.duration);
-      }
-    });
+  function closeVideoModal() {
+    if (!modalBackdrop || !modalVideo) return;
+    modalVideo.pause();
+    modalBackdrop.classList.remove('active');
+    document.body.classList.remove('modal-open');
+  }
 
-    function startPlayback() {
-      if (heroPoster) heroPoster.style.display = 'none';
-      heroVideo.style.display = 'block';
-      heroPlayOverlay.classList.add('playing');
-      if (heroVideo.ended) {
-        heroVideo.currentTime = 0;
-      }
-      heroVideo.play().catch(() => { });
-    }
-
-    function pausePlayback() {
-      heroVideo.pause();
-      heroPlayOverlay.classList.remove('playing');
-      if (iconPlay) iconPlay.style.display = '';
-      if (iconReplay) iconReplay.style.display = 'none';
-      if (playMetaTitle) playMetaTitle.textContent = 'Resume demonstration';
-    }
-
+  if (heroMedia) {
     heroMedia.addEventListener('click', (e) => {
       e.stopPropagation();
-      if (heroVideo.style.display === 'none' || heroVideo.paused) {
-        startPlayback();
-      } else {
-        pausePlayback();
+      openVideoModal();
+    });
+    heroMedia.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        openVideoModal();
       }
     });
+  }
 
-    heroVideo.addEventListener('ended', () => {
-      heroPlayOverlay.classList.remove('playing');
-      if (iconPlay) iconPlay.style.display = 'none';
-      if (iconReplay) iconReplay.style.display = '';
-      if (playMetaTitle) playMetaTitle.textContent = 'Replay demonstration';
+  if (modalCloseBtn) {
+    modalCloseBtn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      closeVideoModal();
     });
   }
+
+  if (modalVideo) {
+    modalVideo.addEventListener('click', (e) => {
+      e.stopPropagation();
+      if (modalVideo.paused) {
+        modalVideo.play().catch(() => {});
+      } else {
+        modalVideo.pause();
+      }
+    });
+    modalVideo.addEventListener('ended', () => {
+      modalVideo.currentTime = 0;
+      modalVideo.play().catch(() => {});
+    });
+  }
+
+  if (modalBackdrop) {
+    modalBackdrop.addEventListener('click', (e) => {
+      if (e.target === modalBackdrop) {
+        closeVideoModal();
+      }
+    });
+  }
+
+  window.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && modalBackdrop && modalBackdrop.classList.contains('active')) {
+      closeVideoModal();
+    }
+  });
 
   // 3. Scroll progress & Nav scroll-spy
   const progressBar = document.getElementById('nav-progress');

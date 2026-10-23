@@ -2,6 +2,9 @@
 :root {
   --ink: #0d1726;
   --ink-2: #334155;
+  --toolpat-blue: #147ba8;
+  --toolpat-red: #d83b34;
+  --ink-toolpat-blue: #147ba8;
   --muted: #64748b;
   --paper: #fbfaf7;
   --paper-2: #f3f6f8;
@@ -144,7 +147,7 @@ tp-logo {
 
 .btn-primary {
   color: #fff;
-  background: var(--ink);
+  background: var(--toolpat-blue);
   box-shadow: 0 4px 14px -3px rgba(13, 23, 38, .35);
 }
 
@@ -213,7 +216,15 @@ tp-logo {
 /* ---------- 2-Column Alternating Layout Grid ---------- */
 .hero-section {
   position: relative;
-  padding: 4rem 0 2.5rem;
+  padding: 3.5rem 0 2.5rem;
+}
+
+.hero-brand-top {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 2.8rem;
+  text-align: center;
 }
 
 .section {
@@ -228,12 +239,12 @@ tp-logo {
   gap: clamp(2.5rem, 5vw, 4.5rem);
 }
 
-.tour-row > .tour-text {
+.tour-row>.tour-text {
   flex: 0 1 45%;
   min-width: 0;
 }
 
-.tour-row > .tour-media {
+.tour-row>.tour-media {
   flex: 1 1 55%;
   min-width: 0;
 }
@@ -399,8 +410,8 @@ em {
   background: var(--paper-2);
 }
 
-.shot-media > img,
-.shot-media > video {
+.shot-media>img,
+.shot-media>video {
   width: 100%;
   height: 100%;
   object-fit: cover;
@@ -626,8 +637,128 @@ em {
   transform: none;
 }
 
+/* ---------- Video Enlarged Lightbox Modal ---------- */
+.video-backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  background: rgba(13, 23, 38, 0.82);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1.5rem;
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transition: opacity 0.28s cubic-bezier(0.2, 0.8, 0.2, 1),
+              visibility 0.28s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+.video-backdrop.active {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+}
+
+body.modal-open {
+  overflow: hidden;
+}
+
+body.modal-open main,
+body.modal-open header,
+body.modal-open footer {
+  filter: blur(4px);
+  transition: filter 0.28s ease;
+}
+
+main, header, footer {
+  transition: filter 0.28s ease;
+}
+
+.video-modal-dialog {
+  position: relative;
+  /* Not full screen - tight app window sized to the video */
+  width: min(620px, 88vw);
+  max-height: 85vh;
+  display: flex;
+  flex-direction: column;
+  background: #fff;
+  border-radius: 14px;
+  overflow: hidden;
+  box-shadow: 0 20px 50px -10px rgba(0, 0, 0, 0.55), 0 0 0 1px rgba(255, 255, 255, 0.15);
+  transform: scale(0.96);
+  transition: transform 0.24s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.video-backdrop.active .video-modal-dialog {
+  transform: scale(1);
+}
+
+.video-modal-dialog .shot-bar {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 9px 13px;
+  background: #f8fafc;
+  border-bottom: 1px solid var(--line);
+  user-select: none;
+  flex-shrink: 0;
+}
+
+.video-modal-close-btn {
+  background: transparent;
+  border: none;
+  color: var(--muted);
+  cursor: pointer;
+  padding: 3px;
+  border-radius: 6px;
+  display: grid;
+  place-items: center;
+  margin-left: auto;
+  transition: color 0.15s, background 0.15s;
+}
+
+.video-modal-close-btn:hover {
+  color: var(--ink);
+  background: rgba(13, 23, 38, 0.08);
+}
+
+.modal-video-wrap {
+  position: relative;
+  background: #fff;
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.modal-video-wrap video {
+  width: 100%;
+  height: 100%;
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
+  display: block;
+}
+
 /* ---------- Responsive (Mobile Chain: Heading First, Image Second) ---------- */
 @media (max-width: 900px) {
+  .hero-brand-top {
+    margin-bottom: 1.8rem;
+  }
+
+  .video-modal-dialog {
+    width: 96vw;
+    border-radius: 12px;
+  }
+
+  .video-backdrop {
+    padding: 0.75rem;
+  }
+
   /* Enforce strict vertical chain: Text top, Media bottom for ALL sections */
   .tour-row,
   .tour-row.row-reverse {
@@ -635,8 +766,8 @@ em {
     gap: 2.25rem;
   }
 
-  .tour-row > .tour-text,
-  .tour-row > .tour-media {
+  .tour-row>.tour-text,
+  .tour-row>.tour-media {
     width: 100%;
     flex: none;
   }
@@ -696,6 +827,7 @@ em {
 }
 
 @media (prefers-reduced-motion: reduce) {
+
   *,
   *::before,
   *::after {
