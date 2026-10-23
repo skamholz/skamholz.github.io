@@ -35,10 +35,8 @@ document.addEventListener('DOMContentLoaded', () => {
   reveals.forEach(el => revealObserver.observe(el));
 
   // Trigger hero immediately
-  const heroCopy = document.querySelector('.hero-copy');
-  const heroStage = document.querySelector('.hero-stage');
-  if (heroCopy) heroCopy.classList.add('in');
-  if (heroStage) heroStage.classList.add('in');
+  const heroReveal = document.querySelector('#hero .reveal');
+  if (heroReveal) heroReveal.classList.add('in');
 
   // 2. Hero Video: Big Silhouetted Play Overlay & Click-to-Play
   const heroMedia = document.getElementById('hero-media');
