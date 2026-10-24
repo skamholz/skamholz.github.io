@@ -87,12 +87,21 @@
               </li>
               <li class="feature-item">
                 <div class="feature-icon-box pastel-toolpat-red" aria-hidden="true">
-                  <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="var(--toolpat-red)"
-                    stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
-                    <path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"></path>
+                  <svg viewBox="0 0 24 24" width="22" height="22">
+                    <g fill="var(--toolpat-red)">
+                      <circle cx="5" cy="5" r="2" />
+                      <circle cx="12" cy="5" r="2" />
+                      <circle cx="19" cy="5" r="2" />
+                      <circle cx="5" cy="12" r="2" />
+                      <circle cx="19" cy="12" r="2" />
+                      <circle cx="5" cy="19" r="2" />
+                      <circle cx="12" cy="19" r="2" />
+                      <circle cx="19" cy="19" r="2" />
+                    </g>
+                    <circle cx="12" cy="12" r="2" fill="var(--toolpat-blue)" />
                   </svg>
                 </div>
-                <span class="feature-text">Bookmarked PDFs</span>
+                <span class="feature-text">PTAB and Reexams included</span>
               </li>
             </ul>
             <!-- <div class="hero-actions-row">
@@ -172,7 +181,7 @@
                     <path d="M11 16h5" />
                   </svg>
                 </div>
-                <span class="feature-text">Browse timelines and documents</span>
+                <span class="feature-text">Browse freely through cases</span>
               </li>
               <li class="feature-item">
                 <div class="feature-icon-box pastel-redblue" aria-hidden="true">
@@ -192,7 +201,7 @@
                     <path d="M21 12l-3 -6l-3 6a3 3 0 0 0 6 0" />
                   </svg>
                 </div>
-                <span class="feature-text">PTAB and Reexams included</span>
+                <span class="feature-text">See PTAB and Reexam relationships</span>
               </li>
               <li class="feature-item">
                 <div class="feature-icon-box pastel-toolpat-red" aria-hidden="true">
@@ -242,24 +251,23 @@
           <!-- Text: 1st in DOM -> Top on Mobile, Left on Desktop -->
           <div class="tour-text">
             <!-- <span class="kicker"><span class="k-diamond">&#x2726;</span> PTAB Documents</span> -->
-            <h2 id="ptab-title">PTAB trial documents, too.</h2>
-            <p>Read in place or download.</p>
+            <h1 id="ptab-title">Tracker.</h1>
+            <!-- <p>Read in place or download.</p> -->
           </div>
 
           <!-- Media: 2nd in DOM -> Bottom on Mobile, Right on Desktop -->
           <div class="tour-media">
             <div class="pastel-frame pastel-slate">
               <figure class="shot">
-                <div class="shot-bar">
+                <!-- <div class="shot-bar">
                   <span></span><span></span><span></span>
                   <b>IPR2025-00351 &middot; Proceeding Papers &amp; Timeline</b>
-                </div>
+                </div> -->
                 <div class="shot-media">
                   <img src="assets/ptab_documents.jpg"
                     alt="PTAB trial document list and timeline for IPR2025-00351 in ToolPat+" />
                 </div>
-                <figcaption>Petitioner, patent owner, and board filings arranged chronologically with one-click access.
-                </figcaption>
+                <!-- <figcaption>Petitioner, patent owner, and board filings arranged chronologically with one-click access.</figcaption> -->
               </figure>
             </div>
           </div>
