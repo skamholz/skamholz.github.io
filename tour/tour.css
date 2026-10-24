@@ -367,6 +367,14 @@ tp-logo {
   line-height: 1.35;
 }
 
+.feature-subtext {
+  font-size: 0.84em;
+  font-weight: 400;
+  font-style: italic;
+  color: var(--muted);
+  letter-spacing: normal;
+}
+
 .hero-actions-row {
   display: flex;
   align-items: center;
@@ -446,7 +454,7 @@ em {
   border: 1px solid var(--pastel-sand-border);
 }
 
-.pastel-stripes-box {
+.pastel-redblue {
   background: color-mix(in srgb, var(--pastel-toolpat-blue) 50%, var(--pastel-toolpat-red));
   border: 1px solid color-mix(in srgb, var(--toolpat-blue) 20%, transparent);
 }
