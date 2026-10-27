@@ -6,6 +6,7 @@
   --toolpat-red: #d83b34;
   --ink-toolpat-blue: #147ba8;
   --muted: #64748b;
+  --muted-2: #d5e6f7;
   --paper: #fbfaf7;
   --paper-2: #f3f6f8;
   --line: rgba(13, 23, 38, 0.09);
@@ -17,6 +18,7 @@
   --indigo: #3b4fd8;
   --red: var(--toolpat-red);
   --mint: #109566;
+  --purple: #7c3aed;
   --slate: #3b4fd8;
   --sand: #d2913c;
 
@@ -25,6 +27,7 @@
   --pastel-toolpat-red: color-mix(in srgb, var(--toolpat-red) 8%, white);
   --pastel-teal: color-mix(in srgb, var(--teal) 12%, white);
   --pastel-mint: color-mix(in srgb, var(--mint) 12%, white);
+  --pastel-purple: color-mix(in srgb, var(--purple) 10%, white);
   --pastel-slate: color-mix(in srgb, var(--slate) 10%, white);
   --pastel-sand: color-mix(in srgb, var(--sand) 12%, white);
 
@@ -33,6 +36,7 @@
   --pastel-toolpat-red-border: color-mix(in srgb, var(--toolpat-red) 22%, transparent);
   --pastel-teal-border: color-mix(in srgb, var(--teal) 22%, transparent);
   --pastel-mint-border: color-mix(in srgb, var(--mint) 22%, transparent);
+  --pastel-purple-border: color-mix(in srgb, var(--purple) 22%, transparent);
   --pastel-slate-border: color-mix(in srgb, var(--slate) 18%, transparent);
   --pastel-sand-border: color-mix(in srgb, var(--sand) 22%, transparent);
 
@@ -61,7 +65,7 @@ html {
 body {
   font-family: var(--sans);
   color: var(--ink);
-  background: var(--paper);
+  background: var(--muted-2);
   line-height: 1.6;
   -webkit-font-smoothing: antialiased;
 }
@@ -238,25 +242,25 @@ tp-logo {
 /* ---------- 2-Column Alternating Layout Grid ---------- */
 .hero-section {
   position: relative;
-  padding: 3.5rem 0 2.5rem;
+  padding: 2.25rem 0 1.25rem;
 }
 
 .hero-brand-top {
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-bottom: 2.8rem;
+  margin-bottom: 1.75rem;
   text-align: center;
 }
 
 .hero-brand-top+.hero-brand-top {
-  margin-top: -1.2rem;
-  margin-bottom: 2.8rem;
+  margin-top: -0.75rem;
+  margin-bottom: 1.75rem;
 }
 
 .section {
   position: relative;
-  padding: 4.5rem 0;
+  padding: 2.25rem 0;
 }
 
 .tour-row {
@@ -276,8 +280,8 @@ tp-logo {
 }
 
 .tour-row>.tour-media {
-  flex: 0 0 calc(var(--media-w) - (var(--row-gap) * 0.5));
-  max-width: calc(var(--media-w) - (var(--row-gap) * 0.5));
+  flex: 0 0 min(804px, calc(var(--media-w) - (var(--row-gap) * 0.5)));
+  max-width: min(804px, calc(var(--media-w) - (var(--row-gap) * 0.5)));
   min-width: 0;
 }
 
@@ -345,6 +349,20 @@ tp-logo {
   gap: 1rem;
 }
 
+.feature-item.has-subtext {
+  align-items: flex-start;
+}
+
+.feature-item.has-subtext .feature-content {
+  /* Align the first line of text (~25.5px) with the vertical center of the 44px icon */
+  padding-top: calc((44px - (1.18rem * 1.35)) / 2);
+}
+
+.feature-content {
+  display: flex;
+  flex-direction: column;
+}
+
 .feature-icon-box {
   width: 44px;
   height: 44px;
@@ -373,6 +391,8 @@ tp-logo {
   font-style: italic;
   color: var(--muted);
   letter-spacing: normal;
+  display: block;
+  margin-top: 0.15rem;
 }
 
 .hero-actions-row {
@@ -442,6 +462,11 @@ em {
 .pastel-mint {
   background: var(--pastel-mint);
   border: 1px solid var(--pastel-mint-border);
+}
+
+.pastel-purple {
+  background: var(--pastel-purple);
+  border: 1px solid var(--pastel-purple-border);
 }
 
 .pastel-slate {
@@ -534,8 +559,6 @@ em {
   height: 100%;
   object-fit: cover;
   object-position: top center;
-  transform: scale(1.04);
-  transform-origin: 15% top;
   background: #0d1726;
 }
 
@@ -651,7 +674,7 @@ em {
 
 /* ---------- Closing CTA Banner ---------- */
 .cta {
-  padding: 4.5rem 0 5.5rem;
+  padding: 2.25rem 0 3.5rem;
 }
 
 .pastel-cta-banner {
@@ -866,7 +889,7 @@ footer {
   .tour-row.row-reverse {
     display: flex !important;
     flex-direction: column !important;
-    gap: 2.25rem;
+    gap: 1.25rem;
   }
 
   .tour-row>.tour-text,
@@ -877,11 +900,15 @@ footer {
   }
 
   .hero-section {
-    padding: 2.5rem 0 1.5rem;
+    padding: 1.5rem 0 1rem;
   }
 
   .section {
-    padding: 3rem 0;
+    padding: 1.5rem 0;
+  }
+
+  .hero-feature-list {
+    margin: 1.2rem 0 0.5rem;
   }
 
   .tour-text h1 {
@@ -944,3 +971,17 @@ footer {
     transform: none;
   }
 }
+/* Keeps the text and asterisk bound together as a single flex item */
+.btn-text {
+  display: inline; 
+}
+
+/* Reusable superscript component */
+.sup-marker {
+  font-size: 0.65em;
+  line-height: 0;
+  position: relative;
+  vertical-align: baseline;
+  top: -0.4em;
+}
+

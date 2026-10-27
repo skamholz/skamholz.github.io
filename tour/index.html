@@ -47,9 +47,14 @@
         <tp-logo size="2xl"></tp-logo>
       </div>
       <div class="hero-brand-top reveal in">
-        <a href="https://plus.toolpat.com/signup" class="btn btn-primary btn-lg" id="hero-cta">Create a free account to
-          try everything &rarr;</a>
+        <a href="https://plus.toolpat.com/signup" class="btn btn-primary btn-lg">
+          <span class="btn-text">Create a <strong>free</strong> all-access account<sup
+              class="sup-marker">*</sup></span>&nbsp;&rarr;
+        </a>
+
+
       </div>
+      <!-- <em class="hero-brand-top reveal in">(Free accounts have usage limits)</em> -->
       <div class="wrap-wide">
 
 
@@ -70,7 +75,7 @@
                     <line x1="5" y1="20" x2="19" y2="20"></line>
                   </svg>
                 </div>
-                <span class="feature-text">One-click downloads</span>
+                <span class="feature-text">One-click view or download</span>
               </li>
               <li class="feature-item">
                 <div class="feature-icon-box pastel-redblue" aria-hidden="true">
@@ -101,7 +106,7 @@
                     <circle cx="12" cy="12" r="2" fill="var(--toolpat-blue)" />
                   </svg>
                 </div>
-                <span class="feature-text">PTAB and Reexams included</span>
+                <span class="feature-text">Patents, Reexams, and PTAB trials</span>
               </li>
             </ul>
             <!-- <div class="hero-actions-row">
@@ -168,7 +173,7 @@
           <!-- Text: 1st in DOM -> Top on Mobile, Right on Desktop -->
           <div class="tour-text">
             <!-- <span class="kicker"><span class="k-diamond">&#x2726;</span> Prosecution History</span> -->
-            <h1 id="workflow-title">Family Navigator.</h1>
+            <h1 id="workflow-title">Patent family<br>navigator.</h1>
 
             <ul class="hero-feature-list">
               <li class="feature-item">
@@ -181,7 +186,8 @@
                     <path d="M11 16h5" />
                   </svg>
                 </div>
-                <span class="feature-text">Browse freely through cases</span>
+                <!-- <span class="feature-text">Browse throughout case families</span> -->
+                <span class="feature-text">Clickable map, timeline, and documents</span>
               </li>
               <li class="feature-item">
                 <div class="feature-icon-box pastel-redblue" aria-hidden="true">
@@ -201,9 +207,9 @@
                     <path d="M21 12l-3 -6l-3 6a3 3 0 0 0 6 0" />
                   </svg>
                 </div>
-                <span class="feature-text">See PTAB and Reexam relationships</span>
+                <span class="feature-text">Includes PTAB and Reexam challenges</span>
               </li>
-              <li class="feature-item">
+              <li class="feature-item has-subtext">
                 <div class="feature-icon-box pastel-toolpat-red" aria-hidden="true">
                   <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="var(--toolpat-red)"
                     stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
@@ -215,8 +221,10 @@
                     <circle cx="7" cy="18" r="3" />
                   </svg>
                 </div>
-                <span class="feature-text">Map unpublished cases <span class="feature-subtext">(where
-                    available)</span></span>
+                <div class="feature-content">
+                  <span class="feature-text">New family cases before publication</span>
+                  <!-- <span class="feature-subtext">(where available)</span> -->
+                </div>
               </li>
             </ul>
             <!-- <p>Color-coded descriptions make the back-and-forth between applicant and examiner immediately clear.</p> -->
@@ -231,7 +239,13 @@
                   <b>plus.toolpat.com &middot; Prosecution History Detail &middot; Document Descriptions</b>
                 </div> -->
                 <div class="shot-media">
-                  <img src="assets/explore.jpg"
+                  <img src="assets/family-navigator-752w.png" srcset="
+                      assets/family-navigator-752w.png 752w,
+                      assets/family-navigator-1128w.png 1128w,
+                      assets/family-navigator-1x.png 1504w,
+                      assets/family-navigator-2x.png 3008w
+                    "
+                    sizes="(max-width: 900px) min(calc(92vw - 36px), 752px), (max-width: 1391px) calc(59.8vw - 80px), 752px"
                     alt="Color-coded document descriptions in ToolPat+ prosecution history" />
                 </div>
                 <!-- <figcaption>Color-coded descriptions make the prosecution history easier to scan.</figcaption> -->
@@ -243,7 +257,7 @@
       </div>
     </section>
 
-    <!-- ============ 2. PTAB TRIAL DOCUMENTS (TEXT LEFT, MEDIA RIGHT ON DESKTOP) ============ -->
+    <!-- ============ 2. CASE TRACKER (TEXT LEFT, MEDIA RIGHT ON DESKTOP) ============ -->
     <section class="section" id="ptab-documents" aria-labelledby="ptab-title">
       <div class="wrap-wide">
         <div class="tour-row reveal">
@@ -251,8 +265,85 @@
           <!-- Text: 1st in DOM -> Top on Mobile, Left on Desktop -->
           <div class="tour-text">
             <!-- <span class="kicker"><span class="k-diamond">&#x2726;</span> PTAB Documents</span> -->
-            <h1 id="ptab-title">Tracker.</h1>
-            <!-- <p>Read in place or download.</p> -->
+            <h1 id="ptab-title">Case Tracker.</h1>
+            <ul class="hero-feature-list">
+              <li class="feature-item">
+                <div class="feature-icon-box pastel-toolpat-blue" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke-width="1.85" stroke-linecap="round"
+                    stroke-linejoin="round">
+                    <!-- Back document (green outline, fanned right & down) -->
+                    <rect x="8.2" y="4.8" width="11.5" height="15.2" rx="1.6" transform="rotate(16 14 12.4)"
+                      fill="var(--pastel-toolpat-blue)" stroke="var(--mint)" />
+                    <!-- Middle document (red outline, fanned between front and back) -->
+                    <rect x="5.4" y="3.5" width="11.5" height="15.2" rx="1.6" transform="rotate(8 11.15 11.1)"
+                      fill="var(--pastel-toolpat-blue)" stroke="var(--toolpat-red)" />
+                    <!-- Front document (blue outline, folded top-left corner + text lines) -->
+                    <path d="M6.2 2.2h6.8a1.6 1.6 0 0 1 1.6 1.6v12a1.6 1.6 0 0 1-1.6 1.6H4.1a1.6 1.6 0 0 1-1.6-1.6V5.9Z"
+                      fill="var(--pastel-toolpat-blue)" stroke="var(--toolpat-blue)" />
+                    <path d="M6.2 2.2v2.7a1 1 0 0 1-1 1H2.5" stroke="var(--toolpat-blue)" />
+                    <line x1="5.4" y1="8.2" x2="11.6" y2="8.2" stroke="var(--toolpat-blue)" />
+                    <line x1="5.4" y1="11.0" x2="11.6" y2="11.0" stroke="var(--toolpat-blue)" />
+                    <line x1="5.4" y1="13.8" x2="11.6" y2="13.8" stroke="var(--toolpat-blue)" />
+                  </svg>
+                </div>
+                <!-- <span class="feature-text">Browse throughout case families</span> -->
+                <span class="feature-text">Patents, Reexams, PTAB, and litigation</span>
+              </li>
+              <li class="feature-item">
+                <div class="feature-icon-box pastel-redblue" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke-width="2.1" stroke-linecap="round"
+                    stroke-linejoin="round">
+                    <!-- Blue document outline (stops cleanly around the bottom-right seal) -->
+                    <path d="M11.5 20H5.5a1.5 1.5 0 0 1-1.5-1.5v-14A1.5 1.5 0 0 1 5.5 3H13l5 5v4.2"
+                      stroke="var(--toolpat-blue)" />
+                    <!-- Folded top-right corner -->
+                    <path d="M13 3v4a1 1 0 0 0 1 1h4" stroke="var(--toolpat-blue)" />
+                    <!-- Document text lines -->
+                    <line x1="7.2" y1="9.5" x2="14.5" y2="9.5" stroke="var(--toolpat-blue)" />
+                    <line x1="7.2" y1="12.5" x2="14.5" y2="12.5" stroke="var(--toolpat-blue)" />
+                    <line x1="7.2" y1="15.5" x2="11.2" y2="15.5" stroke="var(--toolpat-blue)" />
+                    <!-- Red corner seal & ribbon tails -->
+                    <circle cx="16.5" cy="16.2" r="3" stroke="var(--toolpat-red)" />
+                    <path d="M14.6 18.6v3.4l1.9-1.2 1.9 1.2v-3.4" stroke="var(--toolpat-red)" />
+                  </svg>
+                </div>
+                <span class="feature-text">Track an Assignee's new filings</span>
+              </li>
+              <li class="feature-item">
+                <div class="feature-icon-box pastel-redblue" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke-linecap="round"
+                    stroke-linejoin="round">
+                    <!-- Dotted line from top center down to box -->
+                    <line x1="12" y1="2" x2="12" y2="9.5" stroke="var(--toolpat-red)" stroke-width="2.2"
+                      stroke-dasharray="0.1 3.2" />
+                    <!-- Box in toolpat-red -->
+                    <rect x="2" y="10.5" width="20" height="11" rx="2.5" stroke="var(--toolpat-red)" stroke-width="2" />
+                    <!-- "CON" in toolpat-blue -->
+                    <text x="12" y="16.2" fill="var(--toolpat-blue)" font-family="var(--sans)" font-size="7.2"
+                      font-weight="800" text-anchor="middle" dominant-baseline="central"
+                      letter-spacing="0.03em">CON</text>
+                  </svg>
+                </div>
+                <div class="feature-content">
+                  <span class="feature-text">Detect new family members</span>
+                  <!-- <span class="feature-subtext">(where available)</span> -->
+                </div>
+              </li>
+              <li class="feature-item">
+                <div class="feature-icon-box pastel-toolpat-red" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="var(--toolpat-red)"
+                    stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M14.536 21.686a.5.5 0 0 0 .937-.024l6.5-19a.496.496 0 0 0-.635-.635l-19 6.5a.5.5 0 0
+                    0-.024.937l7.93 3.18a2 2 0 0 1 1.112 1.11z" />
+                    <path d="m21.854 2.147-10.94 10.939" />
+                  </svg>
+                </div>
+                <div class="feature-content">
+                  <span class="feature-text">Status Dashboard plus email alerts</span>
+                  <!-- <span class="feature-subtext">(where available)</span> -->
+                </div>
+              </li>
+            </ul>
           </div>
 
           <!-- Media: 2nd in DOM -> Bottom on Mobile, Right on Desktop -->
@@ -264,7 +355,7 @@
                   <b>IPR2025-00351 &middot; Proceeding Papers &amp; Timeline</b>
                 </div> -->
                 <div class="shot-media">
-                  <img src="assets/ptab_documents.jpg"
+                  <img src="assets/tracker.png"
                     alt="PTAB trial document list and timeline for IPR2025-00351 in ToolPat+" />
                 </div>
                 <!-- <figcaption>Petitioner, patent owner, and board filings arranged chronologically with one-click access.</figcaption> -->
@@ -316,14 +407,14 @@
           <div class="tour-media">
             <div class="pastel-frame pastel-sand">
               <figure class="shot">
-                <div class="shot-bar">
+                <!-- <div class="shot-bar">
                   <span></span><span></span><span></span>
                   <b>Patent Family Tree &middot; 13 connected cases</b>
-                </div>
+                </div> -->
                 <div class="shot-media">
                   <img src="assets/explore.jpg" alt="Patent Family Tree connecting related proceedings in ToolPat+" />
                 </div>
-                <figcaption>Family Navigator: parents, continuations, and challenges connected on one tree.</figcaption>
+                <!-- <figcaption>Family Navigator: parents, continuations, and challenges connected on one tree.</figcaption> -->
               </figure>
             </div>
           </div>
@@ -358,7 +449,8 @@
   <footer class="foot">
     <div class="wrap-wide foot-inner">
       <tp-logo size="sm"></tp-logo>
-      <div class="foot-copy">Patent intelligence for practical people. &middot; &copy; 2026 ToolPat PLLC &middot;
+      <div class="foot-copy"><sup class="sup-marker">*</sup>Free accounts have usage limits &middot; &copy; 2026 ToolPat
+        PLLC &middot;
         plus.toolpat.com</div>
     </div>
   </footer>
