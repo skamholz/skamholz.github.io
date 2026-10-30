@@ -38,17 +38,22 @@
 			color: #147ba8
 		}
 
-		.easter-egg-plus {
+		a.easter-egg-plus:link,
+		a.easter-egg-plus:visited {
 			color: transparent;
+			background: transparent;
 			text-decoration: none;
 			font-size: 0.8em;
-			background-color: transparent;
+			padding: 0;
+			margin: 0;
 			transition: color 0.1s ease;
 		}
 
-		.easter-egg-plus:hover {
-			color: #147ba8 !important;
-			background-color: transparent !important;
+		a.easter-egg-plus:hover,
+		a.easter-egg-plus:focus,
+		a.easter-egg-plus:active {
+			color: #147ba8;
+			background: transparent;
 		}
 
 		.reddish {
