@@ -125,10 +125,10 @@ document.addEventListener('DOMContentLoaded', () => {
         modalVideo.pause();
       }
     });
-    modalVideo.addEventListener('ended', () => {
-      modalVideo.currentTime = 0;
-      modalVideo.play().catch(() => {});
-    });
+    // modalVideo.addEventListener('ended', () => {
+      // modalVideo.currentTime = 0;
+      // modalVideo.play().catch(() => {});
+    // });
   }
 
   if (modalBackdrop) {
