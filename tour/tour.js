@@ -67,8 +67,13 @@ document.addEventListener('DOMContentLoaded', () => {
 
   function openVideoModal(videoSrc) {
     if (!modalBackdrop || !modalVideo) return;
-    if (videoSrc && modalVideo.src !== videoSrc) {
-      modalVideo.src = videoSrc;
+    if (videoSrc) {
+      const current = modalVideo.getAttribute('src');
+      if (current !== videoSrc) {
+        modalVideo.setAttribute('src', videoSrc);
+        modalVideo.src = videoSrc;
+        modalVideo.load();
+      }
     }
     modalBackdrop.classList.add('active');
     document.body.classList.add('modal-open');
@@ -96,18 +101,20 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   });
 
-  if (heroMedia) {
-    heroMedia.addEventListener('click', (e) => {
+  document.querySelectorAll('.hero-shot-media').forEach(mediaEl => {
+    const videoEl = mediaEl.querySelector('video');
+    const src = mediaEl.getAttribute('data-video-src') || (videoEl ? videoEl.getAttribute('src') : null) || 'assets/dl-and-view.mp4';
+    mediaEl.addEventListener('click', (e) => {
       e.stopPropagation();
-      openVideoModal();
+      openVideoModal(src);
     });
-    heroMedia.addEventListener('keydown', (e) => {
+    mediaEl.addEventListener('keydown', (e) => {
       if (e.key === 'Enter' || e.key === ' ') {
         e.preventDefault();
-        openVideoModal();
+        openVideoModal(src);
       }
     });
-  }
+  });
 
   if (modalCloseBtn) {
     modalCloseBtn.addEventListener('click', (e) => {
