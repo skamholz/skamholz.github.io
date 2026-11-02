@@ -217,4 +217,27 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     });
   }, { passive: true });
+
+  // 4. Founder Signature Canvas Renderer (Descramble s36j5723o.png)
+  const sigCanvas = document.getElementById('dj39dkltj3s');
+  if (sigCanvas) {
+    const ctx = sigCanvas.getContext('2d');
+    const sImg = new Image();
+    sImg.onload = () => {
+      const w = sImg.naturalWidth || 1125;
+      const h = sImg.naturalHeight || 337;
+      sigCanvas.width = w;
+      sigCanvas.height = h;
+
+      for (let y = 0; y < h; y++) {
+        const shift = (y * 23 + 97) % w;
+        const w1 = w - shift;
+        ctx.drawImage(sImg, shift, y, w1, 1, 0, y, w1, 1);
+        if (shift > 0) {
+          ctx.drawImage(sImg, 0, y, shift, 1, w1, y, shift, 1);
+        }
+      }
+    };
+    sImg.src = 'assets/s36j5723o.png';
+  }
 });
