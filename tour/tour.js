@@ -102,6 +102,38 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   document.querySelectorAll('.hero-shot-media').forEach(mediaEl => {
+    if (mediaEl.getAttribute('data-inline') === 'true') {
+      const videoEl = mediaEl.querySelector('video');
+      const posterEl = mediaEl.querySelector('.hero-poster');
+      const overlayEl = mediaEl.querySelector('.hero-play-overlay');
+
+      function startInlinePlayback() {
+        if (!videoEl) return;
+        if (posterEl) posterEl.style.display = 'none';
+        videoEl.style.display = 'block';
+        videoEl.controls = true;
+        if (overlayEl) overlayEl.classList.add('playing');
+        videoEl.play().catch(() => {});
+      }
+
+      mediaEl.addEventListener('click', (e) => {
+        if (videoEl && videoEl.style.display === 'block') {
+          return;
+        }
+        e.stopPropagation();
+        startInlinePlayback();
+      });
+
+      mediaEl.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter' || e.key === ' ') {
+          if (videoEl && videoEl.style.display === 'block') return;
+          e.preventDefault();
+          startInlinePlayback();
+        }
+      });
+      return;
+    }
+
     const videoEl = mediaEl.querySelector('video');
     const src = mediaEl.getAttribute('data-video-src') || (videoEl ? videoEl.getAttribute('src') : null) || 'assets/dl-and-view.mp4';
     mediaEl.addEventListener('click', (e) => {
