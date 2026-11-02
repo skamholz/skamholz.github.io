@@ -1059,6 +1059,12 @@ footer {
   display: block;
   margin-bottom: -11px;
   pointer-events: none;
+  user-select: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  -webkit-user-drag: none;
+  -webkit-touch-callout: none;
 }
 
 .founder-name {
