@@ -369,14 +369,34 @@
           <!-- Media: 2nd in DOM -> Bottom on Mobile, Right on Desktop -->
           <div class="tour-media">
             <div class="pastel-frame pastel-slate">
-              <figure class="shot">
+              <figure class="shot shot-hero">
                 <!-- <div class="shot-bar">
                   <span></span><span></span><span></span>
                   <b>IPR2025-00351 &middot; Proceeding Papers &amp; Timeline</b>
                 </div> -->
-                <div class="shot-media">
+                <div class="shot-media hero-shot-media" id="tracker-media" data-video-src="assets/trackers.mp4">
                   <img src="assets/tracker.png"
-                    alt="PTAB trial document list and timeline for IPR2025-00351 in ToolPat+" />
+                    alt="PTAB trial document list and timeline for IPR2025-00351 in ToolPat+" class="hero-poster" />
+                  <video class="hero-video" src="assets/trackers.mp4" playsinline preload="metadata"
+                    style="display:none;"></video>
+                  <div class="hero-play-overlay" role="button" aria-label="Play Case Tracker demonstration video"
+                    tabindex="0">
+                    <div class="play-btn-circle">
+                      <svg class="icon-play-svg" viewBox="0 0 100 100" width="120%" height="100%" fill="none"
+                        xmlns="http://www.w3.org/2000/svg">
+                        <circle cx="50" cy="50" r="45" stroke="white" stroke-width="4.5" />
+                        <path
+                          d="M40 33.5C40 31.8 41.9 30.7 43.4 31.6L68.8 48.1C70.3 49 70.3 51 68.8 51.9L43.4 68.4C41.9 69.3 40 68.2 40 66.5V33.5Z"
+                          fill="white" />
+                      </svg>
+                      <svg class="icon-replay-svg" viewBox="0 0 100 100" width="100%" height="100%" fill="none"
+                        xmlns="http://www.w3.org/2000/svg" style="display:none;">
+                        <circle cx="50" cy="50" r="45" stroke="white" stroke-width="4.5" />
+                        <path d="M34 50A16 16 0 1 0 50 34H44M44 34L50 28M44 34L50 40" stroke="white" stroke-width="5"
+                          stroke-linecap="round" stroke-linejoin="round" />
+                      </svg>
+                    </div>
+                  </div>
                 </div>
                 <!-- <figcaption>Petitioner, patent owner, and board filings arranged chronologically with one-click access.</figcaption> -->
               </figure>
@@ -394,33 +414,58 @@
 
           <!-- Text: 1st in DOM -> Top on Mobile, Right on Desktop -->
           <div class="tour-text">
-            <!-- <span class="kicker"><span class="k-diamond">&#x2726;</span> Supporting Tools</span> -->
-            <h2 id="tools-title">Related cases. Ongoing developments.</h2>
-            <div class="compact-badges">
-              <span class="c-badge">
-                <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2">
-                  <circle cx="12" cy="5" r="3" />
-                  <circle cx="5" cy="19" r="3" />
-                  <circle cx="19" cy="19" r="3" />
-                  <path d="M12 8v4m0 0l-5 4m5-4l5 4" />
-                </svg>
-                Patent families
-              </span>
-              <span class="c-badge">
-                <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2">
-                  <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9" />
-                  <path d="M13.73 21a2 2 0 0 1-3.46 0" />
-                </svg>
-                Case tracking
-              </span>
-              <span class="c-badge">
-                <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2">
-                  <circle cx="12" cy="12" r="10" />
-                  <polyline points="12 6 12 12 16 14" />
-                </svg>
-                Recent PTAB &amp; reexamination activity
-              </span>
-            </div>
+            <!-- <span class="kicker"><span class="k-diamond">&#x2726;</span> Prosecution History</span> -->
+            <h1 id="workflow-title">Unified search.</h1>
+
+            <ul class="hero-feature-list">
+              <li class="feature-item">
+                <div class="feature-icon-box pastel-toolpat-blue" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="var(--toolpat-blue)"
+                    stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                    <circle cx="11" cy="11" r="8" />
+                    <path d="m21 21-4.3-4.3" />
+                  </svg>
+                </div>
+                <!-- <span class="feature-text">Browse throughout case families</span> -->
+                <span class="feature-text">Search patents, PTAB, and litigation</span>
+              </li>
+              <li class="feature-item">
+                <div class="feature-icon-box pastel-redblue" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke-width="2.2"
+                    stroke-linecap="round" stroke-linejoin="round">
+                    <g transform="rotate(-90 12 12)">
+                      <!-- Hub circle (rotated to left) -->
+                      <circle cx="12" cy="6.5" r="3.5" stroke="var(--ink)" />
+                      <!-- Upper prong (rotated to top): toolpat-blue -->
+                      <path d="M 15.5 6.5 C 18.5 6.5 20 8 20 11 v 4.8" stroke="var(--toolpat-blue)" />
+                      <circle cx="20" cy="18" r="2.2" stroke="var(--toolpat-blue)" />
+                      <!-- Middle prong (rotated to middle): toolpat-red -->
+                      <line x1="12" y1="10" x2="12" y2="15.8" stroke="var(--toolpat-red)" />
+                      <circle cx="12" cy="18" r="2.2" stroke="var(--toolpat-red)" />
+                      <!-- Lower prong (rotated to bottom): toolpat-green -->
+                      <path d="M 8.5 6.5 C 5.5 6.5 4 8 4 11 v 4.8" stroke="var(--mint)" />
+                      <circle cx="4" cy="18" r="2.2" stroke="var(--mint)" />
+                    </g>
+                  </svg>
+                </div>
+                <span class="feature-text">Single query searches all 3 databases</span>
+              </li>
+              <li class="feature-item">
+                <div class="feature-icon-box pastel-toolpat-red" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="var(--toolpat-red)"
+                    stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M14 4.1 12 6" />
+                    <path d="m5.1 8-2.9-.8" />
+                    <path d="m6 12-1.9 2" />
+                    <path d="M7.2 2.2 8 5.1" />
+                    <path
+                      d="M9.037 9.69a.498.498 0 0 1 .653-.653l11 4.5a.5.5 0 0 1-.074.949l-4.349 1.041a1 1 0 0 0-.74.739l-1.04 4.35a.5.5 0 0 1-.95.074z" />
+                  </svg>
+                </div>
+                <span class="feature-text">View or track each case with a click</span>
+              </li>
+            </ul>
+            <!-- <p>Color-coded descriptions make the back-and-forth between applicant and examiner immediately clear.</p> -->
           </div>
 
           <!-- Media: 2nd in DOM -> Bottom on Mobile, Left on Desktop -->
@@ -432,7 +477,7 @@
                   <b>Patent Family Tree &middot; 13 connected cases</b>
                 </div> -->
                 <div class="shot-media">
-                  <img src="assets/explore.jpg" alt="Patent Family Tree connecting related proceedings in ToolPat+" />
+                  <img src="assets/unified-search.png" alt="Unified search in ToolPat+" />
                 </div>
                 <!-- <figcaption>Family Navigator: parents, continuations, and challenges connected on one tree.</figcaption> -->
               </figure>
@@ -449,7 +494,7 @@
         <div class="pastel-cta-banner">
           <div class="cta-left">
             <!-- <span class="kicker"><span class="k-diamond">&#x2726;</span> Your next tab can be the right one</span> -->
-            <h2 id="cta-title">Try it with a patent <em>you&rsquo;re working on.</em></h2>
+            <h2 id="cta-title">Let <tp-logo size="lg"></tp-logo> <em>boost your productivity.</em></h2>
             <p>Create a free account and explore ToolPat. Usage limits apply.</p>
             <div class="firm" id="cta-firm">
               Interested in ToolPat for your firm? <a href="mailto:info@toolpat.com" id="cta-firm-link">Contact us about
